@@ -8,7 +8,14 @@ public class Randomizer {
 	public static int getRandomNumber(int minNumber, int maxNumber){
 		int randomNumber = random.nextInt(maxNumber + 1 - minNumber);
 		
-		return randomNumber;
+		return randomNumber + minNumber;
+	}
+	
+	public static double getRandomNumber(double minNumber, double maxNumber, int nrDecimals){
+		int minInteger = (int) Math.ceil(minNumber*Math.pow(10, nrDecimals));
+		int maxInteger = (int) Math.floor(maxNumber*Math.pow(10, nrDecimals));
+		
+		return ((double) getRandomNumber(minInteger, maxInteger))/Math.pow(10, nrDecimals);
 	}
 	
 	public static char getRandomChar(char[] operatorArray){

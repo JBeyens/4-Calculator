@@ -35,7 +35,7 @@ public class ExerciseGenerator {
 		
 		for (int i=0; i < settings.getNrOfExercises(); i++)
 		{
-			exercises.add(getExercise());
+			exercises.add(getExercise(0,10,"+"));
 		}
 		return (Exercise[]) exercises.toArray();
 	}
@@ -43,25 +43,23 @@ public class ExerciseGenerator {
 	/*
 	 * Method which generates a single exercise based on the settings
 	 */
-	private Exercise getExercise() throws Exception 
+	private Exercise getExercise(double minRange, double maxRange, String operator) throws Exception 
 	{
-		String[] operators = settings.getOperators();
-		String operator = operators[random.nextInt(operators.length)];
 		Exercise exercise = null;
 		
 		switch (operator)
 		{
 		case "+":
-			exercise = getSumExercise();
+			exercise = getAddExercise(minRange, maxRange);
 			break;
 		case "-":
-			exercise = getMinusExercise();
+			exercise = getSubExercise(minRange, maxRange);
 			break;
 		case "*":
-			exercise = getMultiplicationExercise();
+			exercise = getMultExercise(minRange, maxRange);
 			break;
 		case "/":
-			exercise = getDivisionExercise();
+			exercise = getDivExercise(minRange, maxRange);
 			break;
 			default:
 				throw new Exception("Invalid operator given.");
@@ -70,32 +68,27 @@ public class ExerciseGenerator {
 		return exercise;
 	}
 	
-	private Exercise getDivisionExercise() {
+	private Exercise getDivExercise(double minRange, double maxRange) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private Exercise getMultiplicationExercise() {
+	private Exercise getMultExercise(double minRange, double maxRange) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private Exercise getMinusExercise() {
+	private Exercise getSubExercise(double minRange, double maxRange) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private Exercise getSumExercise()
+	private Exercise getAddExercise(double minRange, double maxRange)
 	{
 		double coefficient = Math.pow(10, settings.getNrDecimals());
 		
 		double value1 = random.nextDouble();
 		
 		return null;
-	}
-	
-	private double getRandomDouble(double min, double max)
-	{
-		return min + random.nextDouble()*(max - min);
 	}
 }

@@ -55,7 +55,9 @@ public class PropertyFileReader {
 				instance = new PropertyFileReader();
 				loadUserProperties();
 			} else {
+				// Create new file based on absolute path
 				file = new File(defaultProperties.getProperty("stringPath"));
+				file.getParentFile().mkdirs(); // Will create missing folders if necessary
 				instance = new PropertyFileReader();
 				userProperties = defaultProperties;
 				saveProperty();

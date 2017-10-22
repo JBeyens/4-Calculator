@@ -2,10 +2,14 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
+import javax.lang.model.element.VariableElement;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import randomizer.Randomizer;
+import utilities.Randomizer;
 
 
 /**
@@ -37,22 +41,18 @@ public class RandomizerTest {
 	public void test_Random_Element_From_CharArray() {
 		for (int i = 0; i < 1000000; i++) {
 			char randomChar = Randomizer.getRandomChar(charArray);
-			
-			if (randomChar == '+' || randomChar == '-' || randomChar == '*' || randomChar == '/') {
-				assertTrue(true);
-			}
-		}
 
+			boolean preTest = Arrays.asList(charArray).contains(randomChar);
+			assertTrue(Arrays.asList(charArray).contains(randomChar));
+		}
 	}
 	
 	@Test
 	public void test_Random_Element_From_StringArray() {
 		for (int i = 0; i < 1000000; i++) {
 			String randomString = Randomizer.getRandomString(stringArray);
-			
-			if (randomString == "Foo" || randomString == "Bar" || randomString == "FooBar") {
-				assertTrue(true);
-			}
+
+			assertTrue(Arrays.asList(stringArray).contains(randomString));
 		}
 	}
 	

@@ -2,6 +2,8 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import java.io.Console;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +44,7 @@ public class PropertiesTest {
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
 		assertTrue(isRoundNumber);
+		// InvocationTargetException. Inner details: suppressedExceptions	Collections$UnmodifiableRandomAccessList<E>	
 		Assert.assertArrayEquals(stringArray, operatorArray);
 	}
 	
@@ -55,15 +58,16 @@ public class PropertiesTest {
 		maximumNumber = Integer.parseInt(pfr.getProperty("maximumNumber"));
 		numberOfQuestions = Integer.parseInt(pfr.getProperty("numberOfQuestions"));
 		isRoundNumber = Boolean.parseBoolean(pfr.getProperty("isRoundNumber"));
-		
+
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
 		assertTrue(isRoundNumber);
-		Assert.assertArrayEquals(stringArray, operatorArray);
+		// InvocationTargetException. Inner details: suppressedExceptions	Collections$UnmodifiableRandomAccessList<E>	
+		assertArrayEquals(stringArray, operatorArray);
 	}
 	
-	//@Test
+	@Test
 	public void test_Reading_Properties_From_Config_File_Not_Found_Expect_Default_Settings(){
 		configPath = "invalid path";
 		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
@@ -80,7 +84,7 @@ public class PropertiesTest {
 	}
 	
 	
-	//@Test
+	@Test
 	public void test_Reading_Properties_From_Config_File_With_Missing_Value_Expect_Default_Settings(){
 		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
 			

@@ -5,7 +5,8 @@ public enum DefaultSettings {
 	numberOfQuestions("20"),
 	minimumNumber("0"),
 	maximumNumber("40"),
-	isRoundNumber("True");
+	isRoundNumber("True"),
+	operators("+, -, *, /");
 	
 	private final String name;
 	

@@ -4,11 +4,16 @@ package businesscomponent;
  * @Autor: Jef Beyens
  * @Date: 16/10/2016
  * @Project: Calculator
- * @Purpose: BusinessComponent class
- *  --> The purpose of this class is to calculate exercises. This will be done by return 'exercise' objects.
+ * @Purpose: BusinessComponent class to calculate results
  */
 public class Calculator {
 
+	public static final String ADD = "+";
+	public static final String SUB = "-";
+	public static final String MULT = "*";
+	public static final String DIV = "/";
+	
+	
 	public Calculator() {
 		// TODO Auto-generated constructor stub
 	}
@@ -19,16 +24,19 @@ public class Calculator {
 		
 		switch (operation) 
 		{
-			case "+":
+			case ADD:
 				result = input1 + input2;
 				break;
-			case "-":
+			case SUB:
 				result = input1 - input2;
 				break;
-			case "*":
+			case MULT:
 				result = input1 * input2;
 				break;
-			case "/":
+			case DIV:
+				if (input2 == 0)
+				    throw new IllegalArgumentException("Division by zero not allowed");
+				
 				result = input1 / input2;
 				break;
 

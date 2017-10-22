@@ -2,6 +2,7 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,16 +14,24 @@ public class PropertiesTest {
 	private int maximumNumber;
 	private int numberOfQuestions;
 	private boolean isRoundNumber;
-	
+	private String[] operatorArray;
+	private String[] stringArray;
 	
 	@Before
 	public void setUp(){
 		configPath = "resources/config.properties";
+		stringArray = new String[4];
+		stringArray[0] = "+";
+		stringArray[1] = "-";
+		stringArray[2] = "*";
+		stringArray[3] = "/";
 	}
 	
 	@Test
 	public void test_Reading_Properties_From_Config_File_When_File_Found() {
 		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
+		
+		operatorArray = pfr.getProperty("operators").split(",");
 		
 		minimumNumber = Integer.parseInt(pfr.getProperty("minimumNumber"));
 		maximumNumber = Integer.parseInt(pfr.getProperty("maximumNumber"));
@@ -32,10 +41,29 @@ public class PropertiesTest {
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
-		assertTrue(isRoundNumber);	
+		assertTrue(isRoundNumber);
+		Assert.assertArrayEquals(stringArray, operatorArray);
 	}
 	
 	@Test
+	public void test_Reading_Properties_Only_Operators_From_Config_File_When_File_Found() {
+		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
+		
+		operatorArray = pfr.getProperty("operators").split(",");
+		
+		minimumNumber = Integer.parseInt(pfr.getProperty("minimumNumber"));
+		maximumNumber = Integer.parseInt(pfr.getProperty("maximumNumber"));
+		numberOfQuestions = Integer.parseInt(pfr.getProperty("numberOfQuestions"));
+		isRoundNumber = Boolean.parseBoolean(pfr.getProperty("isRoundNumber"));
+		
+		assertEquals(0, minimumNumber);
+		assertEquals(40, maximumNumber);
+		assertEquals(20, numberOfQuestions);
+		assertTrue(isRoundNumber);
+		Assert.assertArrayEquals(stringArray, operatorArray);
+	}
+	
+	//@Test
 	public void test_Reading_Properties_From_Config_File_Not_Found_Expect_Default_Settings(){
 		configPath = "invalid path";
 		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
@@ -52,7 +80,7 @@ public class PropertiesTest {
 	}
 	
 	
-	@Test
+	//@Test
 	public void test_Reading_Properties_From_Config_File_With_Missing_Value_Expect_Default_Settings(){
 		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
 			

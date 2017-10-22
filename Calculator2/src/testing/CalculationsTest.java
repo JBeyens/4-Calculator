@@ -3,7 +3,8 @@ package testing;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import model.Calculator;
+
+import businesscomponent.Calculator;
 
 
 /**
@@ -26,37 +27,35 @@ public class CalculationsTest {
 		accuracyResult = 0.0;
 	}
 	
-	@Test
-	public void test_division_deler0_wordt_niet_aanvaard() {
-		double testWaarde = calculator.result(testGetal, 0, Calculator.DIV);
-		
-		assertEquals(0, testWaarde, accuracyResult);
+	@Test(expected=IllegalArgumentException.class)
+	public void test_division_deler0_wordt_niet_aanvaard() throws Exception {
+		calculator.doCalculation(testGetal, 0, Calculator.DIV);
 	}
 	
 	@Test
-	public void test_division_geldig_parameter_wordt_aanvaard(){
-		double testWaarde = calculator.result(testGetal, 5, Calculator.DIV);
+	public void test_division_geldig_parameter_wordt_aanvaard() throws Exception{
+		double testWaarde = calculator.doCalculation(testGetal, 5, Calculator.DIV);
 		
 		assertEquals(20, testWaarde, accuracyResult);
 	}
 	
 	@Test
-	public void test_multiplication_geldig_parameter_wordt_aanvaard(){
-		double testWaarde = calculator.result(testGetal, 5, Calculator.MULT);
+	public void test_multiplication_geldig_parameter_wordt_aanvaard() throws Exception{
+		double testWaarde = calculator.doCalculation(testGetal, 5, Calculator.MULT);
 		
 		assertEquals(500, testWaarde, accuracyResult);
 	}
 	
 	@Test
-	public void test_substraction_geldig_parameter_wordt_aanvaard(){
-		double testWaarde = calculator.result(testGetal, 5, Calculator.SUB);
+	public void test_substraction_geldig_parameter_wordt_aanvaard() throws Exception{
+		double testWaarde = calculator.doCalculation(testGetal, 5, Calculator.SUB);
 		
 		assertEquals(95, testWaarde, accuracyResult);
 	}
 	
 	@Test
-	public void test_addition_geldig_parameter_wordt_aanvaard(){
-		double testWaarde = calculator.result(testGetal, 5, Calculator.ADD);
+	public void test_addition_geldig_parameter_wordt_aanvaard() throws Exception{
+		double testWaarde = calculator.doCalculation(testGetal, 5, Calculator.ADD);
 		
 		assertEquals(105, testWaarde, accuracyResult);
 	}	

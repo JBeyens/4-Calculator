@@ -1,5 +1,6 @@
 package businesscomponent;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import model.ExerciseSettings;
@@ -17,20 +18,13 @@ import modeldata.Exercise;
 
 public class ExerciseManager {
 	private ExerciseGenerator generator;
-	private Exercise[] exercises;
+	private ArrayList<Exercise> exercises;
 
-	public ExerciseManager() {
-		// TODO Auto-generated constructor stub
+	public ExerciseManager(ExerciseSettings settings) {
+		generator = new ExerciseGenerator(settings);
 	}
-
 	
-	// Method to load the exercise generator by passing it a settings object.
-	public void loadExerciseGenerator(ExerciseSettings settings)
-	{
-		generator = new ExerciseGenerator(new Random(), settings);
-	}
 
-	
 	// Method to let the exercise generator generate exercises.
 	public void loadExercises() throws Exception
 	{

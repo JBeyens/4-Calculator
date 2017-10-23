@@ -1,5 +1,8 @@
 package modeldata;
 
+import businesscomponent.Calculator;
+import testing.CalculationsTest;
+
 /**
  * @Autor: Jef Beyens
  * @Date: 16/10/2016
@@ -16,17 +19,13 @@ public class Exercise {
 	
 	private double operand1;
 	private double operand2;
-	private String operation;
-	private String reply;
-	private boolean correct;
+	private char operation;
 	
-
-	public Exercise(double operand1, double operand2, String operation) {
+	public Exercise(double operand1, double operand2, char operation) {
 		this.operand1 = operand1;
 		this.operand2 = operand2;
 		this.operation = operation;
 	}
-
 	
 	public double getOperand1() {
 		return operand1; 
@@ -38,23 +37,13 @@ public class Exercise {
 	}
 
 	
-	public String getOperation() {
+	public char getOperation() {
 		return operation; 
 	}
 
 
-	public String getReply() {
-		return reply;	
-	}
-	public void setReply(String reply) {
-		this.reply = reply;	
-	}
-
-
-	public boolean isCorrect() {
-		return correct;	
-	}
-	public void setCorrect(boolean correct) {
-		this.correct = correct;	
+	@Override
+	public String toString() {
+		return "" + operand1 + " " + operation + " " + operand2 + "= ";
 	}
 }

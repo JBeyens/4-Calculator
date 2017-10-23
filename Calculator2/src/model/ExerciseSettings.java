@@ -11,8 +11,8 @@ public class ExerciseSettings {
 	private double minRange;
 	private double maxRange;
 	private int nrDecimals;
-	private String[] operators;
 	private int nrExercises;
+	private String[] operators;
 	
 	
 	public double getMinRange() {

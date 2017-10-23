@@ -18,7 +18,7 @@ public class Calculator {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public double doCalculation(double input1, double input2, String operation) throws Exception
+	public static double doCalculation(double input1, double input2, String operation) throws Exception
 	{
 		double result = 0;
 		

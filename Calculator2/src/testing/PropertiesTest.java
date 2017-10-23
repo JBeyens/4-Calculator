@@ -3,6 +3,9 @@ package testing;
 import static org.junit.Assert.*;
 
 import java.io.Console;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,10 +26,10 @@ public class PropertiesTest {
 	public void setUp(){
 		configPath = "resources/config.properties";
 		stringArray = new String[4];
-		stringArray[0] = "+";
-		stringArray[1] = "-";
-		stringArray[2] = "*";
-		stringArray[3] = "/";
+		stringArray[0] = new String("+");
+		stringArray[1] = new String("-");
+		stringArray[2] = new String("*");
+		stringArray[3] = new String("/");
 	}
 	
 	@Test

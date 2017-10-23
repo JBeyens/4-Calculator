@@ -1,5 +1,7 @@
 package businesscomponent;
 
+import modeldata.Exercise;
+
 /**
  * @Autor: Jef Beyens
  * @Date: 16/10/2016
@@ -46,5 +48,9 @@ public class Calculator {
 		
 		return result;
 	}
-
+	
+	public static double doCalculation(Exercise exercise)
+	{
+		return doCalculation(exercise.getOperand1(), exercise.getOperand2(), exercise.getOperation());
+	}
 }

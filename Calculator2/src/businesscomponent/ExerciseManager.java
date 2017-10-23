@@ -19,6 +19,7 @@ import modeldata.Exercise;
 public class ExerciseManager {
 	private ExerciseGenerator generator;
 	private ArrayList<Exercise> exercises = new ArrayList<>();
+	private int NrOfCorrectQuestions = 0;
 
 	public ExerciseManager(ExerciseSettings settings) {
 		generator = new ExerciseGenerator(settings);
@@ -29,5 +30,11 @@ public class ExerciseManager {
 	public void loadExercises() throws Exception
 	{
 		exercises = generator.getExercises();
+	}
+	
+	// Method to evaluate the answer
+	public boolean evaluateReply(Exercise exercise, double userReply)
+	{
+		return userReply == Calculator.doCalculation(exercise);
 	}
 }

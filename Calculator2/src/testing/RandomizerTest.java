@@ -111,9 +111,8 @@ public class RandomizerTest {
 			assertTrue(minNumber <= result);
 			assertTrue(result <= maxNumber);
 			
-			int nrOfDecimalsFound = (Math.floor(result) == result) ? 0 : String.valueOf(result).split(".")[1].length(); 
-			// ToDo: Fix test
-			//assertTrue(nrOfDecimals == nrOfDecimalsFound);
+			double resultNoDecimals = result * Math.pow(10, nrOfDecimals);
+			assertTrue(Math.abs(resultNoDecimals - Math.round(resultNoDecimals)) < 0.000001);
 		}
 	}
 }

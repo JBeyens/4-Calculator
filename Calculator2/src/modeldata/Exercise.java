@@ -17,8 +17,6 @@ public class Exercise {
 	private double operand1;
 	private double operand2;
 	private String operation;
-	private double result;
-	private int timeWaited;
 	private String reply;
 	private boolean correct;
 	
@@ -42,23 +40,6 @@ public class Exercise {
 	
 	public String getOperation() {
 		return operation; 
-	}
-
-	
-	public double getResult() {
-		return result;
-	}
-
-	public void setResult(double result) {
-		this.result = result;
-	}
-	
-	
-	public int getTimeWaited() {
-		return timeWaited;	
-	}
-	public void setTimeWaited(int timeWaited) {
-		this.timeWaited = timeWaited;
 	}
 
 

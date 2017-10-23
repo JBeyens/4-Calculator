@@ -6,6 +6,7 @@ import java.util.Random;
 
 import model.ExerciseSettings;
 import modeldata.Exercise;
+import utilities.Randomizer;
 
 /**
  * @Autor: Jef Beyens
@@ -15,14 +16,12 @@ import modeldata.Exercise;
  *  --> The purpose of this class is to generate and return 'exercise' objects.
  */
 public class ExerciseGenerator {
-	private Random random;
 	private ExerciseSettings settings;
 
 	/*
 	 * Constructor which takes in a Random object and a settings object
 	 */
 	public ExerciseGenerator(Random random, ExerciseSettings settings) {
-		this.random = random;
 		this.settings = settings;
 	}
 
@@ -34,8 +33,8 @@ public class ExerciseGenerator {
 		List<Exercise> exercises = new ArrayList<Exercise>();
 		
 		for (int i=0; i < settings.getNrOfExercises(); i++)
-		{
-			exercises.add(getExercise(0,10,"+"));
+		{   
+			exercises.add(getExercise(0,10,2,"+"));
 		}
 		return (Exercise[]) exercises.toArray();
 	}
@@ -43,23 +42,23 @@ public class ExerciseGenerator {
 	/*
 	 * Method which generates a single exercise based on the settings
 	 */
-	private Exercise getExercise(double minRange, double maxRange, String operator) throws Exception 
-	{
+	private Exercise getExercise(double minRange, double maxRange, Integer decimals, String operator) throws Exception 
+	{		
 		Exercise exercise = null;
 		
 		switch (operator)
 		{
 		case "+":
-			exercise = getAddExercise(minRange, maxRange);
+			exercise = getAddExercise(minRange, maxRange, decimals);
 			break;
 		case "-":
-			exercise = getSubExercise(minRange, maxRange);
+			exercise = getSubExercise(minRange, maxRange, decimals);
 			break;
 		case "*":
-			exercise = getMultExercise(minRange, maxRange);
+			exercise = getMultExercise(minRange, maxRange, decimals);
 			break;
 		case "/":
-			exercise = getDivExercise(minRange, maxRange);
+			exercise = getDivExercise(minRange, maxRange, decimals);
 			break;
 			default:
 				throw new Exception("Invalid operator given.");
@@ -67,28 +66,56 @@ public class ExerciseGenerator {
 		
 		return exercise;
 	}
-	
-	private Exercise getDivExercise(double minRange, double maxRange) {
-		// TODO Auto-generated method stub
-		return null;
+
+	/* Generates a 'DIVISION' exercise. 
+	 * The operands of the exercise will respect minRange and maxRange.
+	 * The result is not obligated to respect minRange and maxRange, however, 
+	 * if the user has not allowed negative numbers, then the substraction result will never be negative.
+	 */
+	private Exercise getDivExercise(double minRange, double maxRange, int decimals) {
+		double first = Randomizer.getRandomNumber(minRange, maxRange, decimals);
+		double second = Randomizer.getRandomNumber(minRange, maxRange, decimals);	
+
+		return new Exercise(first, second, "/");
 	}
 
-	private Exercise getMultExercise(double minRange, double maxRange) {
-		// TODO Auto-generated method stub
-		return null;
+	/* Generates a 'MULTIPLICATION' exercise. 
+	 * The operands of the exercise will respect minRange and maxRange.
+	 * The result is not obligated to respect minRange and maxRange, however, 
+	 * if the user has not allowed negative numbers, then the substraction result will never be negative.
+	 */
+	private Exercise getMultExercise(double minRange, double maxRange, int decimals) {
+		double first = Randomizer.getRandomNumber(minRange, maxRange, decimals);
+		double second = Randomizer.getRandomNumber(minRange, maxRange, decimals);	
+
+		return new Exercise(first, second, "*");
 	}
 
-	private Exercise getSubExercise(double minRange, double maxRange) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private Exercise getAddExercise(double minRange, double maxRange)
-	{
-		double coefficient = Math.pow(10, settings.getNrDecimals());
+	/* Generates a 'SUBSTRACTION' exercise. 
+	 * The operands of the exercise will respect minRange and maxRange.
+	 * The result is not obligated to respect minRange and maxRange, however, 
+	 * if the user has not allowed negative numbers, then the substraction result will never be negative.
+	 */
+	private Exercise getSubExercise(double minRange, double maxRange, int decimals) {
+		double first = Randomizer.getRandomNumber(minRange, maxRange, decimals);
+		double second = Randomizer.getRandomNumber(minRange, maxRange, decimals);	
 		
-		double value1 = random.nextDouble();
+		if (minRange >= 0) {
+			double temp = Math.min(first, second);
+			first = Math.max(first, second);
+			second = temp;
+		}
 		
-		return null;
+		return new Exercise(first, second, "-");
+	}
+
+	/* Generates an 'ADDITION' exercise. 
+	 * The method ensures that both operands & result will be within range 
+	 */
+	private Exercise getAddExercise(double minRange, double maxRange, int decimals)	{		
+		double first = Randomizer.getRandomNumber(minRange, maxRange, decimals);
+		double second = Randomizer.getRandomNumber(first, maxRange, decimals);	
+		
+		return new Exercise(first, second - first, "+");
 	}
 }

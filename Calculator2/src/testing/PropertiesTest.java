@@ -47,7 +47,6 @@ public class PropertiesTest {
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
 		assertTrue(isRoundNumber);
-		// InvocationTargetException. Inner details: suppressedExceptions	Collections$UnmodifiableRandomAccessList<E>	
 		Assert.assertArrayEquals(stringArray, operatorArray);
 	}
 	
@@ -66,7 +65,6 @@ public class PropertiesTest {
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
 		assertTrue(isRoundNumber);
-		// InvocationTargetException. Inner details: suppressedExceptions	Collections$UnmodifiableRandomAccessList<E>	
 		assertArrayEquals(stringArray, operatorArray);
 	}
 	

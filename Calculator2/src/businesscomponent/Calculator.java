@@ -10,17 +10,17 @@ import modeldata.Exercise;
  */
 public class Calculator {
 
-	public static final String ADD = "+";
-	public static final String SUB = "-";
-	public static final String MULT = "*";
-	public static final String DIV = "/";
+	public static final char ADD = '+';
+	public static final char SUB = '-';
+	public static final char MULT = '*';
+	public static final char DIV = '/';
 	
 	
 	public Calculator() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static double doCalculation(double input1, double input2, String operation) throws Exception
+	public static double doCalculation(double input1, double input2, char operation) throws Exception
 	{
 		double result = 0;
 		
@@ -49,7 +49,7 @@ public class Calculator {
 		return result;
 	}
 	
-	public static double doCalculation(Exercise exercise)
+	public static double doCalculation(Exercise exercise) throws Exception
 	{
 		return doCalculation(exercise.getOperand1(), exercise.getOperand2(), exercise.getOperation());
 	}

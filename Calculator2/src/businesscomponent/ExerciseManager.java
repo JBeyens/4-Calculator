@@ -18,7 +18,7 @@ import modeldata.Exercise;
 
 public class ExerciseManager {
 	private ExerciseGenerator generator;
-	private ArrayList<Exercise> exercises;
+	private ArrayList<Exercise> exercises = new ArrayList<>();
 
 	public ExerciseManager(ExerciseSettings settings) {
 		generator = new ExerciseGenerator(settings);

@@ -18,11 +18,13 @@ public class Randomizer {
 		return ((double) getRandomNumber(minInteger, maxInteger))/Math.pow(10, nrDecimals);
 	}
 	
-	public static char getRandomChar(char[] operatorArray){
+	public static char getRandomChar(String[] operatorArray){
 		int randomElement = random.nextInt(operatorArray.length);
-		char randomOperator = operatorArray[randomElement];
+		String randomOperator = operatorArray[randomElement];
 		
-		return randomOperator;
+		char operator = randomOperator.charAt(0);
+		
+		return operator;
 	}
 	
 	public static String getRandomString(String[] commentArray){

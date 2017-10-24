@@ -38,68 +38,68 @@ public class MainView extends JFrame {
 		startExercises.addActionListener(listener);
 	}
 	
-	public JTextField getTfNrOfQuestions() {
-		return tfNrOfQuestions;
+	public String getTfNrOfQuestions() {
+		return tfNrOfQuestions.getText();
 	}
 
-	public void setTfNrOfQuestions(JTextField tfNrOfQuestions) {
-		this.tfNrOfQuestions = tfNrOfQuestions;
+	public void setTfNrOfQuestions(String tfNrOfQuestions) {
+		this.tfNrOfQuestions.setText(tfNrOfQuestions);;
 	}
 
-	public JTextField getTfMinNumber() {
-		return tfMinNumber;
+	public String getTfMinNumber() {
+		return tfMinNumber.getText();
 	}
 
-	public void setTfMinNumber(JTextField tfMinNumber) {
-		this.tfMinNumber = tfMinNumber;
+	public void setTfMinNumber(String fMinNumber) {
+		this.tfMinNumber.setText(fMinNumber);;
 	}
 
-	public JTextField getTfMaxNumber() {
-		return tfMaxNumber;
+	public String getTfMaxNumber() {
+		return tfMaxNumber.getText();
 	}
 
-	public void setTfMaxNumber(JTextField tfMaxNumber) {
-		this.tfMaxNumber = tfMaxNumber;
+	public void setTfMaxNumber(String string) {
+		this.tfMaxNumber.setText(string);
 	}
 
-	public JTextField getTfNrOfDecimals() {
-		return tfNrOfDecimals;
+	public String getTfNrOfDecimals() {
+		return tfNrOfDecimals.getText();
 	}
 
-	public void setTfNrOfDecimals(JTextField tfNrOfDecimals) {
-		this.tfNrOfDecimals = tfNrOfDecimals;
+	public void setTfNrOfDecimals(String tfNrOfDecimals) {
+		this.tfNrOfDecimals.setText(tfNrOfDecimals);;
 	}
 
-	public JCheckBox getRbAddition() {
-		return rbAddition;
+	public boolean getRbAddition() {
+		return rbAddition.isSelected();
 	}
 
-	public void setRbAddition(JCheckBox rbAddition) {
-		this.rbAddition = rbAddition;
+	public void setRbAddition(boolean isSelected) {
+		this.rbAddition.setSelected(isSelected);
 	}
 
-	public JCheckBox getRbSubstraction() {
-		return rbSubstraction;
+	public boolean getRbSubstraction() {
+		return rbSubstraction.isSelected();
 	}
 
-	public void setRbSubstraction(JCheckBox rbSubstraction) {
-		this.rbSubstraction = rbSubstraction;
+	public void setRbSubstraction(boolean isSelected) {
+		this.rbSubstraction.setSelected(isSelected);
 	}
 
-	public JCheckBox getRbMultiplication() {
-		return rbMultiplication;
+	public boolean getRbMultiplication() {
+		return rbMultiplication.isSelected();
 	}
 
-	public void setRbMultiplication(JCheckBox rbMultiplication) {
-		this.rbMultiplication = rbMultiplication;
+	public void setRbMultiplication(boolean isSelected) {
+		this.rbMultiplication.setSelected(isSelected);
 	}
 
-	public JCheckBox getRbDivision() {
-		return rbDivision;
+	public boolean getRbDivision() {
+		return rbDivision.isSelected();
 	}
 
-	public void setRbDivision(JCheckBox rbDivision) {
-		this.rbDivision = rbDivision;
+	public void setRbDivision(boolean isSelected) {
+		this.rbDivision.setSelected(isSelected);
 	}
 
 	private void setUp(){

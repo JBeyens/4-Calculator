@@ -20,39 +20,40 @@ import utilities.Randomizer;
  */
 
 public class RandomizerTest {
-	private char[] charArray;
-	private String[] stringArray;
+	private String[] stringArray1;
+	private String[] stringArray2;
 	private Random rnd = new Random();
 	
 	@Before
 	public void setUp(){
-		charArray = new char[4];
-		charArray[0] = '+';
-		charArray[1] = '-';
-		charArray[2] = '*';
-		charArray[3] = '/';
 		
-		stringArray = new String[3];
-		stringArray[0] = "Foo";
-		stringArray[1] = "Bar";
-		stringArray[2] = "FooBar";
+		stringArray1 = new String[4];
+		stringArray1[0] = new String("+");
+		stringArray1[1] = new String("-");
+		stringArray1[2] = new String("*");
+		stringArray1[3] = new String("/");
+		
+		stringArray2 = new String[3];
+		stringArray2[0] = "Foo";
+		stringArray2[1] = "Bar";
+		stringArray2[2] = "FooBar";
 	}
 
 	@Test
 	public void test_Random_Element_From_CharArray() {
 		for (int i = 0; i < 1000000; i++) {
-			char randomChar = Randomizer.getRandomChar(charArray);
+			char randomChar = Randomizer.getRandomChar(stringArray1);
 
-			assertTrue(new String(charArray).indexOf(randomChar) != -1); 
+			assertTrue(String.join("",stringArray1).indexOf(randomChar) != -1); 
 		}
 	}
 	
 	@Test
 	public void test_Random_Element_From_StringArray() {
 		for (int i = 0; i < 1000000; i++) {
-			String randomString = Randomizer.getRandomString(stringArray);
+			String randomString = Randomizer.getRandomString(stringArray2);
 
-			assertTrue(Arrays.asList(stringArray).contains(randomString)); // Contains only works on Strings
+			assertTrue(Arrays.asList(stringArray2).contains(randomString)); // Contains only works on Strings
 		}
 	}
 	

@@ -1,6 +1,6 @@
 package businesscomponent;
 
-import modeldata.Exercise;
+import model.Exercise;
 
 /**
  * @Autor: Jef Beyens

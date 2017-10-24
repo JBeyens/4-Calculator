@@ -3,8 +3,8 @@ package businesscomponent;
 import java.util.ArrayList;
 import java.util.Random;
 
+import model.Exercise;
 import model.ExerciseSettings;
-import modeldata.Exercise;
 
 /**
  * @Autor: Jef Beyens
@@ -33,8 +33,18 @@ public class ExerciseManager {
 	}
 	
 	// Method to evaluate the answer
-	public boolean evaluateReply(Exercise exercise, double userReply)
+	public boolean evaluateReply(Exercise exercise, double userReply) throws Exception
 	{
 		return userReply == Calculator.doCalculation(exercise);
+	}
+	
+	public void setMaxRange(double number) {
+		generator.getSettings().setMaxRange(number);
+	}
+	
+	public void isNegativeAllowed(boolean allowNegativeNumbers) {
+		ExerciseSettings settings = generator.getSettings();
+		
+		settings.setMinRange(-1.0 * settings.getMaxRange());
 	}
 }

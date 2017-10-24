@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -32,6 +34,74 @@ public class MainView extends JFrame {
 		setUp();
 	}
 	
+	public void addActionListener(ActionListener listener){
+		startExercises.addActionListener(listener);
+	}
+	
+	public JTextField getTfNrOfQuestions() {
+		return tfNrOfQuestions;
+	}
+
+	public void setTfNrOfQuestions(JTextField tfNrOfQuestions) {
+		this.tfNrOfQuestions = tfNrOfQuestions;
+	}
+
+	public JTextField getTfMinNumber() {
+		return tfMinNumber;
+	}
+
+	public void setTfMinNumber(JTextField tfMinNumber) {
+		this.tfMinNumber = tfMinNumber;
+	}
+
+	public JTextField getTfMaxNumber() {
+		return tfMaxNumber;
+	}
+
+	public void setTfMaxNumber(JTextField tfMaxNumber) {
+		this.tfMaxNumber = tfMaxNumber;
+	}
+
+	public JTextField getTfNrOfDecimals() {
+		return tfNrOfDecimals;
+	}
+
+	public void setTfNrOfDecimals(JTextField tfNrOfDecimals) {
+		this.tfNrOfDecimals = tfNrOfDecimals;
+	}
+
+	public JCheckBox getRbAddition() {
+		return rbAddition;
+	}
+
+	public void setRbAddition(JCheckBox rbAddition) {
+		this.rbAddition = rbAddition;
+	}
+
+	public JCheckBox getRbSubstraction() {
+		return rbSubstraction;
+	}
+
+	public void setRbSubstraction(JCheckBox rbSubstraction) {
+		this.rbSubstraction = rbSubstraction;
+	}
+
+	public JCheckBox getRbMultiplication() {
+		return rbMultiplication;
+	}
+
+	public void setRbMultiplication(JCheckBox rbMultiplication) {
+		this.rbMultiplication = rbMultiplication;
+	}
+
+	public JCheckBox getRbDivision() {
+		return rbDivision;
+	}
+
+	public void setRbDivision(JCheckBox rbDivision) {
+		this.rbDivision = rbDivision;
+	}
+
 	private void setUp(){
 		labelNrOfQuestions = new JLabel("Aantal vragen: ");
 		labelMinNumber = new JLabel("Minimum bereik: ");

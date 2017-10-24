@@ -17,9 +17,12 @@ public class CalculatorController {
 	
 	public void startController(){
 		propertyReader = PropertyFileReader.getPropertiesFile(DefaultSettings.stringPath.getValue());
-		view.setTfMaxNumber(propertyReader.getProperty("maximumNumber"));
-		
+		view.setTfMaxNumber(propertyReader.getProperty("maximumNumber").toString());
+		view.setTfMinNumber(propertyReader.getProperty("minimumNumber").toString());
+		view.setTfNrOfDecimals(propertyReader.getProperty("nrOfDecimals").toString());
+		view.setTfNrOfQuestions(propertyReader.getProperty("nrOfQuestions").toString());
 		view.setVisible(true);
+		view.setSize(400, 350);
 		view.addActionListener(new StartExerciseListener());
 	}
 	

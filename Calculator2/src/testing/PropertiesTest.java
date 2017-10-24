@@ -2,11 +2,6 @@ package testing;
 
 import static org.junit.Assert.*;
 
-import java.io.Console;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

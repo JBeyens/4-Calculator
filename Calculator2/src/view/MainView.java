@@ -4,7 +4,6 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
@@ -19,7 +18,6 @@ public class MainView extends JFrame {
 	private JTextField tfMinNumber;
 	private JTextField tfMaxNumber;
 	private JTextField tfNrOfDecimals;
-	private JList listOfOperators;
 	
 	private JCheckBox rbAddition;
 	private JCheckBox rbSubstraction;
@@ -45,7 +43,6 @@ public class MainView extends JFrame {
 		tfNrOfQuestions = new JTextField(3);
 		tfMaxNumber = new JTextField(3);
 		tfMinNumber = new JTextField(3);
-		listOfOperators = new JList<>();
 		
 		rbAddition = new JCheckBox("+");
 		rbSubstraction = new JCheckBox("-");
@@ -55,6 +52,20 @@ public class MainView extends JFrame {
 		startExercises = new JButton("Start");
 		
 		layout = new SpringLayout();
+		layout.putConstraint(SpringLayout.NORTH, rbDivision, -4, SpringLayout.NORTH, labelNrOfQuestions);
+		layout.putConstraint(SpringLayout.WEST, rbDivision, 6, SpringLayout.EAST, rbMultiplication);
+		layout.putConstraint(SpringLayout.NORTH, rbSubstraction, -4, SpringLayout.NORTH, labelNrOfQuestions);
+		layout.putConstraint(SpringLayout.WEST, rbSubstraction, 6, SpringLayout.EAST, rbAddition);
+		layout.putConstraint(SpringLayout.WEST, rbMultiplication, 41, SpringLayout.EAST, rbAddition);
+		layout.putConstraint(SpringLayout.WEST, tfNrOfQuestions, 37, SpringLayout.EAST, labelNrOfQuestions);
+		layout.putConstraint(SpringLayout.NORTH, labelMinNumber, 11, SpringLayout.SOUTH, labelNrOfQuestions);
+		layout.putConstraint(SpringLayout.NORTH, rbMultiplication, 6, SpringLayout.NORTH, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, rbAddition, 6, SpringLayout.NORTH, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, tfNrOfQuestions, 7, SpringLayout.NORTH, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, labelOperators, 10, SpringLayout.NORTH, getContentPane());
+		layout.putConstraint(SpringLayout.WEST, labelMinNumber, 10, SpringLayout.WEST, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, labelNrOfQuestions, 0, SpringLayout.NORTH, labelOperators);
+		layout.putConstraint(SpringLayout.WEST, rbAddition, 6, SpringLayout.EAST, labelOperators);
 		layout.putConstraint(SpringLayout.NORTH, startExercises, -4, SpringLayout.NORTH, labelNrOfDecimals);
 		layout.putConstraint(SpringLayout.WEST, startExercises, 0, SpringLayout.WEST, labelOperators);
 		layout.putConstraint(SpringLayout.NORTH, tfNrOfDecimals, -3, SpringLayout.NORTH, labelNrOfDecimals);
@@ -68,12 +79,6 @@ public class MainView extends JFrame {
 		layout.putConstraint(SpringLayout.NORTH, labelMAxNumber, 16, SpringLayout.SOUTH, labelMinNumber);
 		layout.putConstraint(SpringLayout.WEST, labelMAxNumber, 0, SpringLayout.WEST, labelMinNumber);
 		layout.putConstraint(SpringLayout.WEST, labelOperators, 42, SpringLayout.EAST, tfNrOfQuestions);
-		layout.putConstraint(SpringLayout.NORTH, tfNrOfQuestions, -3, SpringLayout.NORTH, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.WEST, tfNrOfQuestions, 37, SpringLayout.EAST, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.NORTH, labelMinNumber, 11, SpringLayout.SOUTH, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.WEST, labelMinNumber, 0, SpringLayout.WEST, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.NORTH, labelOperators, 0, SpringLayout.NORTH, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.NORTH, labelNrOfQuestions, 10, SpringLayout.NORTH, getContentPane());
 		layout.putConstraint(SpringLayout.WEST, labelNrOfQuestions, 10, SpringLayout.WEST, getContentPane());
 		
 		getContentPane().setLayout(layout);
@@ -86,7 +91,10 @@ public class MainView extends JFrame {
 		getContentPane().add(tfNrOfQuestions);
 		getContentPane().add(tfNrOfDecimals);
 		getContentPane().add(tfMinNumber);
-		getContentPane().add(listOfOperators);
 		getContentPane().add(startExercises);
+		getContentPane().add(rbAddition);
+		getContentPane().add(rbDivision);
+		getContentPane().add(rbMultiplication);
+		getContentPane().add(rbSubstraction);
 	}
 }

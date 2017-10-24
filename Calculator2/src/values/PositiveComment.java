@@ -1,5 +1,13 @@
 package values;
 
+
+/**
+ * 	@Author Ben Vandevorst & Jef Beyens
+	@Datum 24/10/2017
+	@Project Calculator
+	@Doel
+ */
+
 public enum PositiveComment {
 	firstComment("Proficiat!"),
 	secondComment("Goed zo!"),

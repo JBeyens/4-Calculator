@@ -12,9 +12,7 @@ import model.ExerciseSettings;
  */
 public final class ExerciseSettingDefault {	
 	public static final int AANTAL_DECIMALEN  = 0;
-	public static final int AANTAL_OEFENINGEN = 2;
-	public static final double MIN_RANGE      = 0;
-	public static final double MAX_RANGE      = 20;
+
 	public static final String[] OPERATOREN   = {"+", "-"};
 	
 	/*

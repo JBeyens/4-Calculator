@@ -1,4 +1,4 @@
-package modeldata;
+package model;
 
 import businesscomponent.Calculator;
 import testing.CalculationsTest;

@@ -2,10 +2,10 @@ package values;
 
 public enum DefaultSettings {
 	stringPath("resources/config.properties"),
-	numberOfQuestions("20"),
+	nrOfQuestions("20"),
 	minimumNumber("0"),
 	maximumNumber("40"),
-	isRoundNumber("True"),
+	nrOfDecimals("0"),
 	operators("+,-,*,/");
 	
 	private final String name;

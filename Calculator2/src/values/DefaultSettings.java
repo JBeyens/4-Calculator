@@ -6,7 +6,7 @@ public enum DefaultSettings {
 	minimumNumber("0"),
 	maximumNumber("40"),
 	isRoundNumber("True"),
-	operators("+, -, *, /");
+	operators("+,-,*,/");
 	
 	private final String name;
 	

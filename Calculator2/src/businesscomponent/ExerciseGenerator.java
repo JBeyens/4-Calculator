@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import model.Exercise;
-import model.ExerciseSettings;
+import model.dto.Exercise;
+import model.dto.ExerciseSettings;
 import utilities.Randomizer;
 
 /**

@@ -3,8 +3,8 @@ package businesscomponent;
 import java.util.ArrayList;
 import java.util.Random;
 
-import model.Exercise;
-import model.ExerciseSettings;
+import model.dto.Exercise;
+import model.dto.ExerciseSettings;
 
 /**
  * @Autor: Jef Beyens

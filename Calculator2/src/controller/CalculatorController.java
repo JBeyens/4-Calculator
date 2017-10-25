@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import utilities.PropertyFileReader;
 import values.DefaultSettings;
@@ -13,17 +14,28 @@ public class CalculatorController {
 	
 	public CalculatorController(){
 		view = new MainView();
+		propertyReader = PropertyFileReader.getPropertiesFile(DefaultSettings.stringPath.getValue());
 	}
 	
 	public void startController(){
-		propertyReader = PropertyFileReader.getPropertiesFile(DefaultSettings.stringPath.getValue());
+		initializeProperties();
+		view.setVisible(true);
+		view.setSize(450, 350);
+		view.addActionListener(new StartExerciseListener());
+	}
+	
+	private void initializeProperties(){
 		view.setTfMaxNumber(propertyReader.getProperty("maximumNumber").toString());
 		view.setTfMinNumber(propertyReader.getProperty("minimumNumber").toString());
 		view.setTfNrOfDecimals(propertyReader.getProperty("nrOfDecimals").toString());
 		view.setTfNrOfQuestions(propertyReader.getProperty("nrOfQuestions").toString());
-		view.setVisible(true);
-		view.setSize(400, 350);
-		view.addActionListener(new StartExerciseListener());
+		
+		String[] operators = propertyReader.getProperty("operators").split(",");
+		
+		view.setRbAddition(Arrays.stream(operators).anyMatch("+"::equals));
+		view.setRbSubstraction(Arrays.stream(operators).anyMatch("-"::equals));
+		view.setRbMultiplication(Arrays.stream(operators).anyMatch("*"::equals));
+		view.setRbDivision(Arrays.stream(operators).anyMatch("/"::equals));
 	}
 	
 	private class StartExerciseListener implements ActionListener{

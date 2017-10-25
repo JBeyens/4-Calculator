@@ -4,17 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
+import model.properties.PropertyManager;
 import utilities.PropertyFileReader;
 import values.DefaultSettings;
 import view.MainView;
 
 public class CalculatorController {
 	private MainView view;
-	private PropertyFileReader propertyReader;
+	private PropertyManager propertyManager;
 	
 	public CalculatorController(){
 		view = new MainView();
-		propertyReader = PropertyFileReader.getPropertiesFile(DefaultSettings.stringPath.getValue());
+		propertyManager = PropertyManager.CreationMethod();
 	}
 	
 	public void startController(){
@@ -25,12 +26,12 @@ public class CalculatorController {
 	}
 	
 	private void initializeProperties(){
-		view.setTfMaxNumber(propertyReader.getProperty("maximumNumber").toString());
-		view.setTfMinNumber(propertyReader.getProperty("minimumNumber").toString());
-		view.setTfNrOfDecimals(propertyReader.getProperty("nrOfDecimals").toString());
-		view.setTfNrOfQuestions(propertyReader.getProperty("nrOfQuestions").toString());
+		view.setTfMaxNumber(propertyManager.getProperty("maximumNumber").toString());
+		view.setTfMinNumber(propertyManager.getProperty("minimumNumber").toString());
+		view.setTfNrOfDecimals(propertyManager.getProperty("nrOfDecimals").toString());
+		view.setTfNrOfQuestions(propertyManager.getProperty("nrOfQuestions").toString());
 		
-		String[] operators = propertyReader.getProperty("operators").split(",");
+		String[] operators = propertyManager.getProperty("operators").split(",");
 		
 		view.setRbAddition(Arrays.stream(operators).anyMatch("+"::equals));
 		view.setRbSubstraction(Arrays.stream(operators).anyMatch("-"::equals));

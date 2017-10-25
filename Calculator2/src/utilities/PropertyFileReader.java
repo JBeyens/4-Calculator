@@ -25,25 +25,21 @@ public class PropertyFileReader {
 	private PropertyFileReader() {
 	}
 
-	private static void saveProperty() throws FileNotFoundException, IOException {
+	/**/
+	public static boolean trySaveProperties(Properties properties) {
 		try (OutputStream out = new FileOutputStream(file)) {
-			userProperties.store(out, null);
+			properties.store(out, null);
 		}
+		catch (IOException ex) { // The exception FileNotFoundException is already caught by the alternative IOException
+			return false;
+		}
+		return true;
 	}
 
 	private static void loadUserProperties() throws FileNotFoundException, IOException {	
 		try(InputStream is = new FileInputStream(file)){
 			userProperties.load(is);
 		}	
-	}
-	
-	public String getProperty(String key) {
-		return userProperties.getProperty(key);
-	}
-
-	public void setProperty(String key, String value) throws FileNotFoundException, IOException {
-		userProperties.setProperty(key, value);
-		saveProperty();
 	}
 
 	public static PropertyFileReader getPropertiesFile(String path) {
@@ -60,7 +56,7 @@ public class PropertyFileReader {
 				file.getParentFile().mkdirs(); // Will create missing folders if necessary
 				instance = new PropertyFileReader();
 				userProperties = defaultProperties;
-				saveProperty();
+				trySaveProperties(userProperties);
 			}
 
 		} catch (Exception e) {

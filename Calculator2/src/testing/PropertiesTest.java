@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import model.properties.PropertyManager;
 import utilities.PropertyFileReader;
 
 public class PropertiesTest {
@@ -29,14 +30,14 @@ public class PropertiesTest {
 	
 	@Test
 	public void test_Reading_Properties_From_Config_File_When_File_Found() {
-		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
+		PropertyManager propMan = PropertyManager.CreationMethod();
 		
-		operatorArray = pfr.getProperty("operators").split(",");
+		operatorArray = propMan.getProperty("operators").split(",");
 		
-		minimumNumber = Integer.parseInt(pfr.getProperty("minimumNumber"));
-		maximumNumber = Integer.parseInt(pfr.getProperty("maximumNumber"));
-		numberOfQuestions = Integer.parseInt(pfr.getProperty("numberOfQuestions"));
-		isRoundNumber = Boolean.parseBoolean(pfr.getProperty("isRoundNumber"));
+		minimumNumber = Integer.parseInt(propMan.getProperty("minimumNumber"));
+		maximumNumber = Integer.parseInt(propMan.getProperty("maximumNumber"));
+		numberOfQuestions = Integer.parseInt(propMan.getProperty("numberOfQuestions"));
+		isRoundNumber = Boolean.parseBoolean(propMan.getProperty("isRoundNumber"));
 		
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
@@ -47,14 +48,14 @@ public class PropertiesTest {
 	
 	@Test
 	public void test_Reading_Properties_Only_Operators_From_Config_File_When_File_Found() {
-		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
+		PropertyManager propMan = PropertyManager.CreationMethod();
 		
-		operatorArray = pfr.getProperty("operators").split(",");
+		operatorArray = propMan.getProperty("operators").split(",");
 		
-		minimumNumber = Integer.parseInt(pfr.getProperty("minimumNumber"));
-		maximumNumber = Integer.parseInt(pfr.getProperty("maximumNumber"));
-		numberOfQuestions = Integer.parseInt(pfr.getProperty("numberOfQuestions"));
-		isRoundNumber = Boolean.parseBoolean(pfr.getProperty("isRoundNumber"));
+		minimumNumber = Integer.parseInt(propMan.getProperty("minimumNumber"));
+		maximumNumber = Integer.parseInt(propMan.getProperty("maximumNumber"));
+		numberOfQuestions = Integer.parseInt(propMan.getProperty("numberOfQuestions"));
+		isRoundNumber = Boolean.parseBoolean(propMan.getProperty("isRoundNumber"));
 
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
@@ -65,13 +66,13 @@ public class PropertiesTest {
 	
 	@Test
 	public void test_Reading_Properties_From_Config_File_Not_Found_Expect_Default_Settings(){
-		configPath = "invalid path";
-		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
+		PropertyManager propMan = PropertyManager.CreationMethod();
+		propMan.setProperty(configPath, "invalid path");
 		
-		minimumNumber = Integer.parseInt(pfr.getProperty("minimumNumber"));
-		maximumNumber = Integer.parseInt(pfr.getProperty("maximumNumber"));
-		numberOfQuestions = Integer.parseInt(pfr.getProperty("numberOfQuestions"));
-		isRoundNumber = Boolean.parseBoolean(pfr.getProperty("isRoundNumber"));
+		minimumNumber = Integer.parseInt(propMan.getProperty("minimumNumber"));
+		maximumNumber = Integer.parseInt(propMan.getProperty("maximumNumber"));
+		numberOfQuestions = Integer.parseInt(propMan.getProperty("numberOfQuestions"));
+		isRoundNumber = Boolean.parseBoolean(propMan.getProperty("isRoundNumber"));
 		
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
@@ -82,12 +83,12 @@ public class PropertiesTest {
 	
 	@Test
 	public void test_Reading_Properties_From_Config_File_With_Missing_Value_Expect_Default_Settings(){
-		PropertyFileReader pfr = PropertyFileReader.getPropertiesFile(configPath);
+		PropertyManager propMan = PropertyManager.CreationMethod();
 			
-		minimumNumber = Integer.parseInt(pfr.getProperty("minimumNumber"));
-		maximumNumber = Integer.parseInt(pfr.getProperty("maximumNumber"));
-		numberOfQuestions = Integer.parseInt(pfr.getProperty("numberOfQuestions"));
-		isRoundNumber = Boolean.parseBoolean(pfr.getProperty("isRoundNumber"));
+		minimumNumber = Integer.parseInt(propMan.getProperty("minimumNumber"));
+		maximumNumber = Integer.parseInt(propMan.getProperty("maximumNumber"));
+		numberOfQuestions = Integer.parseInt(propMan.getProperty("numberOfQuestions"));
+		isRoundNumber = Boolean.parseBoolean(propMan.getProperty("isRoundNumber"));
 		
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);

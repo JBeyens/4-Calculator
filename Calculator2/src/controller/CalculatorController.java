@@ -26,6 +26,7 @@ public class CalculatorController {
 		view.setVisible(true);
 		view.setSize(450, 350);
 		view.addActionListener(new StartExerciseListener());
+		view.addExerciseActionListener(new ExerciseListener());
 	}
 	
 	private void initializeProperties(){
@@ -74,6 +75,12 @@ public class CalculatorController {
 			settings.setOperators(operators);
 			
 			exerciseManager = new ExerciseManager(settings);
+		}
+	}
+	
+	private class ExerciseListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			
 		}
 	}
 }

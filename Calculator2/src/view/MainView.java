@@ -44,6 +44,9 @@ public class MainView extends JFrame {
 		setUp();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	public void addExerciseActionListener(ActionListener listener){
+		checkAnswer.addActionListener(listener);
+	}
 	
 	public void addActionListener(ActionListener listener){
 		startExercises.addActionListener(listener);

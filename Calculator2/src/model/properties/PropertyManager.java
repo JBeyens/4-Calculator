@@ -5,17 +5,22 @@ import java.util.Properties;
 import values.DefaultSettings;
 
 public class PropertyManager {
-	// Static Property Reference
+	// DATA MEMBERS
+	/* Static Property Reference */
 	private static Properties programProperties = new Properties();
-	// Static Class Reference to an object of itself
+	/* Static Class Reference to an object of itself */
 	private static PropertyManager propertyManager = null;
 
 
+	
+	// CONSTRUCTOR
     /*Private Constructor will prevent the instantiation of this class directly.
      * This is to ensure this class is a singleton. */
 	private PropertyManager() { }
 	
 	
+	
+	// PUBLIC MEMBERS
 	/* This method will ensure that no more than one object can be created */
 	public static PropertyManager CreationMethod() {	
 		if( propertyManager == null ) {

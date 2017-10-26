@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import model.properties.PropertyFileReader;
 import model.properties.PropertyManager;
-import utilities.PropertyFileReader;
 
 public class PropertiesTest {
 	private String configPath;

@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
+import model.properties.PropertyFileReader;
 import model.properties.PropertyManager;
-import utilities.PropertyFileReader;
 import values.DefaultSettings;
 import view.MainView;
 

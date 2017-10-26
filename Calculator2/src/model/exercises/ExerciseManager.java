@@ -10,7 +10,7 @@ import model.dto.ExerciseSettings;
  * @Autor: Jef Beyens
  * @Date: 16/10/2016
  * @Project: Calculator
- * @Purpose: BusinessComponent class
+ * @Purpose: manage exercises
  *  --> The purpose of this class is to manage exercises. 
  *  It must keep a record of all exercises during the current test.
  *  It must also ask the generator for exercises and ask the calculator to evaluate them.

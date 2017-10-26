@@ -2,6 +2,14 @@ package model.properties;
 
 import java.util.Properties;
 
+
+/**
+ * @Author Ben Vandevorst & Jef Beyens
+ * @Datum 09/10/2017
+ * @Project Calculator
+ * @Doel Manages the properties and sends commands to PropertyDefaultReader & PropertyFileReader
+ */
+
 public class PropertyManager {
 	// DATA MEMBERS
 	/* Static Property Reference */

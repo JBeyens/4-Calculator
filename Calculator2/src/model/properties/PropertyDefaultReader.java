@@ -4,6 +4,14 @@ import java.util.Properties;
 
 import values.DefaultSettings;
 
+
+/**
+ * @Author Ben Vandevorst & Jef Beyens
+ * @Datum 09/10/2017
+ * @Project Calculator
+ * @Doel Read default settings
+ */
+
 public final class PropertyDefaultReader {
 
 	/* Method to load in the default settings into a Property object*/	

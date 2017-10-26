@@ -13,14 +13,10 @@ import java.util.Properties;
  * @Author Ben Vandevorst & Jef Beyens
  * @Datum 09/10/2017
  * @Project Calculator
- * @Doel Read & Write properties to file
+ * @Doel Read & Write properties to and from file
  */
 
 public final class PropertyFileReader {
-	//private static Properties defaultProperties = DefaultProperties.getDefaultProperties();
-	//private static Properties userProperties = new Properties(defaultProperties);
-	//private static File file;
-
 	/* Private constructor --> class not meant to be initialized */
 	private PropertyFileReader() {	}
 
@@ -48,6 +44,7 @@ public final class PropertyFileReader {
 		return properties;
 	}
 	
+	/* Returns File object which is linked to the file you want to read/write to */
 	private static File getFile(String path)
 	{		
 		File  file = null;
@@ -65,27 +62,4 @@ public final class PropertyFileReader {
 		} 
 		return file;		
 	}
-/*
-	public static PropertyFileReader getPropertiesFile(String path) {
-		PropertyFileReader instance = null;
-		
-		try {
-			file = new File(path);
-			if (file.exists()) {
-				instance = new PropertyFileReader();
-				loadUserProperties();
-			} else {
-				// Create new file based on absolute path
-				file = new File(defaultProperties.getProperty("stringPath"));
-				file.getParentFile().mkdirs(); // Will create missing folders if necessary
-				instance = new PropertyFileReader();
-				userProperties = defaultProperties;
-				saveProperties(path, userProperties);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return instance;
-	}*/
 }

@@ -9,12 +9,12 @@ import org.junit.Test;
 import model.properties.PropertyFileReader;
 import model.properties.PropertyManager;
 
-public class PropertiesTest {
+public class PropertyManagerTest {
 	private String configPath;
 	private int minimumNumber;
 	private int maximumNumber;
 	private int numberOfQuestions;
-	private boolean isRoundNumber;
+	private int numberOfDecimals;
 	private String[] operatorArray;
 	private String[] stringArray;
 	
@@ -36,13 +36,13 @@ public class PropertiesTest {
 		
 		minimumNumber = Integer.parseInt(propMan.getProperty("minimumNumber"));
 		maximumNumber = Integer.parseInt(propMan.getProperty("maximumNumber"));
-		numberOfQuestions = Integer.parseInt(propMan.getProperty("numberOfQuestions"));
-		isRoundNumber = Boolean.parseBoolean(propMan.getProperty("isRoundNumber"));
+		numberOfQuestions = Integer.parseInt(propMan.getProperty("nrOfQuestions"));
+		numberOfDecimals = Integer.parseInt(propMan.getProperty("nrOfDecimals"));
 		
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
-		assertTrue(isRoundNumber);
+		assertEquals(0, numberOfDecimals);
 		Assert.assertArrayEquals(stringArray, operatorArray);
 	}
 	
@@ -54,13 +54,13 @@ public class PropertiesTest {
 		
 		minimumNumber = Integer.parseInt(propMan.getProperty("minimumNumber"));
 		maximumNumber = Integer.parseInt(propMan.getProperty("maximumNumber"));
-		numberOfQuestions = Integer.parseInt(propMan.getProperty("numberOfQuestions"));
-		isRoundNumber = Boolean.parseBoolean(propMan.getProperty("isRoundNumber"));
+		numberOfQuestions = Integer.parseInt(propMan.getProperty("nrOfQuestions"));
+		numberOfDecimals = Integer.parseInt(propMan.getProperty("nrOfDecimals"));
 
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
-		assertTrue(isRoundNumber);
+		assertEquals(0, numberOfDecimals);
 		assertArrayEquals(stringArray, operatorArray);
 	}
 	
@@ -71,13 +71,13 @@ public class PropertiesTest {
 		
 		minimumNumber = Integer.parseInt(propMan.getProperty("minimumNumber"));
 		maximumNumber = Integer.parseInt(propMan.getProperty("maximumNumber"));
-		numberOfQuestions = Integer.parseInt(propMan.getProperty("numberOfQuestions"));
-		isRoundNumber = Boolean.parseBoolean(propMan.getProperty("isRoundNumber"));
+		numberOfQuestions = Integer.parseInt(propMan.getProperty("nrOfQuestions"));
+		numberOfDecimals = Integer.parseInt(propMan.getProperty("nrOfDecimals"));
 		
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
-		assertTrue(isRoundNumber);	
+		assertEquals(0, numberOfDecimals);
 	}
 	
 	
@@ -87,13 +87,13 @@ public class PropertiesTest {
 			
 		minimumNumber = Integer.parseInt(propMan.getProperty("minimumNumber"));
 		maximumNumber = Integer.parseInt(propMan.getProperty("maximumNumber"));
-		numberOfQuestions = Integer.parseInt(propMan.getProperty("numberOfQuestions"));
-		isRoundNumber = Boolean.parseBoolean(propMan.getProperty("isRoundNumber"));
+		numberOfQuestions = Integer.parseInt(propMan.getProperty("nrOfQuestions"));
+		numberOfDecimals = Integer.parseInt(propMan.getProperty("nrOfDecimals"));
 		
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
-		assertTrue(isRoundNumber);	
+		assertEquals(0, numberOfDecimals);
 	}
 
 }

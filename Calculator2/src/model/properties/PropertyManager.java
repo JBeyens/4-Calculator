@@ -50,7 +50,7 @@ public class PropertyManager {
 	 * Returns FALSE if save to file has failed. */
 	public boolean setProperty(String key, String value) {
 		programProperties.setProperty(key, value);
-		if (PropertyFileReader.saveProperties(programProperties.getProperty("stringPath"), programProperties)) {
+		if (!PropertyFileReader.saveProperties(programProperties.getProperty("stringPath"), programProperties)) {
 			// TODO: Catch boolean higher up...
 			System.out.println("Settings could not be stored to file. They are only kept during run of program.");
 			return false;

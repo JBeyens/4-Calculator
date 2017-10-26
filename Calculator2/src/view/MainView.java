@@ -11,6 +11,10 @@ import javax.swing.SpringLayout;
 import java.awt.Color;
 
 public class MainView extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel labelNrOfQuestions;
 	private JLabel labelMinNumber;
 	private JLabel labelMAxNumber;

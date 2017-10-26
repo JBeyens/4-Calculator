@@ -1,5 +1,7 @@
 package model.dto;
 
+import java.util.ArrayList;
+
 /**
  * @Autor: Jef Beyens
  * @Date: 16/10/2016
@@ -12,8 +14,12 @@ public class ExerciseSettings {
 	private double maxRange;
 	private int nrDecimals;
 	private int nrExercises;
+	private boolean isNegative;
 	private String[] operators;
 	
+	public ExerciseSettings(){
+		
+	}
 	
 	public double getMinRange() {
 		return minRange;
@@ -44,6 +50,14 @@ public class ExerciseSettings {
 	}
 	public void setNrOfExercises(int nrExercises) {
 		this.nrExercises = nrExercises;
+	}
+
+	public boolean isNegative() {
+		return isNegative;
+	}
+
+	public void setNegative(boolean isNegative) {
+		this.isNegative = isNegative;
 	}
 	
 	

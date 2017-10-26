@@ -15,6 +15,7 @@ public class PropertyManagerTest {
 	private int maximumNumber;
 	private int numberOfQuestions;
 	private int numberOfDecimals;
+	private boolean isNegative;
 	private String[] operatorArray;
 	private String[] stringArray;
 	
@@ -38,11 +39,13 @@ public class PropertyManagerTest {
 		maximumNumber = Integer.parseInt(propMan.getProperty("maximumNumber"));
 		numberOfQuestions = Integer.parseInt(propMan.getProperty("nrOfQuestions"));
 		numberOfDecimals = Integer.parseInt(propMan.getProperty("nrOfDecimals"));
+		isNegative = Boolean.parseBoolean(propMan.getProperty("isNegative"));	
 		
 		assertEquals(0, minimumNumber);
 		assertEquals(40, maximumNumber);
 		assertEquals(20, numberOfQuestions);
 		assertEquals(0, numberOfDecimals);
+		assertFalse(isNegative);
 		Assert.assertArrayEquals(stringArray, operatorArray);
 	}
 	

@@ -6,7 +6,8 @@ public enum DefaultSettings {
 	minimumNumber("0"),
 	maximumNumber("40"),
 	nrOfDecimals("0"),
-	operators("+,-,*,/");
+	operators("+,-,*,/"),
+	isNegative("false");
 	
 	private final String name;
 	

@@ -2,8 +2,6 @@ package model.properties;
 
 import java.util.Properties;
 
-import values.DefaultSettings;
-
 public class PropertyManager {
 	// DATA MEMBERS
 	/* Static Property Reference */

@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import businesscomponent.ExerciseManager;
 import model.dto.ExerciseSettings;
+import model.exercises.ExerciseManager;
 import model.properties.PropertyManager;
 import values.DefaultSettings;
 import view.MainView;

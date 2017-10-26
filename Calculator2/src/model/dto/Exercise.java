@@ -1,6 +1,6 @@
 package model.dto;
 
-import businesscomponent.Calculator;
+import model.exercises.Calculator;
 import testing.CalculationsTest;
 
 /**

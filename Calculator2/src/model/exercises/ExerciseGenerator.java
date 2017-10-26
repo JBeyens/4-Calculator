@@ -1,4 +1,4 @@
-package businesscomponent;
+package model.exercises;
 
 import java.util.ArrayList;
 import java.util.List;

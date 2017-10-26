@@ -1,4 +1,4 @@
-package businesscomponent;
+package model.exercises;
 
 import model.dto.Exercise;
 

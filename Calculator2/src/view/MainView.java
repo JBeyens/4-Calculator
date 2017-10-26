@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -41,6 +42,7 @@ public class MainView extends JFrame {
 	
 	public MainView(){
 		setUp();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void addActionListener(ActionListener listener){
@@ -197,4 +199,6 @@ public class MainView extends JFrame {
 		getContentPane().add(checkAnswer);
 		getContentPane().add(tfUserInput);
 	}
+	
+	
 }

@@ -1,5 +1,7 @@
 package model.dto;
 
+import java.util.ArrayList;
+
 /**
  * @Autor: Jef Beyens
  * @Date: 16/10/2016
@@ -14,6 +16,9 @@ public class ExerciseSettings {
 	private int nrExercises;
 	private String[] operators;
 	
+	public ExerciseSettings(){
+		
+	}
 	
 	public double getMinRange() {
 		return minRange;

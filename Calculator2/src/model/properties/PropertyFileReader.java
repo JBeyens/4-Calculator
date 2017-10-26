@@ -22,9 +22,8 @@ public final class PropertyFileReader {
 	//private static Properties userProperties = new Properties(defaultProperties);
 	//private static File file;
 
-	/* Private constructor since this class is a singleton class */
-	private PropertyFileReader() {
-	}
+	/* Private constructor --> class not meant to be initialized */
+	private PropertyFileReader() {	}
 
 	/* Method to store specified properties to a specified path. */
 	public static boolean saveProperties(String path, Properties properties) {

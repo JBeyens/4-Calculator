@@ -4,20 +4,21 @@ import java.util.Properties;
 
 import values.DefaultSettings;
 
-public class PropertyDefaultReader {
-	private static Properties defaultProperties = new Properties();
-	
-	private PropertyDefaultReader(){
-	}
-	
-	private static void loadDefaultProperties(){
-		for (DefaultSettings setting : DefaultSettings.values()) {
-			defaultProperties.setProperty(setting.toString(), setting.getValue());
-		}
-	}
-	
+public final class PropertyDefaultReader {
+
+	/* Method to load in the default settings into a Property object*/	
 	public static Properties getDefaultProperties(){
-		loadDefaultProperties();
-		return defaultProperties;
+		Properties properties = new Properties();
+		
+		for (DefaultSettings setting : DefaultSettings.values()) {
+			properties.setProperty(setting.toString(), setting.getValue());
+		}
+
+		return properties;
 	}
+	
+	/* Method to retrieve the default file path */
+	public static String getDefaultPath() {
+		return DefaultSettings.stringPath.getValue();
+	} 
 }

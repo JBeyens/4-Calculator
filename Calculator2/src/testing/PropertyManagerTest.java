@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.properties.PropertyFileReader;
 import model.properties.PropertyManager;
 
 public class PropertyManagerTest {

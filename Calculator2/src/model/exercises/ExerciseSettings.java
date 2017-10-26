@@ -1,6 +1,4 @@
-package model.dto;
-
-import java.util.ArrayList;
+package model.exercises;
 
 /**
  * @Autor: Jef Beyens

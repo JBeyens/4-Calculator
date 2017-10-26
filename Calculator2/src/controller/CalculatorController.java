@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import model.dto.ExerciseSettings;
 import model.exercises.ExerciseManager;
+import model.exercises.ExerciseSettings;
 import model.properties.PropertyManager;
 import values.DefaultSettings;
 import view.MainView;
@@ -75,7 +75,7 @@ public class CalculatorController {
 			operators = tempOperators.toArray(operators);
 			settings.setOperators(operators);
 			
-			exerciseManager = new ExerciseManager(settings);
+			exerciseManager = ExerciseManager.creationMethod();
 		}
 	}
 	

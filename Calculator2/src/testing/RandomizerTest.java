@@ -8,7 +8,7 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
-import utilities.Randomizer;
+import model.exercises.factory.Randomizer;
 
 
 /**
@@ -41,7 +41,7 @@ public class RandomizerTest {
 	@Test
 	public void test_Random_Element_From_CharArray() {
 		for (int i = 0; i < 1000000; i++) {
-			char randomChar = Randomizer.getRandomChar(stringArray1);
+			char randomChar = Randomizer.getRandomChar(rnd, stringArray1);
 
 			assertTrue(String.join("",stringArray1).indexOf(randomChar) != -1); 
 		}
@@ -50,7 +50,7 @@ public class RandomizerTest {
 	@Test
 	public void test_Random_Element_From_StringArray() {
 		for (int i = 0; i < 1000000; i++) {
-			String randomString = Randomizer.getRandomString(stringArray2);
+			String randomString = Randomizer.getRandomString(rnd, stringArray2);
 
 			assertTrue(Arrays.asList(stringArray2).contains(randomString)); // Contains only works on Strings
 		}
@@ -59,9 +59,9 @@ public class RandomizerTest {
 	@Test
 	public void test_Get_Random_Element_NoEqual_Boundaries_Expect_Random_Numbers(){
 		for (int i = 0; i < 1000000; i++) {
-			int randomInt1 = Randomizer.getRandomNumber(0, 10);
-			int randomInt2 = Randomizer.getRandomNumber(10, 20);
-			int randomIntResult = Randomizer.getRandomNumber(randomInt1, randomInt2);
+			int randomInt1 = Randomizer.getRandomNumber(rnd, 0, 10);
+			int randomInt2 = Randomizer.getRandomNumber(rnd, 10, 20);
+			int randomIntResult = Randomizer.getRandomNumber(rnd, randomInt1, randomInt2);
 			
 			assertTrue(randomInt1 <= randomIntResult && randomIntResult <= randomInt2);
 		}	
@@ -70,7 +70,7 @@ public class RandomizerTest {
 	@Test
 	public void test_Get_Random_Element_Equal_Boundaries_Expect_Same_Number(){
 		for (int i = 0; i < 1000000; i++) {
-			int randomInt = Randomizer.getRandomNumber(10, 10);
+			int randomInt = Randomizer.getRandomNumber(rnd, 10, 10);
 			
 			if (randomInt == 10) {
 				assertTrue(true);
@@ -81,9 +81,9 @@ public class RandomizerTest {
 	@Test
 	public void test_Get_Random_Element_NoEqual_Boundaries_Negative_Number_Expect_Random_Numbers(){
 		for (int i = 0; i < 1000000; i++) {
-			int randomInt1 = Randomizer.getRandomNumber(-20, -1);
-			int randomInt2 = Randomizer.getRandomNumber(1, 20);
-			int randomIntResult = Randomizer.getRandomNumber(randomInt1, randomInt2);
+			int randomInt1 = Randomizer.getRandomNumber(rnd, -20, -1);
+			int randomInt2 = Randomizer.getRandomNumber(rnd, 1, 20);
+			int randomIntResult = Randomizer.getRandomNumber(rnd, randomInt1, randomInt2);
 
 			assertTrue(randomInt1 <= randomIntResult && randomIntResult <= randomInt2);
 		}	
@@ -92,7 +92,7 @@ public class RandomizerTest {
 	@Test
 	public void test_Get_Random_Element_Equal_Boundaries_Negative_Number_Expect_Same_Number(){
 		for (int i = 0; i < 1000000; i++) {
-			int randomInt = Randomizer.getRandomNumber(-10, -10);
+			int randomInt = Randomizer.getRandomNumber(rnd, -10, -10);
 			
 			if (randomInt == 10) {
 				assertTrue(true);
@@ -106,7 +106,7 @@ public class RandomizerTest {
 			double minNumber = rnd.nextDouble()*(-10000d);
 			double maxNumber = rnd.nextDouble()*(10000d);
 			int nrOfDecimals = rnd.nextInt(6);
-			double result = Randomizer.getRandomNumber(minNumber, maxNumber, nrOfDecimals);
+			double result = Randomizer.getRandomNumber(rnd, minNumber, maxNumber, nrOfDecimals);
 			
 			assertTrue(minNumber <= result);
 			assertTrue(result <= maxNumber);

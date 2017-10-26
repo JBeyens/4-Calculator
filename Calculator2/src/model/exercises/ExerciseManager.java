@@ -1,10 +1,9 @@
 package model.exercises;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-import model.dto.Exercise;
-import model.dto.ExerciseSettings;
+import model.exercises.factory.Exercise;
+import model.exercises.factory.ExerciseFactory;
 
 /**
  * @Autor: Jef Beyens
@@ -17,34 +16,33 @@ import model.dto.ExerciseSettings;
  */
 
 public class ExerciseManager {
-	private ExerciseGenerator generator;
-	private ArrayList<Exercise> exercises = new ArrayList<>();
-	private int NrOfCorrectQuestions = 0;
-
-	public ExerciseManager(ExerciseSettings settings) {
-		generator = new ExerciseGenerator(settings);
+	// Fields
+	static ExerciseManager exerciseManager;
+	static Random random;
+	
+	
+	private ExerciseManager() {
+		random = new Random();
 	}
 	
-
-	// Method to let the exercise generator generate exercises.
-	public void loadExercises() throws Exception
-	{
-		exercises = generator.getExercises();
-	}
 	
-	// Method to evaluate the answer
-	public boolean evaluateReply(Exercise exercise, double userReply) throws Exception
-	{
-		return userReply == Calculator.doCalculation(exercise);
-	}
-	
-	public void setMaxRange(double number) {
-		generator.getSettings().setMaxRange(number);
-	}
-	
-	public void isNegativeAllowed(boolean allowNegativeNumbers) {
-		ExerciseSettings settings = generator.getSettings();
+	public static ExerciseManager creationMethod()	{
+		if (exerciseManager == null)
+			exerciseManager = new ExerciseManager();
 		
-		settings.setMinRange(-1.0 * settings.getMaxRange());
+		return exerciseManager;
+	}
+	
+	
+	public boolean isExerciseSettingsAcceptable(ExerciseSettings settings)
+	{
+		boolean check1 = settings.getNrDecimals() >= 0;
+		boolean check2 = settings.getMaxRange() >= 2.0 * settings.getMinRange();
+		
+		return (check1 && check2);
+	}
+	
+	public Exercise generateExercise(ExerciseSettings settings) {
+		return ExerciseFactory.getExercise(random, settings);
 	}
 }

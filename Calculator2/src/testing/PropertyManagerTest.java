@@ -9,7 +9,7 @@ import org.junit.Test;
 import model.properties.PropertyFileReader;
 import model.properties.PropertyManager;
 
-public class PropertyFileReaderTest {
+public class PropertyManagerTest {
 	private String configPath;
 	private int minimumNumber;
 	private int maximumNumber;

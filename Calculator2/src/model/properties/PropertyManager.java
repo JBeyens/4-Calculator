@@ -18,16 +18,15 @@ public class PropertyManager {
 	
 	/* This method will ensure that no more than one object can be created */
 	public static PropertyManager CreationMethod() {	
-		if( propertyManager == null )
-		{
+		if( propertyManager == null ) {
 			propertyManager = new PropertyManager();
-			loadDefaultProperties();
+			getDefaultProperties();
 		}
 		return propertyManager;
 	} 
 	
 	/* Loads the default properties into the Property field of this object */
-	private static void loadDefaultProperties(){
+	public static void getDefaultProperties(){
 		for (DefaultSettings setting : DefaultSettings.values()) {
 			programProperties.setProperty(setting.toString(), setting.getValue());
 		}
@@ -38,27 +37,19 @@ public class PropertyManager {
 		return programProperties.getProperty(key);
 	}
 	
-	public void getPropertiesFromFile(String path) {
-		PropertyFileReader.loadProperties(path, programProperties);
+	public Properties getProperties(String path) {
+		return PropertyFileReader.loadProperties(path, programProperties);
 	}
 
 	/* This will save the settings locally and will try to save it to file. 
 	 * Returns FALSE if save to file has failed. */
 	public boolean setProperty(String key, String value) {
 		programProperties.setProperty(key, value);
-		if (PropertyFileReader.saveProperties(programProperties.getProperty("stringPath"), programProperties))
-		{
+		if (PropertyFileReader.saveProperties(programProperties.getProperty("stringPath"), programProperties)) {
 			// TODO: Catch boolean higher up...
 			System.out.println("Settings could not be stored to file. They are only kept during run of program.");
 			return false;
 		}
 		return true;
-	}
-	
-	
-	
-	public static Properties getDefaultProperties(){
-		loadDefaultProperties();
-		return programProperties;
 	}
 }

@@ -14,6 +14,7 @@ public class ExerciseSettings {
 	private double maxRange;
 	private int nrDecimals;
 	private int nrExercises;
+	private boolean isNegative;
 	private String[] operators;
 	
 	public ExerciseSettings(){
@@ -49,6 +50,14 @@ public class ExerciseSettings {
 	}
 	public void setNrOfExercises(int nrExercises) {
 		this.nrExercises = nrExercises;
+	}
+
+	public boolean isNegative() {
+		return isNegative;
+	}
+
+	public void setNegative(boolean isNegative) {
+		this.isNegative = isNegative;
 	}
 	
 	

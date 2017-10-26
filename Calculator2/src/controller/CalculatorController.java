@@ -34,6 +34,7 @@ public class CalculatorController {
 		view.setTfMinNumber(propertyManager.getProperty("minimumNumber").toString());
 		view.setTfNrOfDecimals(propertyManager.getProperty("nrOfDecimals").toString());
 		view.setTfNrOfQuestions(propertyManager.getProperty("nrOfQuestions").toString());
+		view.setcbNegative(Boolean.parseBoolean(propertyManager.getProperty("isNegative")));
 		
 		String[] operators = propertyManager.getProperty("operators").split(",");
 		

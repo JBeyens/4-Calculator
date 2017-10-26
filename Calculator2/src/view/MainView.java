@@ -23,6 +23,7 @@ public class MainView extends JFrame {
 	private JLabel labelOperators;
 	private JLabel labelStringExercise;
 	private JLabel labelExercise;
+	private JLabel labelNegative;
 	
 	private JTextField tfNrOfQuestions;
 	private JTextField tfMinNumber;
@@ -34,6 +35,7 @@ public class MainView extends JFrame {
 	private JCheckBox rbSubstraction;
 	private JCheckBox rbMultiplication;
 	private JCheckBox rbDivision;
+	private JCheckBox cbNegative;
 	
 	private JButton startExercises;
 	private JButton checkAnswer;
@@ -111,6 +113,14 @@ public class MainView extends JFrame {
 	public boolean getRbDivision() {
 		return rbDivision.isSelected();
 	}
+	
+	public void setcbNegative(boolean isSelected){
+		this.cbNegative.setSelected(isSelected);
+	}
+	
+	public boolean getcbNegative(){
+		return cbNegative.isSelected();
+	}
 
 	public void setRbDivision(boolean isSelected) {
 		this.rbDivision.setSelected(isSelected);
@@ -125,6 +135,7 @@ public class MainView extends JFrame {
 		labelStringExercise = new JLabel("Oefening");
 		labelExercise = new JLabel("Hier komt iets");
 		labelExercise.setBackground(Color.PINK);
+		labelNegative = new JLabel("Negatieve waarden?");
 		
 		tfNrOfDecimals = new JTextField(3);
 		tfNrOfQuestions = new JTextField(3);
@@ -136,11 +147,16 @@ public class MainView extends JFrame {
 		rbSubstraction = new JCheckBox("-");
 		rbMultiplication = new JCheckBox("*");
 		rbDivision = new JCheckBox("/");
+		cbNegative = new JCheckBox();
 		
 		startExercises = new JButton("Start");
 		checkAnswer = new JButton("Controleer");
 		
 		layout = new SpringLayout();
+		layout.putConstraint(SpringLayout.NORTH, cbNegative, 0, SpringLayout.NORTH, labelMAxNumber);
+		layout.putConstraint(SpringLayout.WEST, cbNegative, 6, SpringLayout.EAST, labelNegative);
+		layout.putConstraint(SpringLayout.WEST, labelNegative, 0, SpringLayout.WEST, labelOperators);
+		layout.putConstraint(SpringLayout.SOUTH, labelNegative, 0, SpringLayout.SOUTH, tfMaxNumber);
 		layout.putConstraint(SpringLayout.WEST, checkAnswer, 26, SpringLayout.EAST, tfUserInput);
 		layout.putConstraint(SpringLayout.WEST, tfUserInput, -27, SpringLayout.WEST, labelOperators);
 		layout.putConstraint(SpringLayout.NORTH, checkAnswer, 0, SpringLayout.NORTH, labelExercise);
@@ -201,6 +217,8 @@ public class MainView extends JFrame {
 		getContentPane().add(labelStringExercise);
 		getContentPane().add(checkAnswer);
 		getContentPane().add(tfUserInput);
+		getContentPane().add(cbNegative);
+		getContentPane().add(labelNegative);
 	}
 	
 	

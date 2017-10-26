@@ -1,13 +1,13 @@
-package utilities;
+package model.properties;
 
 import java.util.Properties;
 
 import values.DefaultSettings;
 
-public class DefaultProperties {
+public class PropertyDefaultReader {
 	private static Properties defaultProperties = new Properties();
 	
-	private DefaultProperties(){
+	private PropertyDefaultReader(){
 	}
 	
 	private static void loadDefaultProperties(){

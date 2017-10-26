@@ -7,7 +7,7 @@ import values.DefaultSettings;
 public class PropertyManager {
 	// DATA MEMBERS
 	/* Static Property Reference */
-	private static Properties programProperties = new Properties();
+	private static Properties programProperties = PropertyDefaultReader.getDefaultProperties();
 	/* Static Class Reference to an object of itself */
 	private static PropertyManager propertyManager = null;
 
@@ -25,17 +25,9 @@ public class PropertyManager {
 	public static PropertyManager CreationMethod() {	
 		if( propertyManager == null ) {
 			propertyManager = new PropertyManager();
-			getDefaultProperties();
 		}
 		return propertyManager;
 	} 
-	
-	/* Loads the default properties into the Property field of this object */
-	public static void getDefaultProperties(){
-		for (DefaultSettings setting : DefaultSettings.values()) {
-			programProperties.setProperty(setting.toString(), setting.getValue());
-		}
-	}
 	
 	/* To get a certain property from the Properties field */
 	public String getProperty(String key) {
@@ -50,7 +42,7 @@ public class PropertyManager {
 	 * Returns FALSE if save to file has failed. */
 	public boolean setProperty(String key, String value) {
 		programProperties.setProperty(key, value);
-		if (!PropertyFileReader.saveProperties(programProperties.getProperty("stringPath"), programProperties)) {
+		if (PropertyFileReader.saveProperties(programProperties.getProperty("stringPath"), programProperties)) {
 			// TODO: Catch boolean higher up...
 			System.out.println("Settings could not be stored to file. They are only kept during run of program.");
 			return false;

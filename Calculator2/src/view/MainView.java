@@ -8,18 +8,26 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import java.awt.Color;
 
 public class MainView extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel labelNrOfQuestions;
 	private JLabel labelMinNumber;
 	private JLabel labelMAxNumber;
 	private JLabel labelNrOfDecimals;
 	private JLabel labelOperators;
+	private JLabel labelStringExercise;
+	private JLabel labelExercise;
 	
 	private JTextField tfNrOfQuestions;
 	private JTextField tfMinNumber;
 	private JTextField tfMaxNumber;
 	private JTextField tfNrOfDecimals;
+	private JTextField tfUserInput;
 	
 	private JCheckBox rbAddition;
 	private JCheckBox rbSubstraction;
@@ -27,6 +35,7 @@ public class MainView extends JFrame {
 	private JCheckBox rbDivision;
 	
 	private JButton startExercises;
+	private JButton checkAnswer;
 
 	private SpringLayout layout;
 	
@@ -108,11 +117,15 @@ public class MainView extends JFrame {
 		labelMAxNumber = new JLabel("Maximum bereik: ");
 		labelNrOfDecimals = new JLabel("Aantal decimalen: ");
 		labelOperators = new JLabel("Bewerkingen: ");
+		labelStringExercise = new JLabel("Oefening");
+		labelExercise = new JLabel("Hier komt iets");
+		labelExercise.setBackground(Color.PINK);
 		
 		tfNrOfDecimals = new JTextField(3);
 		tfNrOfQuestions = new JTextField(3);
 		tfMaxNumber = new JTextField(3);
 		tfMinNumber = new JTextField(3);
+		tfUserInput = new JTextField(3);
 		
 		rbAddition = new JCheckBox("+");
 		rbSubstraction = new JCheckBox("-");
@@ -120,36 +133,49 @@ public class MainView extends JFrame {
 		rbDivision = new JCheckBox("/");
 		
 		startExercises = new JButton("Start");
+		checkAnswer = new JButton("Controleer");
 		
 		layout = new SpringLayout();
-		layout.putConstraint(SpringLayout.NORTH, rbDivision, -4, SpringLayout.NORTH, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.WEST, rbDivision, 6, SpringLayout.EAST, rbMultiplication);
-		layout.putConstraint(SpringLayout.NORTH, rbSubstraction, -4, SpringLayout.NORTH, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.WEST, rbSubstraction, 6, SpringLayout.EAST, rbAddition);
-		layout.putConstraint(SpringLayout.WEST, rbMultiplication, 41, SpringLayout.EAST, rbAddition);
-		layout.putConstraint(SpringLayout.WEST, tfNrOfQuestions, 37, SpringLayout.EAST, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.NORTH, labelMinNumber, 11, SpringLayout.SOUTH, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.NORTH, rbMultiplication, 6, SpringLayout.NORTH, getContentPane());
-		layout.putConstraint(SpringLayout.NORTH, rbAddition, 6, SpringLayout.NORTH, getContentPane());
-		layout.putConstraint(SpringLayout.NORTH, tfNrOfQuestions, 7, SpringLayout.NORTH, getContentPane());
-		layout.putConstraint(SpringLayout.NORTH, labelOperators, 10, SpringLayout.NORTH, getContentPane());
-		layout.putConstraint(SpringLayout.WEST, labelMinNumber, 10, SpringLayout.WEST, getContentPane());
-		layout.putConstraint(SpringLayout.NORTH, labelNrOfQuestions, 0, SpringLayout.NORTH, labelOperators);
-		layout.putConstraint(SpringLayout.WEST, rbAddition, 6, SpringLayout.EAST, labelOperators);
-		layout.putConstraint(SpringLayout.NORTH, startExercises, -4, SpringLayout.NORTH, labelNrOfDecimals);
-		layout.putConstraint(SpringLayout.WEST, startExercises, 0, SpringLayout.WEST, labelOperators);
-		layout.putConstraint(SpringLayout.NORTH, tfNrOfDecimals, -3, SpringLayout.NORTH, labelNrOfDecimals);
-		layout.putConstraint(SpringLayout.WEST, tfNrOfDecimals, 0, SpringLayout.WEST, tfMaxNumber);
-		layout.putConstraint(SpringLayout.NORTH, labelNrOfDecimals, 16, SpringLayout.SOUTH, labelMAxNumber);
-		layout.putConstraint(SpringLayout.WEST, labelNrOfDecimals, 0, SpringLayout.WEST, labelMAxNumber);
+		layout.putConstraint(SpringLayout.WEST, checkAnswer, 26, SpringLayout.EAST, tfUserInput);
+		layout.putConstraint(SpringLayout.WEST, tfUserInput, -27, SpringLayout.WEST, labelOperators);
+		layout.putConstraint(SpringLayout.NORTH, checkAnswer, 0, SpringLayout.NORTH, labelExercise);
+		layout.putConstraint(SpringLayout.NORTH, tfUserInput, 1, SpringLayout.NORTH, labelExercise);
+		layout.putConstraint(SpringLayout.SOUTH, tfUserInput, -2, SpringLayout.SOUTH, labelExercise);
+		layout.putConstraint(SpringLayout.EAST, tfUserInput, 0, SpringLayout.EAST, labelOperators);
+		layout.putConstraint(SpringLayout.NORTH, rbDivision, -4, SpringLayout.NORTH, labelMinNumber);
+		layout.putConstraint(SpringLayout.WEST, rbDivision, 0, SpringLayout.WEST, rbMultiplication);
+		layout.putConstraint(SpringLayout.EAST, rbAddition, -144, SpringLayout.EAST, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, rbMultiplication, -4, SpringLayout.NORTH, labelNrOfQuestions);
+		layout.putConstraint(SpringLayout.WEST, rbMultiplication, 6, SpringLayout.EAST, rbAddition);
+		layout.putConstraint(SpringLayout.NORTH, rbSubstraction, -4, SpringLayout.NORTH, labelMinNumber);
+		layout.putConstraint(SpringLayout.WEST, rbSubstraction, 0, SpringLayout.WEST, rbAddition);
 		layout.putConstraint(SpringLayout.NORTH, tfMinNumber, -3, SpringLayout.NORTH, labelMinNumber);
 		layout.putConstraint(SpringLayout.EAST, tfMinNumber, 0, SpringLayout.EAST, tfMaxNumber);
+		layout.putConstraint(SpringLayout.NORTH, tfNrOfQuestions, -3, SpringLayout.NORTH, labelNrOfQuestions);
+		layout.putConstraint(SpringLayout.EAST, tfNrOfQuestions, 0, SpringLayout.EAST, tfMaxNumber);
 		layout.putConstraint(SpringLayout.NORTH, tfMaxNumber, -3, SpringLayout.NORTH, labelMAxNumber);
-		layout.putConstraint(SpringLayout.WEST, tfMaxNumber, 0, SpringLayout.WEST, tfNrOfQuestions);
+		layout.putConstraint(SpringLayout.EAST, tfMaxNumber, 0, SpringLayout.EAST, tfNrOfDecimals);
+		layout.putConstraint(SpringLayout.NORTH, tfNrOfDecimals, -3, SpringLayout.NORTH, labelNrOfDecimals);
+		layout.putConstraint(SpringLayout.WEST, tfNrOfDecimals, 6, SpringLayout.EAST, labelNrOfDecimals);
+		layout.putConstraint(SpringLayout.NORTH, labelNrOfQuestions, 0, SpringLayout.NORTH, labelOperators);
+		layout.putConstraint(SpringLayout.WEST, labelNrOfQuestions, 0, SpringLayout.WEST, labelMAxNumber);
+		layout.putConstraint(SpringLayout.NORTH, rbAddition, 6, SpringLayout.NORTH, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, labelOperators, 4, SpringLayout.NORTH, rbAddition);
+		layout.putConstraint(SpringLayout.EAST, labelOperators, -6, SpringLayout.WEST, rbAddition);
+		layout.putConstraint(SpringLayout.EAST, startExercises, -195, SpringLayout.EAST, getContentPane());
+		layout.putConstraint(SpringLayout.WEST, labelExercise, 10, SpringLayout.WEST, getContentPane());
+		layout.putConstraint(SpringLayout.EAST, labelExercise, -305, SpringLayout.EAST, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, startExercises, -4, SpringLayout.NORTH, labelNrOfDecimals);
+		layout.putConstraint(SpringLayout.NORTH, labelMinNumber, 35, SpringLayout.NORTH, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, labelExercise, 25, SpringLayout.SOUTH, labelStringExercise);
+		layout.putConstraint(SpringLayout.SOUTH, labelExercise, 48, SpringLayout.SOUTH, labelStringExercise);
+		layout.putConstraint(SpringLayout.NORTH, labelStringExercise, 36, SpringLayout.SOUTH, labelNrOfDecimals);
+		layout.putConstraint(SpringLayout.WEST, labelStringExercise, 10, SpringLayout.WEST, getContentPane());
+		layout.putConstraint(SpringLayout.WEST, labelMinNumber, 10, SpringLayout.WEST, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, labelNrOfDecimals, 16, SpringLayout.SOUTH, labelMAxNumber);
+		layout.putConstraint(SpringLayout.WEST, labelNrOfDecimals, 0, SpringLayout.WEST, labelMAxNumber);
 		layout.putConstraint(SpringLayout.NORTH, labelMAxNumber, 16, SpringLayout.SOUTH, labelMinNumber);
 		layout.putConstraint(SpringLayout.WEST, labelMAxNumber, 0, SpringLayout.WEST, labelMinNumber);
-		layout.putConstraint(SpringLayout.WEST, labelOperators, 42, SpringLayout.EAST, tfNrOfQuestions);
-		layout.putConstraint(SpringLayout.WEST, labelNrOfQuestions, 10, SpringLayout.WEST, getContentPane());
 		
 		getContentPane().setLayout(layout);
 		getContentPane().add(labelMAxNumber);
@@ -166,5 +192,9 @@ public class MainView extends JFrame {
 		getContentPane().add(rbDivision);
 		getContentPane().add(rbMultiplication);
 		getContentPane().add(rbSubstraction);
+		getContentPane().add(labelExercise);
+		getContentPane().add(labelStringExercise);
+		getContentPane().add(checkAnswer);
+		getContentPane().add(tfUserInput);
 	}
 }

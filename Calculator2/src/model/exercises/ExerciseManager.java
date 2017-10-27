@@ -41,8 +41,25 @@ public class ExerciseManager {
 		
 		return (check1 && check2);
 	}
+
 	
+	/**
+	 * Returns the result of the exercise given to it.	 *
+	 * @param settings  exerciseSettings that must be respected in the exercise.
+	 * @return exercise	returns an exercise in which the operands and operation have been set based on the exerciseSettings
+	 */
 	public Exercise generateExercise(ExerciseSettings settings) {
 		return ExerciseFactory.getExercise(random, settings);
+	}
+	
+	/**
+	 * Returns the result of the exercise given to it.	 *
+	 * @param exercise  the exercise to solve.
+	 * @return double	returns the solution of the exercise
+	 * @exception 		throws IllegalArgumentException if one of the operands causes a bad exercise 
+	 * (ex. division by zero) or if the operation is not known. See exception message for details.
+	 */
+	public double getSolutionExercise(Exercise exercise) throws IllegalArgumentException {
+		return Calculator.doCalculation(exercise);
 	}
 }

@@ -8,19 +8,14 @@ import model.exercises.factory.Exercise;
  * @Project: Calculator
  * @Purpose: BusinessComponent class to calculate results
  */
-public class Calculator {
+public final class Calculator {
 
 	public static final char ADD = '+';
 	public static final char SUB = '-';
 	public static final char MULT = '*';
 	public static final char DIV = '/';
 	
-	
-	public Calculator() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public static double doCalculation(double input1, double input2, char operation) throws Exception
+	public static double doCalculation(double input1, double input2, char operation) throws IllegalArgumentException
 	{
 		double result = 0;
 		
@@ -43,14 +38,13 @@ public class Calculator {
 				break;
 
 			default:
-				throw new Exception("Invalid operation");
+				throw new IllegalArgumentException("Invalid operation");
 		}
 		
 		return result;
 	}
 	
-	public static double doCalculation(Exercise exercise) throws Exception
-	{
+	public static double doCalculation(Exercise exercise) throws IllegalArgumentException {
 		return doCalculation(exercise.getOperand1(), exercise.getOperand2(), exercise.getOperation());
 	}
 }

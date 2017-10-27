@@ -21,29 +21,30 @@ public class ExerciseDiv extends Exercise {
 	}
 
 	protected void generateExercise() {
-		operation = '/';
+		setOperation( '/' );
 		// TODO: For multiplication, the result is not guaranteed to be in range...
-		operand1 = Randomizer.getRandomNumber(
-				random, 
-				settings.getMinRange(),
-				settings.getMaxRange(), 
-				settings.getNrDecimals());
-		operand2 = Randomizer.getRandomNumber(
-				random, 
-				settings.getMinRange(), 
-				settings.getMaxRange() / 2.0, 
-				settings.getNrDecimals());
+		setOperand1( Randomizer.getRandomNumber(
+				getRandom(), 
+				getSettings().getMinRange(),
+				getSettings().getMaxRange(), 
+				getSettings().getNrDecimals()));
+		setOperand2( Randomizer.getRandomNumber(
+				getRandom(), 
+				getSettings().getMinRange(), 
+				getSettings().getMaxRange() / 2.0, 
+				getSettings().getNrDecimals()));
 		
 		modifeOperand1ToEnsureModulusIsZero(); // Modifies operand1 so that the modulus is zero
 	}
 	
+	/* Modifies operand1 to ensure the result of the division does not have more decimals than allowed */
 	private void modifeOperand1ToEnsureModulusIsZero()
 	{
-		double rest = operand1 % operand2;
+		double rest = getOperand1() % getOperand2();
 		
-		if (operand1 + (operand2 - rest) > settings.getMaxRange())
-			operand1 -= rest;
+		if (  getOperand1() + (getOperand2() - rest) > getSettings().getMaxRange()  )
+			setOperand1( getOperand1() - rest );
 		else
-			operand1 += operand2 - rest;
+			setOperand1( getOperand1() + getOperand2() - rest);
 	}
 }

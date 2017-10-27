@@ -21,17 +21,17 @@ public class ExerciseMult extends Exercise {
 	}
 
 	protected void generateExercise() {
-		operation = '*';
+		setOperation( '*' );
 		// TODO: For multiplication, the result is not guaranteed to be in range...
-		operand1 = Randomizer.getRandomNumber(
-				random, 
-				settings.getMinRange(),
-				settings.getMaxRange(), 
-				settings.getNrDecimals());
-		operand2 = Randomizer.getRandomNumber(
-				random, 
-				settings.getMinRange(), 
-				settings.getMaxRange(), 
-				settings.getNrDecimals());
+		setOperand1( Randomizer.getRandomNumber(
+				getRandom(), 
+				getSettings().getMinRange(),
+				getSettings().getMaxRange(), 
+				getSettings().getNrDecimals()));
+		setOperand2( Randomizer.getRandomNumber(
+				getRandom(), 
+				getSettings().getMinRange(), 
+				getSettings().getMaxRange(), 
+				getSettings().getNrDecimals()));
 	}
 }

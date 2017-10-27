@@ -24,16 +24,16 @@ public class ExerciseAdd extends Exercise {
 	}
 
 	protected void generateExercise() {
-		operation = '+';
-		operand1 = Randomizer.getRandomNumber(
-				random, 
-				settings.getMinRange(), 
-				settings.getMaxRange() - settings.getMinRange(), // this is the first step to ensure that the result will be within range
-				settings.getNrDecimals());
-		operand2 = Randomizer.getRandomNumber(
-				random, 
-				settings.getMinRange(), 
-				settings.getMaxRange() - operand1, // this is the second step to ensure that the result will be within range
-				settings.getNrDecimals());
+		setOperation('+');
+		setOperand1( Randomizer.getRandomNumber(
+				getRandom(), 
+				getSettings().getMinRange(), 
+				getSettings().getMaxRange() - getSettings().getMinRange(), // this is the first step to ensure that the result will be within range
+				getSettings().getNrDecimals()));
+		setOperand2( Randomizer.getRandomNumber(
+				getRandom(), 
+				getSettings().getMinRange(), 
+				getSettings().getMaxRange() - getOperand1(), // this is the second step to ensure that the result will be within range
+				getSettings().getNrDecimals()));
 	}
 }

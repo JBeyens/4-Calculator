@@ -23,6 +23,10 @@ public enum PositiveComment {
 		return name;
 	}
 	
+	public static PositiveComment getRandom() {
+        return values()[(int) (Math.random() * values().length)];
+    }
+	
 	@Override
 	public String toString(){
 		return getValue();

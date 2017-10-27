@@ -15,6 +15,10 @@ public enum NegativeComment {
 		return name;
 	}
 	
+	public static NegativeComment getRandom() {
+        return values()[(int) (Math.random() * values().length)];
+    }
+	
 	@Override
 	public String toString(){
 		return getValue();

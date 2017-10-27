@@ -1,13 +1,18 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import javax.swing.text.NumberFormatter;
+
 import java.awt.Color;
 
 public class MainView extends JFrame {
@@ -24,10 +29,10 @@ public class MainView extends JFrame {
 	private JLabel labelExercise;
 	private JLabel labelNegative;
 	
-	private JTextField tfNrOfQuestions;
-	private JTextField tfMinNumber;
-	private JTextField tfMaxNumber;
-	private JTextField tfNrOfDecimals;
+	private JFormattedTextField tfNrOfQuestions;
+	private JFormattedTextField tfMinNumber;
+	private JFormattedTextField tfMaxNumber;
+	private JFormattedTextField tfNrOfDecimals;
 	private JTextField tfUserInput;
 	
 	private JCheckBox rbAddition;
@@ -63,11 +68,18 @@ public class MainView extends JFrame {
 	}
 	
 	public void setCheckAnswerButton(Boolean isEnabled){
-		this.nextExercise.setEnabled(isEnabled);
+		this.checkAnswer.setEnabled(isEnabled);
 	}
 	
 	public void setStartExerciseButton(Boolean isEnabled){
 		this.startExercises.setEnabled(isEnabled);
+	}
+		
+	public String getTfUserInput() {
+		return tfUserInput.getText();
+	}
+	public void setTfUserInput(String tfUserInput) {
+		this.tfUserInput.setText(tfUserInput);;
 	}
 	
 	public String getTfNrOfQuestions() {
@@ -145,6 +157,10 @@ public class MainView extends JFrame {
 	public void setLabelExercise(String s){
 		this.labelExercise.setText(s);
 	}
+	
+	public void showMessage(String s){
+		JOptionPane.showMessageDialog(null, s);
+	}
 
 	private void setUp(){
 		labelNrOfQuestions = new JLabel("Aantal vragen: ");
@@ -157,10 +173,14 @@ public class MainView extends JFrame {
 		labelExercise.setBackground(Color.PINK);
 		labelNegative = new JLabel("Negatieve waarden?");
 		
-		tfNrOfDecimals = new JTextField(3);
-		tfNrOfQuestions = new JTextField(3);
-		tfMaxNumber = new JTextField(3);
-		tfMinNumber = new JTextField(3);
+		tfNrOfDecimals = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		tfNrOfDecimals.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
+		tfNrOfQuestions = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		tfNrOfQuestions.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
+		tfMaxNumber = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		tfMaxNumber.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
+		tfMinNumber = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		tfMinNumber.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
 		tfUserInput = new JTextField(3);
 		
 		rbAddition = new JCheckBox("+");

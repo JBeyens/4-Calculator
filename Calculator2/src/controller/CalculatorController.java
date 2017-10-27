@@ -9,6 +9,8 @@ import model.exercises.ExerciseManager;
 import model.exercises.ExerciseSettings;
 import model.exercises.factory.Exercise;
 import model.properties.PropertyManager;
+import values.NegativeComment;
+import values.PositiveComment;
 import view.MainView;
 
 public class CalculatorController {
@@ -94,7 +96,23 @@ public class CalculatorController {
 	
 	private class CheckExerciseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			
+			try {
+				Double userInput = Double.parseDouble(view.getTfUserInput());
+				
+				if(userInput == exerciseManager.getSolutionExercise(currentExercise)){
+					view.showMessage(PositiveComment.getRandom().getValue());
+					//add counter++ to correctAnswers
+				}
+				else{
+					view.showMessage(NegativeComment.getRandom().getValue());
+				}
+				
+				showNewExercise();
+				view.setTfUserInput("");
+				
+			} catch (NumberFormatException e2) {
+				view.showMessage("Gelieve een geldig getal als antwoord in te geven!");
+			}
 		}
 	}
 	

@@ -67,7 +67,7 @@ public class MainView extends JFrame {
 	}
 	
 	public void setStartExerciseButton(Boolean isEnabled){
-		this.nextExercise.setEnabled(isEnabled);
+		this.startExercises.setEnabled(isEnabled);
 	}
 	
 	public String getTfNrOfQuestions() {

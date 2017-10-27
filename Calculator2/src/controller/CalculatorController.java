@@ -28,7 +28,7 @@ public class CalculatorController {
 		view.setVisible(true);
 		view.setSize(450, 350);
 		view.addActionListener(new StartExerciseListener());
-		view.addExerciseActionListener(new ExerciseListener());
+		view.addExerciseActionListener(new CheckExerciseListener());
 		view.addNextExerciseActionListener(new NextExerciseListener());
 	}
 	
@@ -92,7 +92,7 @@ public class CalculatorController {
 		}
 	}
 	
-	private class ExerciseListener implements ActionListener{
+	private class CheckExerciseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			
 		}

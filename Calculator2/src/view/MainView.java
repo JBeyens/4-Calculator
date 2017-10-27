@@ -38,6 +38,7 @@ public class MainView extends JFrame {
 	
 	private JButton startExercises;
 	private JButton checkAnswer;
+	private JButton nextExercise;
 
 	private SpringLayout layout;
 	
@@ -49,8 +50,24 @@ public class MainView extends JFrame {
 		checkAnswer.addActionListener(listener);
 	}
 	
+	public void addNextExerciseActionListener(ActionListener listener){
+		nextExercise.addActionListener(listener);
+	}
+	
 	public void addActionListener(ActionListener listener){
 		startExercises.addActionListener(listener);
+	}
+	
+	public void setNextExerciseButton(Boolean isEnabled){
+		this.nextExercise.setEnabled(isEnabled);
+	}
+	
+	public void setCheckAnswerButton(Boolean isEnabled){
+		this.nextExercise.setEnabled(isEnabled);
+	}
+	
+	public void setStartExerciseButton(Boolean isEnabled){
+		this.nextExercise.setEnabled(isEnabled);
 	}
 	
 	public String getTfNrOfQuestions() {
@@ -124,6 +141,10 @@ public class MainView extends JFrame {
 	public void setRbDivision(boolean isSelected) {
 		this.rbDivision.setSelected(isSelected);
 	}
+	
+	public void setLabelExercise(String s){
+		this.labelExercise.setText(s);
+	}
 
 	private void setUp(){
 		labelNrOfQuestions = new JLabel("Aantal vragen: ");
@@ -150,8 +171,14 @@ public class MainView extends JFrame {
 		
 		startExercises = new JButton("Start");
 		checkAnswer = new JButton("Controleer");
+		checkAnswer.setEnabled(false);
+		nextExercise = new JButton("Volgende");
+		nextExercise.setEnabled(false);
 		
 		layout = new SpringLayout();
+		layout.putConstraint(SpringLayout.NORTH, nextExercise, 3, SpringLayout.SOUTH, checkAnswer);
+		layout.putConstraint(SpringLayout.WEST, nextExercise, 0, SpringLayout.WEST, checkAnswer);
+		layout.putConstraint(SpringLayout.EAST, nextExercise, 0, SpringLayout.EAST, checkAnswer);
 		layout.putConstraint(SpringLayout.NORTH, cbNegative, 0, SpringLayout.NORTH, labelMAxNumber);
 		layout.putConstraint(SpringLayout.WEST, cbNegative, 6, SpringLayout.EAST, labelNegative);
 		layout.putConstraint(SpringLayout.WEST, labelNegative, 0, SpringLayout.WEST, labelOperators);
@@ -218,6 +245,7 @@ public class MainView extends JFrame {
 		getContentPane().add(tfUserInput);
 		getContentPane().add(cbNegative);
 		getContentPane().add(labelNegative);
+		getContentPane().add(nextExercise);
 	}
 	
 	

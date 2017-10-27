@@ -60,6 +60,6 @@ public abstract class Exercise {
 	 * Generates the string to display the exercise */
 	@Override
 	public String toString() {
-		return "" + getOperand1() + " " + getOperation() + " " + getOperand2() + "= ";
+		return "" + getOperand1() + " " + getOperation() + " " + getOperand2() + " = ";
 	}
 }

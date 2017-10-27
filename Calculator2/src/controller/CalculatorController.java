@@ -7,14 +7,16 @@ import java.util.Arrays;
 
 import model.exercises.ExerciseManager;
 import model.exercises.ExerciseSettings;
+import model.exercises.factory.Exercise;
 import model.properties.PropertyManager;
-import values.DefaultSettings;
 import view.MainView;
 
 public class CalculatorController {
 	private MainView view;
 	private PropertyManager propertyManager;
 	private ExerciseManager exerciseManager;
+	private ExerciseSettings settings;
+	private Exercise currentExercise;
 	
 	public CalculatorController(){
 		view = new MainView();
@@ -27,6 +29,7 @@ public class CalculatorController {
 		view.setSize(450, 350);
 		view.addActionListener(new StartExerciseListener());
 		view.addExerciseActionListener(new ExerciseListener());
+		view.addNextExerciseActionListener(new NextExerciseListener());
 	}
 	
 	private void initializeProperties(){
@@ -46,36 +49,46 @@ public class CalculatorController {
 	
 	private class StartExerciseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			//Code for userinput not yet implemented
-			ExerciseSettings settings = new ExerciseSettings();
-			settings.setMaxRange(Integer.parseInt(view.getTfMaxNumber()));
-			settings.setMinRange(Integer.parseInt(view.getTfMinNumber()));
-			settings.setNrDecimals(Integer.parseInt(view.getTfNrOfDecimals()));
-			settings.setNrOfExercises(Integer.parseInt(view.getTfNrOfQuestions()));
-			
-			//Needed to add/remove items to list => ExcerciseSettings needs String[] no ArrayList
-			ArrayList<String> tempOperators = new ArrayList();
-			
-			//Operators are hard coded
-			//Possible solution => seperate enum for operators and call these in methods
-			if(view.getRbAddition())
-				tempOperators.add("+");
-			
-			if(view.getRbSubstraction())
-				tempOperators.add("-");
-			
-			if(view.getRbMultiplication())
-				tempOperators.add("*");
-			
-			if(view.getRbDivision()){
-				tempOperators.add("/");
+			try {
+				//Code for userinput not yet implemented
+				settings = new ExerciseSettings();
+				settings.setMaxRange(Integer.parseInt(view.getTfMaxNumber()));
+				settings.setMinRange(Integer.parseInt(view.getTfMinNumber()));
+				settings.setNrDecimals(Integer.parseInt(view.getTfNrOfDecimals()));
+				settings.setNrOfExercises(Integer.parseInt(view.getTfNrOfQuestions()));
+				
+				//Needed to add/remove items to list => ExcerciseSettings needs String[] no ArrayList
+				ArrayList<String> tempOperators = new ArrayList();
+				
+				//Operators are hard coded
+				//Possible solution => seperate enum for operators and call these in methods
+				if(view.getRbAddition())
+					tempOperators.add("+");
+				
+				if(view.getRbSubstraction())
+					tempOperators.add("-");
+				
+				if(view.getRbMultiplication())
+					tempOperators.add("*");
+				
+				if(view.getRbDivision()){
+					tempOperators.add("/");
+				}
+				
+				String[] operators = new String[tempOperators.size()];
+				operators = tempOperators.toArray(operators);
+				settings.setOperators(operators);
+				
+				exerciseManager = ExerciseManager.creationMethod();
+				
+				showNewExercise();
+				view.setStartExerciseButton(false);
+				view.setNextExerciseButton(true);
+				view.setCheckAnswerButton(true);
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-			
-			String[] operators = new String[tempOperators.size()];
-			operators = tempOperators.toArray(operators);
-			settings.setOperators(operators);
-			
-			exerciseManager = ExerciseManager.creationMethod();
 		}
 	}
 	
@@ -83,5 +96,16 @@ public class CalculatorController {
 		public void actionPerformed(ActionEvent e){
 			
 		}
+	}
+	
+	private class NextExerciseListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			showNewExercise();
+		}
+	}
+	
+	private void showNewExercise(){
+		currentExercise = exerciseManager.generateExercise(settings);
+		view.setLabelExercise(currentExercise.toString());
 	}
 }

@@ -30,7 +30,7 @@ public class ExerciseSub extends Exercise {
 		setOperand2( Randomizer.getRandomNumber(
 				getRandom(), 
 				getSettings().getMinRange(), 
-				getOperand1() - getSettings().getMaxRange(), // this is the second step to ensure that the sum will be within range
+				getOperand1() - getSettings().getMinRange(), // this is the second step to ensure that the sum will be within range
 				getSettings().getNrDecimals()));
 	}
 }

@@ -20,8 +20,9 @@ public abstract class Exercise {
 	private double operand1;
 	private double operand2;
 	private char operation;
-	
-	
+	private boolean correctReplied;
+
+
 	// CONSTRUCTOR
 	public Exercise(Random randomInput, ExerciseSettings settingsInput) {
 		settings = settingsInput;
@@ -42,8 +43,17 @@ public abstract class Exercise {
 	
 	// PUBLIC METHODS
 	/**
-	 * @param settings: getter for 'settings' */
+	 * Method to be described in each extended class */
 	abstract void generateExercise();
+	
+	
+	/**
+	 * Generates the string to display the exercise */
+	@Override
+	public String toString() {
+		return "" + formatter.format(getOperand1()) + " " + getOperation() + " " + formatter.format(getOperand2()) + " = ";
+	}
+	
 
 	/**
 	 * @param settings: getter for 'settings' */
@@ -56,30 +66,30 @@ public abstract class Exercise {
 		return random; }
 	
 	/**
-	 * @param operand1: getter & setter for 'operand1' */
+	 * @param operand1: setter & getter for 'operand1' */
 	public void setOperand1(double input) {
 		operand1 = input; }	
 	public double getOperand1() {
 		return operand1; 	}	
 	
 	/**
-	 * @param operand2: getter & setter for 'operand2' */
+	 * @param operand2: setter & getter for 'operand2' */
 	public void setOperand2(double input) {
 		operand2 = input; }	
 	public double getOperand2() {
 		return operand2; }
 	
 	/**
-	 * @param operation: getter & setter for 'operation' */
+	 * @param operation: setter & getter for 'operation' */
 	public void setOperation(char input) {
 		operation = input; }	
 	public char getOperation() {
 		return operation; }
 	
 	/**
-	 * Generates the string to display the exercise */
-	@Override
-	public String toString() {
-		return "" + formatter.format(getOperand1()) + " " + getOperation() + " " + formatter.format(getOperand2()) + " = ";
-	}
+	 * @param correctReplied: setter & getter for 'correctReplied' */
+	public boolean isCorrectReplied() {
+		return correctReplied;	}
+	public void setCorrectReplied(boolean correctReplied) {
+		this.correctReplied = correctReplied;	}
 }

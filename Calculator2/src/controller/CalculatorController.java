@@ -40,7 +40,7 @@ public class CalculatorController {
 	
 	private void initializeProperties(){
 		view.setTfMaxNumber(propertyManager.getProperty("maximumNumber").toString());
-		view.setTfMinNumber(propertyManager.getProperty("minimumNumber").toString());
+		//view.setTfMinNumber(propertyManager.getProperty("minimumNumber").toString());
 		view.setTfNrOfDecimals(propertyManager.getProperty("nrOfDecimals").toString());
 		view.setTfNrOfQuestions(propertyManager.getProperty("nrOfQuestions").toString());
 		view.setcbNegative(Boolean.parseBoolean(propertyManager.getProperty("isNegative")));
@@ -58,7 +58,7 @@ public class CalculatorController {
 			try {
 				settings = new ExerciseSettings();
 				settings.setMaxRange(Integer.parseInt(view.getTfMaxNumber()));
-				settings.setMinRange(Integer.parseInt(view.getTfMinNumber()));
+				settings.setMinRange(view.getcbNegative() ? -1.0 * settings.getMaxRange() : 0);
 				settings.setNrDecimals(Integer.parseInt(view.getTfNrOfDecimals()));
 				settings.setNrOfExercises(Integer.parseInt(view.getTfNrOfQuestions()));
 				

@@ -1,5 +1,6 @@
 package model.exercises.factory;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import model.exercises.ExerciseSettings;
@@ -14,6 +15,7 @@ import model.exercises.ExerciseSettings;
 public abstract class Exercise {	
 	private ExerciseSettings settings;
 	private Random random;
+	private DecimalFormat formatter;
 	private double operand1;
 	private double operand2;
 	private char operation;
@@ -21,6 +23,7 @@ public abstract class Exercise {
 	public Exercise(Random randomInput, ExerciseSettings settingsInput) {
 		settings = settingsInput;
 		random = randomInput;
+		formatter = configureFormatter();
 	}
 	
 	abstract void generateExercise();
@@ -57,31 +60,16 @@ public abstract class Exercise {
 		return operation; }
 	
 	/**
-	 * @param input: a double which will be shown to the user
-	 * @param nrDecimals: amount of decimals which should be visible to the user
-	 * @return string: cleand up string with requested amount of decimals to show to the user */
-	private String cleanUp(double input, int nrDecimals) {
-		// Convert to double which should have no decimals
-		double resultAsDouble = input *Math.pow(10.0, nrDecimals);
-		// Round to nearest whole number and convert to int
-		String resultAsString = Integer.valueOf((int) Math.round(resultAsDouble)).toString();
-		
-		// Throw away trailing zeros 
-		// (e.g.:  resultAsString = "100"  and nrDecimals = 2    =>   resultAsString = "1" and nrDecimals = 0)
-		int stringLength = resultAsString.length();
-		while (stringLength > 1 && nrDecimals > 0 && resultAsString.endsWith("0")) {
-			resultAsString = resultAsString.substring(0, stringLength -1);
-			stringLength--;
-			nrDecimals--;			
-		}
-		
-		// TODO: Finish result..........
-		return String.valueOf(input);
+	 * @param none:   		  input will be retrieved from the ExerciseSettings
+	 * @return DecimalFormat: a DecimalFormat object which can format double to the desired output */
+	private DecimalFormat configureFormatter() {
+		String pattern = getSettings().getNrDecimals() > 0 ? "#." + new String(new char[getSettings().getNrDecimals()]).replace("\0", "#") : "#";
+		return new DecimalFormat(pattern); 
 	}
 	/**
 	 * Generates the string to display the exercise */
 	@Override
 	public String toString() {
-		return "" + getOperand1() + " " + getOperation() + " " + getOperand2() + " = ";
+		return "" + formatter.format(getOperand1()) + " " + getOperation() + " " + formatter.format(getOperand2()) + " = ";
 	}
 }

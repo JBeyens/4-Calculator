@@ -60,7 +60,7 @@ public class CalculatorController {
 				settings.setNrOfExercises(Integer.parseInt(view.getTfNrOfQuestions()));
 				settings.setNegative(view.getcbNegative());
 				
-				ArrayList<String> tempOperators = new ArrayList();
+				ArrayList<String> tempOperators = new ArrayList<String>();
 				
 				if(view.getRbAddition())
 					tempOperators.add("+");

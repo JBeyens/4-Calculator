@@ -18,7 +18,7 @@ public class ExerciseDiv extends Exercise {
 		generateExercise();
 	}
 
-	protected void generateExercise() {
+	public void generateExercise() {
 		setOperation( '/' );
 		// TODO: For multiplication, the result is not guaranteed to be in range...
 		setOperand1( Randomizer.getRandomNumber(				

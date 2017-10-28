@@ -43,7 +43,7 @@ public abstract class Exercise {
 	// PUBLIC METHODS
 	/**
 	 * Method to be described in each extended class */
-	abstract void generateExercise();
+	public abstract void generateExercise();
 	
 	
 	/**

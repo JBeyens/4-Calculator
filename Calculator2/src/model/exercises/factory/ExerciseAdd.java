@@ -18,7 +18,7 @@ public class ExerciseAdd extends Exercise {
 		generateExercise();
 	}
 
-	protected void generateExercise() {
+	public void generateExercise() {
 		setOperation('+');
 		setOperand1( Randomizer.getRandomNumber(				
 				getSettings().getMinRange(), 

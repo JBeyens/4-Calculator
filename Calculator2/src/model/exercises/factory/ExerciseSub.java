@@ -18,7 +18,7 @@ public class ExerciseSub extends Exercise {
 		generateExercise();
 	}
 
-	protected void generateExercise() {
+	public void generateExercise() {
 		setOperation( '-' );
 		setOperand1( Randomizer.getRandomNumber(				 
 				2.0 * getSettings().getMinRange(), // this is the first step to ensure that the result will be within range

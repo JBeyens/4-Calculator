@@ -32,7 +32,6 @@ public class CalculatorController {
 		view.setSize(500, 350);
 		view.addActionListener(new StartExerciseListener());
 		view.addExerciseActionListener(new CheckExerciseListener());
-		view.addNextExerciseActionListener(new NextExerciseListener());
 	}
 	
 	private void initializeProperties(){
@@ -40,7 +39,6 @@ public class CalculatorController {
 		view.setTfMinNumber(propertyManager.getProperty("minimumNumber").toString());
 		view.setTfNrOfDecimals(propertyManager.getProperty("nrOfDecimals").toString());
 		view.setTfNrOfQuestions(propertyManager.getProperty("nrOfQuestions").toString());
-		view.setcbNegative(Boolean.parseBoolean(propertyManager.getProperty("isNegative")));
 		
 		String[] operators = propertyManager.getProperty("operators").split(",");
 		
@@ -58,7 +56,6 @@ public class CalculatorController {
 				settings.setMinRange(Integer.parseInt(view.getTfMinNumber()));
 				settings.setNrDecimals(Integer.parseInt(view.getTfNrOfDecimals()));
 				settings.setNrOfExercises(Integer.parseInt(view.getTfNrOfQuestions()));
-				settings.setNegative(view.getcbNegative());
 				
 				ArrayList<String> tempOperators = new ArrayList<String>();
 				
@@ -87,14 +84,12 @@ public class CalculatorController {
 				propertyManager.setProperty("minimumNumber", view.getTfMinNumber());
 				propertyManager.setProperty("nrOfDecimals", view.getTfNrOfDecimals());
 				propertyManager.setProperty("nrOfQuestions", view.getTfNrOfQuestions());
-				propertyManager.setProperty("isNegative", view.getcbNegative() ? "true" : "false");
 				propertyManager.setProperty("operators", String.join(",", operators));
 				
 				exerciseSession = new ExerciseSession(settings);
 				
 				showNewExercise();
 				view.setStartExerciseButton(false);
-				view.setNextExerciseButton(true);
 				view.setCheckAnswerButton(true);
 			} catch (NumberFormatException e1) {
 				e1.printStackTrace();
@@ -126,12 +121,6 @@ public class CalculatorController {
 		}
 	}
 	
-	private class NextExerciseListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
-			showNewExercise();
-		}
-	}
-	
 	private void showNewExercise(){
 		currentExercise = exerciseSession.getNextExercise();
 		if(currentExercise != null){
@@ -140,7 +129,6 @@ public class CalculatorController {
 		}
 		else{
 			view.setStartExerciseButton(true);
-			view.setNextExerciseButton(false);
 			view.setCheckAnswerButton(false);
 			view.showMessage(exerciseSession.getEndResult());
 		}

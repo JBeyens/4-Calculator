@@ -38,11 +38,9 @@ public class MainView extends JFrame {
 	private JCheckBox rbSubstraction;
 	private JCheckBox rbMultiplication;
 	private JCheckBox rbDivision;
-	private JCheckBox cbNegative;
 	
 	private JButton startExercises;
 	private JButton checkAnswer;
-	private JButton nextExercise;
 
 	private SpringLayout layout;
 	
@@ -54,16 +52,8 @@ public class MainView extends JFrame {
 		checkAnswer.addActionListener(listener);
 	}
 	
-	public void addNextExerciseActionListener(ActionListener listener){
-		nextExercise.addActionListener(listener);
-	}
-	
 	public void addActionListener(ActionListener listener){
 		startExercises.addActionListener(listener);
-	}
-	
-	public void setNextExerciseButton(Boolean isEnabled){
-		this.nextExercise.setEnabled(isEnabled);
 	}
 	
 	public void setCheckAnswerButton(Boolean isEnabled){
@@ -141,14 +131,6 @@ public class MainView extends JFrame {
 		return rbDivision.isSelected();
 	}
 	
-	public void setcbNegative(boolean isSelected){
-		this.cbNegative.setSelected(isSelected);
-	}
-	
-	public boolean getcbNegative(){
-		return cbNegative.isSelected();
-	}
-
 	public void setRbDivision(boolean isSelected) {
 		this.rbDivision.setSelected(isSelected);
 	}
@@ -170,7 +152,6 @@ public class MainView extends JFrame {
 		labelStringExercise = new JLabel("Oefening");
 		labelExercise = new JLabel("Hier komt iets");
 		labelExercise.setBackground(Color.PINK);
-		labelNegative = new JLabel("Negatieve waarden?");
 		
 		tfNrOfDecimals = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		tfNrOfDecimals.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
@@ -186,14 +167,11 @@ public class MainView extends JFrame {
 		rbSubstraction = new JCheckBox("-");
 		rbMultiplication = new JCheckBox("*");
 		rbDivision = new JCheckBox("/");
-		cbNegative = new JCheckBox();
 		
 		startExercises = new JButton("Start");
 		checkAnswer = new JButton("Controleer");
 		checkAnswer.setEnabled(false);
-		nextExercise = new JButton("Volgende");
-		nextExercise.setEnabled(false);
-		
+
 		layout = new SpringLayout();
 		layout.putConstraint(SpringLayout.WEST, tfNrOfDecimals, 6, SpringLayout.EAST, labelNrOfDecimals);
 		layout.putConstraint(SpringLayout.EAST, tfNrOfDecimals, 0, SpringLayout.EAST, tfMaxNumber);
@@ -204,11 +182,6 @@ public class MainView extends JFrame {
 		layout.putConstraint(SpringLayout.SOUTH, labelNegative, -9, SpringLayout.NORTH, startExercises);
 		layout.putConstraint(SpringLayout.WEST, tfMinNumber, 15, SpringLayout.EAST, labelMinNumber);
 		layout.putConstraint(SpringLayout.WEST, tfNrOfQuestions, 19, SpringLayout.EAST, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.NORTH, nextExercise, 3, SpringLayout.SOUTH, checkAnswer);
-		layout.putConstraint(SpringLayout.WEST, nextExercise, 0, SpringLayout.WEST, checkAnswer);
-		layout.putConstraint(SpringLayout.EAST, nextExercise, 0, SpringLayout.EAST, checkAnswer);
-		layout.putConstraint(SpringLayout.NORTH, cbNegative, 0, SpringLayout.NORTH, labelMAxNumber);
-		layout.putConstraint(SpringLayout.WEST, cbNegative, 6, SpringLayout.EAST, labelNegative);
 		layout.putConstraint(SpringLayout.WEST, labelNegative, 0, SpringLayout.WEST, labelOperators);
 		layout.putConstraint(SpringLayout.WEST, checkAnswer, 26, SpringLayout.EAST, tfUserInput);
 		layout.putConstraint(SpringLayout.WEST, tfUserInput, -27, SpringLayout.WEST, labelOperators);
@@ -266,9 +239,7 @@ public class MainView extends JFrame {
 		getContentPane().add(labelStringExercise);
 		getContentPane().add(checkAnswer);
 		getContentPane().add(tfUserInput);
-		getContentPane().add(cbNegative);
 		getContentPane().add(labelNegative);
-		getContentPane().add(nextExercise);
 	}
 	
 	

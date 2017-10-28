@@ -18,13 +18,15 @@ public abstract class Exercise {
 	private double operand1;
 	private double operand2;
 	private char operation;
+	private int exerciseNumber;
 	private boolean correctReplied;
 
 
 	// CONSTRUCTOR
-	public Exercise(ExerciseSettings settingsInput) {
+	public Exercise(ExerciseSettings settingsInput, int number) {
 		settings = settingsInput;
 		formatter = configureFormatter();
+		exerciseNumber = number;
 	}
 	
 	
@@ -56,6 +58,11 @@ public abstract class Exercise {
 	 * @param settings: getter for 'settings' */
 	public ExerciseSettings getSettings() {
 		return settings; }
+
+	/**
+	 * @param settings: getter for 'exerciseNumber' */
+	public int getExerciseNumber() {
+		return exerciseNumber; }
 	
 	/**
 	 * @param operand1: setter & getter for 'operand1' */

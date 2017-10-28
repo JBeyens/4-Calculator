@@ -13,13 +13,13 @@ public final class ExerciseFactory {
 		switch (operation)
 		{
 			case '+':
-				return new ExerciseAdd(settings);
+				return new ExerciseAdd(settings, exerciseNumber);
 			case '-':
-				return new ExerciseSub(settings);
+				return new ExerciseSub(settings, exerciseNumber);
 			case '*':
-				return new ExerciseMult(settings);
+				return new ExerciseMult(settings, exerciseNumber);
 			case '/':
-				return new ExerciseDiv(settings);
+				return new ExerciseDiv(settings, exerciseNumber);
 		}
 		return null;		
 	}

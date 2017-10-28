@@ -13,8 +13,8 @@ public class ExerciseSub extends Exercise {
 	/**
 	 * @param random object & settings are needed as input for the base class
 	 */
-	public ExerciseSub(ExerciseSettings settings) {
-		super(settings);
+	public ExerciseSub(ExerciseSettings settings, int number) {
+		super(settings, number);
 		generateExercise();
 	}
 

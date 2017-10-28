@@ -13,8 +13,8 @@ public class ExerciseDiv extends Exercise {
 	/**
 	 * @param random object & settings are needed as input for the base class
 	 */
-	public ExerciseDiv(ExerciseSettings settings) {
-		super(settings);
+	public ExerciseDiv(ExerciseSettings settings, int number) {
+		super(settings, number);
 		generateExercise();
 	}
 

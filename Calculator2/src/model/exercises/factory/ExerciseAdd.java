@@ -13,8 +13,8 @@ public class ExerciseAdd extends Exercise {
 	/**
 	 * @param random object & settings are needed as input for the base class
 	 */
-	public ExerciseAdd(ExerciseSettings settings) {
-		super(settings);
+	public ExerciseAdd(ExerciseSettings settings, int number) {
+		super(settings, number);
 		generateExercise();
 	}
 

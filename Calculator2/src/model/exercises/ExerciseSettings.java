@@ -15,10 +15,18 @@ public class ExerciseSettings {
 	private int nrExercises;
 	private String[] operators;
 	
-	// CONSTRUCTOR
-	public ExerciseSettings(){	
+	//CONSTRUCTOR
+	public ExerciseSettings(double minRange, double maxRange, int nrDecimals, int nrExercises, String[] operators) {
+		super();
+		this.minRange = minRange;
+		this.maxRange = maxRange;
+		this.nrDecimals = nrDecimals;
+		this.nrExercises = nrExercises;
+		this.operators = operators;
 	}
-	
+
+
+
 	// PUBLIC METHODS
 	public double getMinRange() {
 		return minRange;

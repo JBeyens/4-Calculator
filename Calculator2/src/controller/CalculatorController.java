@@ -28,7 +28,7 @@ public class CalculatorController {
 	public void startController(){
 		initializeProperties();
 		view.setVisible(true);
-		view.setSize(450, 350);
+		view.setSize(500, 350);
 		view.addActionListener(new StartExerciseListener());
 		view.addExerciseActionListener(new CheckExerciseListener());
 		view.addNextExerciseActionListener(new NextExerciseListener());
@@ -124,8 +124,17 @@ public class CalculatorController {
 	}
 	
 	private void showNewExercise(){
-		currentExercise = exerciseManager.generateExercise(settings);
-		view.setLabelExercise(currentExercise.toString());
-		view.setTfUserInput("");
+		currentExercise = exerciseManager.getExercise();
+		if(currentExercise != null){
+			view.setLabelExercise(currentExercise.toString());
+			view.setTfUserInput("");
+		}
+		else{
+			view.setStartExerciseButton(true);
+			view.setNextExerciseButton(false);
+			view.setCheckAnswerButton(false);
+			view.showMessage(exerciseManager.showResults());
+		}
+		
 	}
 }

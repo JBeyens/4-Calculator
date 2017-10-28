@@ -22,6 +22,7 @@ public class ExerciseManager {
 	private ExerciseManager exerciseManager;
 	private Random random;
 	private int correctAnswers;
+	private int currentNumberOfExercise;
 	
 	
 	public ExerciseManager(ExerciseSettings settings) {
@@ -30,6 +31,7 @@ public class ExerciseManager {
 		this.listExercices = new ArrayList<>();
 		generateExercise();
 		correctAnswers = 0;
+		currentNumberOfExercise = 1;
 	}
 
 	private void generateExercise() {
@@ -55,6 +57,12 @@ public class ExerciseManager {
 		boolean check2 = settings.getMaxRange() >= 2.0 * settings.getMinRange();
 		
 		return (check1 && check2);
+	}
+	
+	public Exercise getExercise(){
+		Exercise ex = listExercices.get(currentNumberOfExercise - 1);
+		currentNumberOfExercise++;
+		return ex;
 	}
 	
 	public String showResults(){

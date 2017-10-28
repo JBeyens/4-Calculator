@@ -196,14 +196,15 @@ public class MainView extends JFrame {
 		nextExercise.setEnabled(false);
 		
 		layout = new SpringLayout();
+		layout.putConstraint(SpringLayout.WEST, tfNrOfDecimals, 6, SpringLayout.EAST, labelNrOfDecimals);
 		layout.putConstraint(SpringLayout.EAST, tfNrOfDecimals, 0, SpringLayout.EAST, tfMaxNumber);
-		layout.putConstraint(SpringLayout.WEST, tfMaxNumber, 0, SpringLayout.WEST, tfNrOfQuestions);
+		layout.putConstraint(SpringLayout.EAST, tfMaxNumber, 0, SpringLayout.EAST, tfNrOfQuestions);
+		layout.putConstraint(SpringLayout.EAST, tfMinNumber, 0, SpringLayout.EAST, tfNrOfQuestions);
+		layout.putConstraint(SpringLayout.WEST, tfMaxNumber, 11, SpringLayout.EAST, labelMAxNumber);
+		layout.putConstraint(SpringLayout.EAST, tfNrOfQuestions, -35, SpringLayout.WEST, labelOperators);
 		layout.putConstraint(SpringLayout.SOUTH, labelNegative, -9, SpringLayout.NORTH, startExercises);
 		layout.putConstraint(SpringLayout.WEST, tfMinNumber, 15, SpringLayout.EAST, labelMinNumber);
-		layout.putConstraint(SpringLayout.EAST, tfMinNumber, -128, SpringLayout.WEST, rbSubstraction);
 		layout.putConstraint(SpringLayout.WEST, tfNrOfQuestions, 19, SpringLayout.EAST, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.EAST, tfNrOfQuestions, -54, SpringLayout.WEST, labelOperators);
-		layout.putConstraint(SpringLayout.EAST, tfMaxNumber, 0, SpringLayout.EAST, tfNrOfQuestions);
 		layout.putConstraint(SpringLayout.NORTH, nextExercise, 3, SpringLayout.SOUTH, checkAnswer);
 		layout.putConstraint(SpringLayout.WEST, nextExercise, 0, SpringLayout.WEST, checkAnswer);
 		layout.putConstraint(SpringLayout.EAST, nextExercise, 0, SpringLayout.EAST, checkAnswer);
@@ -227,7 +228,6 @@ public class MainView extends JFrame {
 		layout.putConstraint(SpringLayout.NORTH, tfNrOfQuestions, -3, SpringLayout.NORTH, labelNrOfQuestions);
 		layout.putConstraint(SpringLayout.NORTH, tfMaxNumber, -3, SpringLayout.NORTH, labelMAxNumber);
 		layout.putConstraint(SpringLayout.NORTH, tfNrOfDecimals, -3, SpringLayout.NORTH, labelNrOfDecimals);
-		layout.putConstraint(SpringLayout.WEST, tfNrOfDecimals, 6, SpringLayout.EAST, labelNrOfDecimals);
 		layout.putConstraint(SpringLayout.NORTH, labelNrOfQuestions, 0, SpringLayout.NORTH, labelOperators);
 		layout.putConstraint(SpringLayout.WEST, labelNrOfQuestions, 0, SpringLayout.WEST, labelMAxNumber);
 		layout.putConstraint(SpringLayout.NORTH, rbAddition, 6, SpringLayout.NORTH, getContentPane());

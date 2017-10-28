@@ -28,16 +28,20 @@ public class ExerciseSession {
 	 * @param random    An instance of the Random class.
 	 * @param settings  exerciseSettings that must be respected in the session.
 	 **/
-	public ExerciseSession(Random random, ExerciseSettings settings) {
+	public ExerciseSession(ExerciseSettings settings) {
 		exerciseList = new ArrayList<Exercise>();
-		
-		for (int i = 0; i < settings.getNrOfExercises(); i++) {
-			exerciseList.add(ExerciseFactory.getExercise(random, settings));
-		}
+		generateExercises(settings);
 		isRunning = true;
 		startTime = LocalDateTime.now();		
 		exerciseCounter = 0;
 	}
+	
+	// PRIVATE METHODS
+	private void generateExercises(ExerciseSettings settings) {
+		for (int i = 0; i < settings.getNrOfExercises(); i++) {
+			exerciseList.add(ExerciseFactory.getExercise(settings, i + 1));
+		}		
+	} 
 	
 	
 	// PUBLIC METHODS
@@ -65,13 +69,5 @@ public class ExerciseSession {
 					
 		// TODO: compose string
 		return "TODO: compose string";
-	} 
-	
-	/**
-	 * Returns the number of exercises in this session
-	 * @return int    The number of exercises in this session
-	 **/
-	public int getNumberOfExercises() {
-		return exerciseList.size() + 1;
 	} 
 }

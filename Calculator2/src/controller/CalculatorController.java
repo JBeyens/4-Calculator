@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 import model.exercises.Calculator;
 import model.exercises.ExerciseSession;
@@ -21,12 +20,10 @@ public class CalculatorController {
 	private ExerciseSession exerciseSession;
 	private ExerciseSettings settings;
 	private Exercise currentExercise;
-	private Random random;
 	
 	public CalculatorController(){
 		view = new MainView();
 		propertyManager = PropertyManager.CreationMethod();
-		random = new Random();
 	}
 	
 	public void startController(){
@@ -85,7 +82,7 @@ public class CalculatorController {
 				
 				settings.setOperators(operators);
 				
-				exerciseSession = new ExerciseSession(random, settings);
+				exerciseSession = new ExerciseSession(settings);
 				
 				showNewExercise();
 				view.setStartExerciseButton(false);

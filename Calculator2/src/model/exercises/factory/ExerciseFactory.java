@@ -9,19 +9,19 @@ public final class ExerciseFactory {
 	// TODO Enum in factor can be used to populate view
 	 
 	/* Returns an exercise based on the operations it can find in the settings */
-	public static Exercise getExercise(Random random, ExerciseSettings settings) {
-		char operation = Randomizer.getRandomChar(random, settings.getOperators());
+	public static Exercise getExercise(ExerciseSettings settings, int exerciseNumber) {
+		char operation = Randomizer.getRandomChar(settings.getOperators());
 				
 		switch (operation)
 		{
 			case '+':
-				return new ExerciseAdd(random, settings);
+				return new ExerciseAdd(settings);
 			case '-':
-				return new ExerciseSub(random, settings);
+				return new ExerciseSub(settings);
 			case '*':
-				return new ExerciseMult(random, settings);
+				return new ExerciseMult(settings);
 			case '/':
-				return new ExerciseDiv(random, settings);
+				return new ExerciseDiv(settings);
 		}
 		return null;		
 	}

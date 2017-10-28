@@ -1,7 +1,5 @@
 package model.exercises.factory;
 
-import java.util.Random;
-
 import model.exercises.ExerciseSettings;
 
 /**
@@ -15,20 +13,18 @@ public class ExerciseSub extends Exercise {
 	/**
 	 * @param random object & settings are needed as input for the base class
 	 */
-	public ExerciseSub(Random random, ExerciseSettings settings) {
-		super(random, settings);
+	public ExerciseSub(ExerciseSettings settings) {
+		super(settings);
 		generateExercise();
 	}
 
 	protected void generateExercise() {
 		setOperation( '-' );
-		setOperand1( Randomizer.getRandomNumber(
-				getRandom(), 
+		setOperand1( Randomizer.getRandomNumber(				 
 				2.0 * getSettings().getMinRange(), // this is the first step to ensure that the result will be within range
 				getSettings().getMaxRange(), 
 				getSettings().getNrDecimals()));
-		setOperand2( Randomizer.getRandomNumber(
-				getRandom(), 
+		setOperand2( Randomizer.getRandomNumber(				 
 				getSettings().getMinRange(), 
 				getOperand1() - getSettings().getMinRange(), // this is the second step to ensure that the sum will be within range
 				getSettings().getNrDecimals()));

@@ -1,7 +1,6 @@
 package model.exercises.factory;
 
 import java.text.DecimalFormat;
-import java.util.Random;
 
 import model.exercises.ExerciseSettings;
 
@@ -15,7 +14,6 @@ import model.exercises.ExerciseSettings;
 public abstract class Exercise {
 	// PRIVATE MEMBERS
 	private ExerciseSettings settings;
-	private Random random;
 	private DecimalFormat formatter;
 	private double operand1;
 	private double operand2;
@@ -24,9 +22,8 @@ public abstract class Exercise {
 
 
 	// CONSTRUCTOR
-	public Exercise(Random randomInput, ExerciseSettings settingsInput) {
+	public Exercise(ExerciseSettings settingsInput) {
 		settings = settingsInput;
-		random = randomInput;
 		formatter = configureFormatter();
 	}
 	
@@ -59,11 +56,6 @@ public abstract class Exercise {
 	 * @param settings: getter for 'settings' */
 	public ExerciseSettings getSettings() {
 		return settings; }
-
-	/**
-	 * @param random: getter for 'random' */
-	public Random getRandom() {
-		return random; }
 	
 	/**
 	 * @param operand1: setter & getter for 'operand1' */

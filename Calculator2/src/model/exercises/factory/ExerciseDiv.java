@@ -15,21 +15,19 @@ public class ExerciseDiv extends Exercise {
 	/**
 	 * @param random object & settings are needed as input for the base class
 	 */
-	public ExerciseDiv(Random random, ExerciseSettings settings) {
-		super(random, settings);
+	public ExerciseDiv(ExerciseSettings settings) {
+		super(settings);
 		generateExercise();
 	}
 
 	protected void generateExercise() {
 		setOperation( '/' );
 		// TODO: For multiplication, the result is not guaranteed to be in range...
-		setOperand1( Randomizer.getRandomNumber(
-				getRandom(), 
+		setOperand1( Randomizer.getRandomNumber(				
 				getSettings().getMinRange(),
 				getSettings().getMaxRange(), 
 				getSettings().getNrDecimals()));
-		setOperand2( Randomizer.getRandomNumber(
-				getRandom(), 
+		setOperand2( Randomizer.getRandomNumber(				 
 				getSettings().getMinRange(), 
 				getSettings().getMaxRange() / 2.0, 
 				getSettings().getNrDecimals()));

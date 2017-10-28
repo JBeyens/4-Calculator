@@ -1,7 +1,5 @@
 package model.exercises.factory;
 
-import java.util.Random;
-
 import model.exercises.ExerciseSettings;
 
 /**
@@ -15,21 +13,19 @@ public class ExerciseMult extends Exercise {
 	/**
 	 * @param random object & settings are needed as input for the base class
 	 */
-	public ExerciseMult(Random random, ExerciseSettings settings) {
-		super(random, settings);
+	public ExerciseMult(ExerciseSettings settings) {
+		super(settings);
 		generateExercise();
 	}
 
 	protected void generateExercise() {
 		setOperation( '*' );
 		// TODO: For multiplication, the result is not guaranteed to be in range...
-		setOperand1( Randomizer.getRandomNumber(
-				getRandom(), 
+		setOperand1( Randomizer.getRandomNumber(				 
 				getSettings().getMinRange(),
 				getSettings().getMaxRange(), 
 				getSettings().getNrDecimals()));
-		setOperand2( Randomizer.getRandomNumber(
-				getRandom(), 
+		setOperand2( Randomizer.getRandomNumber(				 
 				getSettings().getMinRange(), 
 				getSettings().getMaxRange(), 
 				getSettings().getNrDecimals()));

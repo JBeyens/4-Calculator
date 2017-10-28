@@ -34,11 +34,11 @@ public class ExerciseDiv extends Exercise {
 				getSettings().getMaxRange() / 2.0, 
 				getSettings().getNrDecimals()));
 		
-		modifeOperand1ToEnsureModulusIsZero(); // Modifies operand1 so that the modulus is zero
+		modifyOperand1ToEnsureModulusIsZero(); // Modifies operand1 so that the modulus is zero
 	}
 	
 	/* Modifies operand1 to ensure the result of the division does not have more decimals than allowed */
-	private void modifeOperand1ToEnsureModulusIsZero()
+	private void modifyOperand1ToEnsureModulusIsZero()
 	{
 		double rest = getOperand1() % getOperand2();
 		

@@ -12,7 +12,8 @@ import model.exercises.ExerciseSettings;
  * @Purpose: Base class for Exercises
  */
 
-public abstract class Exercise {	
+public abstract class Exercise {
+	// PRIVATE MEMBERS
 	private ExerciseSettings settings;
 	private Random random;
 	private DecimalFormat formatter;
@@ -20,12 +21,28 @@ public abstract class Exercise {
 	private double operand2;
 	private char operation;
 	
+	
+	// CONSTRUCTOR
 	public Exercise(Random randomInput, ExerciseSettings settingsInput) {
 		settings = settingsInput;
 		random = randomInput;
 		formatter = configureFormatter();
 	}
 	
+	
+	// PRIVATE METHODS
+	/**
+	 * @param none:   		  input will be retrieved from the ExerciseSettings
+	 * @return DecimalFormat: a DecimalFormat object which can format double to the desired output */
+	private DecimalFormat configureFormatter() {
+		String pattern = getSettings().getNrDecimals() > 0 ? "#." + new String(new char[getSettings().getNrDecimals()]).replace("\0", "#") : "#";
+		return new DecimalFormat(pattern); 
+	}
+	
+	
+	// PUBLIC METHODS
+	/**
+	 * @param settings: getter for 'settings' */
 	abstract void generateExercise();
 
 	/**
@@ -59,13 +76,6 @@ public abstract class Exercise {
 	public char getOperation() {
 		return operation; }
 	
-	/**
-	 * @param none:   		  input will be retrieved from the ExerciseSettings
-	 * @return DecimalFormat: a DecimalFormat object which can format double to the desired output */
-	private DecimalFormat configureFormatter() {
-		String pattern = getSettings().getNrDecimals() > 0 ? "#." + new String(new char[getSettings().getNrDecimals()]).replace("\0", "#") : "#";
-		return new DecimalFormat(pattern); 
-	}
 	/**
 	 * Generates the string to display the exercise */
 	@Override

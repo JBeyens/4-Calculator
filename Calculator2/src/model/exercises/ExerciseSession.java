@@ -2,7 +2,6 @@ package model.exercises;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Random;
 
 import model.exercises.factory.Exercise;
 import model.exercises.factory.ExerciseFactory;

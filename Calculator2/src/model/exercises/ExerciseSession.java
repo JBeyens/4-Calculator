@@ -1,5 +1,7 @@
 package model.exercises;
 
+import java.text.DecimalFormat;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -20,6 +22,7 @@ public class ExerciseSession {
 	private boolean isRunning;
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;
+    private DecimalFormat format2nrs = new DecimalFormat("00");
 	
 	
 	// CONSTRUCTOR
@@ -41,7 +44,19 @@ public class ExerciseSession {
 			exerciseList.add(ExerciseFactory.getExercise(settings, i + 1));
 		}		
 	} 
-	
+
+	/**
+	 * @param none		The exercises are already generated based on the ExerciseSettings
+	 * @return String   Difference between start and end in HH:MM:SS format (H= Hour, M= Minute, S= Second)
+	 **/
+	private String getTimeDifference() {
+		if (endTime == null)
+			endTime = LocalDateTime.now();
+
+		Duration time =  Duration.between(startTime, endTime);
+		return time.toHours() + ":" + format2nrs.format(time.toMinutes() % 60)
+							  + ":" + format2nrs.format(time.getSeconds() % 60);
+	}
 	
 	// PUBLIC METHODS
 	/**
@@ -60,13 +75,24 @@ public class ExerciseSession {
 	 * @return String    A description of the results
 	 **/
 	public String getEndResult() {
-		// Time spent:
+		// End exercise setting:
 		if (isRunning) {
 			isRunning = false;
 			endTime = LocalDateTime.now();
 		}
+		
+		// Calculate score:
+		int correct = 0;
+		for (Exercise exercise : exerciseList) {
+			correct += exercise.isCorrectReplied() ? 1 : 0;
+		}
+	    int nrOfExercises = exerciseList.size();
+	    
+	    // Calculate time spent:
+	    String timeSpentHHMMSS = getTimeDifference();
 					
-		// TODO: compose string
-		return "TODO: compose string";
+
+		return "Eindscore oefeningen: " + correct + "/" + nrOfExercises
+				+ "\nTijd gespendeerd: " + timeSpentHHMMSS;
 	} 
 }

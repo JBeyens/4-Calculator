@@ -52,18 +52,14 @@ public class CalculatorController {
 	private class StartExerciseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			try {
-				//Code for userinput not yet implemented
 				settings = new ExerciseSettings();
 				settings.setMaxRange(Integer.parseInt(view.getTfMaxNumber()));
 				settings.setMinRange(Integer.parseInt(view.getTfMinNumber()));
 				settings.setNrDecimals(Integer.parseInt(view.getTfNrOfDecimals()));
 				settings.setNrOfExercises(Integer.parseInt(view.getTfNrOfQuestions()));
 				
-				//Needed to add/remove items to list => ExcerciseSettings needs String[] no ArrayList
 				ArrayList<String> tempOperators = new ArrayList();
 				
-				//Operators are hard coded
-				//Possible solution => seperate enum for operators and call these in methods
 				if(view.getRbAddition())
 					tempOperators.add("+");
 				
@@ -77,8 +73,12 @@ public class CalculatorController {
 					tempOperators.add("/");
 				}
 				
+				if(tempOperators.isEmpty())
+					throw new Exception("Gelieve ten minstenste 1 operator te kiezen!");
+				
 				String[] operators = new String[tempOperators.size()];
 				operators = tempOperators.toArray(operators);
+				
 				settings.setOperators(operators);
 				
 				exerciseManager = ExerciseManager.creationMethod();
@@ -88,8 +88,9 @@ public class CalculatorController {
 				view.setNextExerciseButton(true);
 				view.setCheckAnswerButton(true);
 			} catch (NumberFormatException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			} catch (Exception e1) {
+				view.showMessage(e1.getMessage());
 			}
 		}
 	}
@@ -108,7 +109,7 @@ public class CalculatorController {
 				}
 				
 				showNewExercise();
-				view.setTfUserInput("");
+				
 				
 			} catch (NumberFormatException e2) {
 				view.showMessage("Gelieve een geldig getal als antwoord in te geven!");
@@ -125,5 +126,6 @@ public class CalculatorController {
 	private void showNewExercise(){
 		currentExercise = exerciseManager.generateExercise(settings);
 		view.setLabelExercise(currentExercise.toString());
+		view.setTfUserInput("");
 	}
 }

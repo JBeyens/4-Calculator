@@ -60,6 +60,7 @@ public class ExerciseManager {
 	}
 	
 	public Exercise getExercise(){
+		//throws exception
 		Exercise ex = listExercices.get(currentNumberOfExercise - 1);
 		currentNumberOfExercise++;
 		return ex;

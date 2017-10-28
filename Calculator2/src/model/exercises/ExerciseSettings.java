@@ -8,6 +8,7 @@ package model.exercises;
  * This class is a container for the settings for the exercise generator
  */
 public class ExerciseSettings {
+	// PRIVATE MEMBERS
 	private double minRange;
 	private double maxRange;
 	private int nrDecimals;
@@ -15,10 +16,11 @@ public class ExerciseSettings {
 	private boolean isNegative;
 	private String[] operators;
 	
-	public ExerciseSettings(){
-		
+	// CONSTRUCTOR
+	public ExerciseSettings(){	
 	}
 	
+	// PUBLIC METHODS
 	public double getMinRange() {
 		return minRange;
 	}
@@ -49,14 +51,10 @@ public class ExerciseSettings {
 	public void setNrOfExercises(int nrExercises) {
 		this.nrExercises = nrExercises;
 	}
-
 	public boolean isNegative() {
 		return isNegative;
 	}
-
 	public void setNegative(boolean isNegative) {
 		this.isNegative = isNegative;
-	}
-	
-	
+	}	
 }

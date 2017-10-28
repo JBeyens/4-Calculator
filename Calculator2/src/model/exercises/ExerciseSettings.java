@@ -13,13 +13,20 @@ public class ExerciseSettings {
 	private double maxRange;
 	private int nrDecimals;
 	private int nrExercises;
-	private boolean isNegative;
 	private String[] operators;
 	
-	// CONSTRUCTOR
-	public ExerciseSettings(){	
+	//CONSTRUCTOR
+	public ExerciseSettings(double minRange, double maxRange, int nrDecimals, int nrExercises, String[] operators) {
+		super();
+		this.minRange = minRange;
+		this.maxRange = maxRange;
+		this.nrDecimals = nrDecimals;
+		this.nrExercises = nrExercises;
+		this.operators = operators;
 	}
-	
+
+
+
 	// PUBLIC METHODS
 	public double getMinRange() {
 		return minRange;
@@ -51,10 +58,4 @@ public class ExerciseSettings {
 	public void setNrOfExercises(int nrExercises) {
 		this.nrExercises = nrExercises;
 	}
-	public boolean isNegative() {
-		return isNegative;
-	}
-	public void setNegative(boolean isNegative) {
-		this.isNegative = isNegative;
-	}	
 }

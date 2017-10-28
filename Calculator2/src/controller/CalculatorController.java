@@ -51,11 +51,14 @@ public class CalculatorController {
 	private class StartExerciseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			try {
-				settings = new ExerciseSettings();
-				settings.setMaxRange(Integer.parseInt(view.getTfMaxNumber()));
-				settings.setMinRange(Integer.parseInt(view.getTfMinNumber()));
-				settings.setNrDecimals(Integer.parseInt(view.getTfNrOfDecimals()));
-				settings.setNrOfExercises(Integer.parseInt(view.getTfNrOfQuestions()));
+				int maxRange = Integer.parseInt(view.getTfMaxNumber());
+				int minRange = Integer.parseInt(view.getTfMinNumber());
+				int nrOfDecimals = Integer.parseInt(view.getTfNrOfDecimals());
+				int nrOfExercises = Integer.parseInt(view.getTfNrOfQuestions());
+				
+				if(minRange >= Math.sqrt(maxRange)){
+					throw new Exception("Minimum bereik is te groot! <" + Math.sqrt(maxRange));
+				}
 				
 				ArrayList<String> tempOperators = new ArrayList<String>();
 				
@@ -86,6 +89,7 @@ public class CalculatorController {
 				propertyManager.setProperty("nrOfQuestions", view.getTfNrOfQuestions());
 				propertyManager.setProperty("operators", String.join(",", operators));
 				
+				settings = new ExerciseSettings(minRange, maxRange, nrOfDecimals, nrOfExercises, operators);
 				exerciseSession = new ExerciseSession(settings);
 				
 				showNewExercise();

@@ -81,7 +81,7 @@ public class CalculatorController {
 				
 				settings.setOperators(operators);
 				
-				exerciseManager = ExerciseManager.creationMethod();
+				exerciseManager = new ExerciseManager(settings);
 				
 				showNewExercise();
 				view.setStartExerciseButton(false);

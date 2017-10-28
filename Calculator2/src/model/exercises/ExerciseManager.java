@@ -1,5 +1,6 @@
 package model.exercises;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import model.exercises.factory.Exercise;
@@ -16,40 +17,25 @@ import model.exercises.factory.ExerciseFactory;
  */
 
 public class ExerciseManager {
-	// Fields
-	static ExerciseManager exerciseManager;
-	static Random random;
+	private ArrayList<Exercise> listExercices;
+	private ExerciseSettings settings;
+	private ExerciseManager exerciseManager;
+	private Random random;
+	private int correctAnswers;
 	
 	
-	private ExerciseManager() {
-		random = new Random();
-	}
-	
-	
-	public static ExerciseManager creationMethod()	{
-		if (exerciseManager == null)
-			exerciseManager = new ExerciseManager();
-		
-		return exerciseManager;
-	}
-	
-	
-	public boolean isExerciseSettingsAcceptable(ExerciseSettings settings)
-	{
-		boolean check1 = settings.getNrDecimals() >= 0;
-		boolean check2 = settings.getMaxRange() >= 2.0 * settings.getMinRange();
-		
-		return (check1 && check2);
+	public ExerciseManager(ExerciseSettings settings) {
+		this.random = new Random();
+		this.settings = settings;
+		this.listExercices = new ArrayList<>();
+		generateExercise();
+		correctAnswers = 0;
 	}
 
-	
-	/**
-	 * Returns the result of the exercise given to it.	 *
-	 * @param settings  exerciseSettings that must be respected in the exercise.
-	 * @return exercise	returns an exercise in which the operands and operation have been set based on the exerciseSettings
-	 */
-	public Exercise generateExercise(ExerciseSettings settings) {
-		return ExerciseFactory.getExercise(random, settings);
+	private void generateExercise() {
+		for (int i = 0; i < settings.getNrOfExercises(); i++) {
+			listExercices.add(ExerciseFactory.getExercise(random, settings));
+		}
 	}
 	
 	/**
@@ -61,5 +47,17 @@ public class ExerciseManager {
 	 */
 	public double getSolutionExercise(Exercise exercise) throws IllegalArgumentException {
 		return Calculator.doCalculation(exercise);
+	}
+	
+	public boolean isExerciseSettingsAcceptable(ExerciseSettings settings)
+	{
+		boolean check1 = settings.getNrDecimals() >= 0;
+		boolean check2 = settings.getMaxRange() >= 2.0 * settings.getMinRange();
+		
+		return (check1 && check2);
+	}
+	
+	public String showResults(){
+		return null;
 	}
 }

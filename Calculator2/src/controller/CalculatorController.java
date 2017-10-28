@@ -124,6 +124,7 @@ public class CalculatorController {
 	private void showNewExercise(){
 		currentExercise = exerciseSession.getNextExercise();
 		if(currentExercise != null){
+			view.setLabelStringExercise("Oefening " + currentExercise.getExerciseNumber());
 			view.setLabelExercise(currentExercise.toString());
 			view.setTfUserInput("");
 		}

@@ -34,14 +34,15 @@ public class ExerciseSession {
 		exerciseList = new ArrayList<Exercise>();
 		generateExercises(settings);
 		isRunning = true;
-		startTime = LocalDateTime.now();		
+		startTime = LocalDateTime.now();
 		exerciseCounter = 0;
 	}
 	
 	// PRIVATE METHODS
 	private void generateExercises(ExerciseSettings settings) {
 		for (int i = 0; i < settings.getNrOfExercises(); i++) {
-			exerciseList.add(ExerciseFactory.getExercise(settings, i + 1));
+			exerciseCounter++;
+			exerciseList.add(ExerciseFactory.getExercise(settings, exerciseCounter));
 		}		
 	} 
 

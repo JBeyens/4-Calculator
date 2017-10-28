@@ -26,7 +26,6 @@ public class MainView extends JFrame {
 	private JLabel labelOperators;
 	private JLabel labelStringExercise;
 	private JLabel labelExercise;
-	private JLabel labelNegative;
 	
 	private JFormattedTextField tfNrOfQuestions;
 	private JFormattedTextField tfMinNumber;
@@ -69,6 +68,13 @@ public class MainView extends JFrame {
 	}
 	public void setTfUserInput(String tfUserInput) {
 		this.tfUserInput.setText(tfUserInput);;
+	}
+	
+	public String getLabelStringExercise() {
+		return labelStringExercise.getText();
+	}
+	public void setLabelStringExercise(String labelExercise) {
+		this.labelStringExercise.setText(labelExercise);
 	}
 	
 	public String getTfNrOfQuestions() {
@@ -135,12 +141,12 @@ public class MainView extends JFrame {
 		this.rbDivision.setSelected(isSelected);
 	}
 	
-	public void setLabelExercise(String s){
-		this.labelExercise.setText(s);
-	}
-	
 	public void showMessage(String s){
 		JOptionPane.showMessageDialog(null, s);
+	}
+	
+	public void setLabelExercise(String string) {
+		this.labelExercise.setText(string);		
 	}
 
 	private void setUp(){
@@ -150,7 +156,7 @@ public class MainView extends JFrame {
 		labelNrOfDecimals = new JLabel("Aantal decimalen: ");
 		labelOperators = new JLabel("Bewerkingen: ");
 		labelStringExercise = new JLabel("Oefening");
-		labelExercise = new JLabel("Hier komt iets");
+		labelExercise = new JLabel("");
 		labelExercise.setBackground(Color.PINK);
 		
 		tfNrOfDecimals = new JFormattedTextField(NumberFormat.getIntegerInstance());
@@ -179,10 +185,8 @@ public class MainView extends JFrame {
 		layout.putConstraint(SpringLayout.EAST, tfMinNumber, 0, SpringLayout.EAST, tfNrOfQuestions);
 		layout.putConstraint(SpringLayout.WEST, tfMaxNumber, 11, SpringLayout.EAST, labelMAxNumber);
 		layout.putConstraint(SpringLayout.EAST, tfNrOfQuestions, -35, SpringLayout.WEST, labelOperators);
-		layout.putConstraint(SpringLayout.SOUTH, labelNegative, -9, SpringLayout.NORTH, startExercises);
 		layout.putConstraint(SpringLayout.WEST, tfMinNumber, 15, SpringLayout.EAST, labelMinNumber);
 		layout.putConstraint(SpringLayout.WEST, tfNrOfQuestions, 19, SpringLayout.EAST, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.WEST, labelNegative, 0, SpringLayout.WEST, labelOperators);
 		layout.putConstraint(SpringLayout.WEST, checkAnswer, 26, SpringLayout.EAST, tfUserInput);
 		layout.putConstraint(SpringLayout.WEST, tfUserInput, -27, SpringLayout.WEST, labelOperators);
 		layout.putConstraint(SpringLayout.NORTH, checkAnswer, 0, SpringLayout.NORTH, labelExercise);
@@ -239,8 +243,8 @@ public class MainView extends JFrame {
 		getContentPane().add(labelStringExercise);
 		getContentPane().add(checkAnswer);
 		getContentPane().add(tfUserInput);
-		getContentPane().add(labelNegative);
 	}
+
 	
 	
 }

@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
-import model.exercises.ExerciseManager;
+import model.exercises.Calculator;
+import model.exercises.ExerciseSession;
 import model.exercises.ExerciseSettings;
 import model.exercises.factory.Exercise;
 import model.properties.PropertyManager;
@@ -16,13 +18,15 @@ import view.MainView;
 public class CalculatorController {
 	private MainView view;
 	private PropertyManager propertyManager;
-	private ExerciseManager exerciseManager;
+	private ExerciseSession exerciseSession;
 	private ExerciseSettings settings;
 	private Exercise currentExercise;
+	private Random random;
 	
 	public CalculatorController(){
 		view = new MainView();
 		propertyManager = PropertyManager.CreationMethod();
+		random = new Random();
 	}
 	
 	public void startController(){
@@ -81,7 +85,7 @@ public class CalculatorController {
 				
 				settings.setOperators(operators);
 				
-				exerciseManager = new ExerciseManager(settings);
+				exerciseSession = new ExerciseSession(random, settings);
 				
 				showNewExercise();
 				view.setStartExerciseButton(false);
@@ -100,9 +104,9 @@ public class CalculatorController {
 			try {
 				Double userInput = Double.parseDouble(view.getTfUserInput());
 				
-				if(userInput == exerciseManager.getSolutionExercise(currentExercise)){
+				if(userInput == Calculator.doCalculation(currentExercise)){
 					view.showMessage(PositiveComment.getRandom().getValue());
-					//add counter++ to correctAnswers
+					currentExercise.setCorrectReplied(true);
 				}
 				else{
 					view.showMessage(NegativeComment.getRandom().getValue());
@@ -124,7 +128,7 @@ public class CalculatorController {
 	}
 	
 	private void showNewExercise(){
-		currentExercise = exerciseManager.getExercise();
+		currentExercise = exerciseSession.getNextExercise();
 		if(currentExercise != null){
 			view.setLabelExercise(currentExercise.toString());
 			view.setTfUserInput("");
@@ -133,7 +137,7 @@ public class CalculatorController {
 			view.setStartExerciseButton(true);
 			view.setNextExerciseButton(false);
 			view.setCheckAnswerButton(false);
-			view.showMessage(exerciseManager.showResults());
+			view.showMessage(exerciseSession.getEndResult());
 		}
 		
 	}

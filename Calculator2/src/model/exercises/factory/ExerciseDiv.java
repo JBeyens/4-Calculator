@@ -1,7 +1,5 @@
 package model.exercises.factory;
 
-import java.util.Random;
-
 import model.exercises.ExerciseSettings;
 
 /**

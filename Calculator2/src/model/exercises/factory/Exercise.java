@@ -49,8 +49,11 @@ public abstract class Exercise {
 	/**
 	 * Generates the string to display the exercise */
 	@Override
-	public String toString() {
-		return "" + formatter.format(getOperand1()) + " " + getOperation() + " " + formatter.format(getOperand2()) + " = ";
+	public String toString() {							
+		return (getOperand1() < 0 ? "(" : "") + formatter.format(getOperand1()) + (getOperand1() < 0 ? ")" : "") 
+				+ getOperation() + " " 
+				+ (getOperand2() < 0 ? "(" : "") + formatter.format(getOperand2()) + (getOperand1() < 0 ? ")" : "")
+				+ " = ";
 	}
 	
 

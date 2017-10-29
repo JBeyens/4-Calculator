@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import model.exercises.ExerciseSettings;
 import model.exercises.factory.Exercise;
+import model.exercises.factory.ExerciseAdd;
 import model.exercises.factory.ExerciseSub;
 import model.exercises.factory.Randomizer;
 
@@ -68,7 +69,7 @@ public class ExerciseSubTest {
 	}
 
 	@Test
-	public void test_ToString_For_Random_NrDecimals_Expect_Good_Decimals() {
+	public void test_ToString_For_Random_NrDecimals_Expect_String_Has_Certain_Length_And_Certain_Characters() {
 		for (int i = 0; i < 100000; i++) {
 			int rndInt = Randomizer.getRandomNumber(0, boundDecimals);
 			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
@@ -78,16 +79,19 @@ public class ExerciseSubTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			exercise = new ExerciseSub(settings, rndInt);
+			exercise = new ExerciseAdd(settings, rndInt);
 
 			String result = exercise.toString();
 			int maxResultLength = Double.toString(exercise.getOperand1()).indexOf('.') 
 							      + Double.toString(exercise.getOperand2()).indexOf('.')
 							      + 6 // 6 = 1x space between nr1 & operator + 1x for operator + 1x space + one the end ' = ' for 3x
 							      + 2 // 2 for decimal point in each double
+							      + 4 // 2*2 for '(' ')' around possible negative numbers
 							      + 2 * settings.getNrDecimals(); 
-			assertTrue(result.endsWith(" = "));  
-			assertTrue(result.length() <= maxResultLength);  
+			assertTrue(result.endsWith(" = "));  			// Check if it contains ' = ' at the end
+			assertTrue(result.length() <= maxResultLength); // Check if the string length is not to long (would indicate bad formatting of doubles)
+			assertTrue((exercise.getOperand1() < 0 ? result.indexOf('(') > -1 : true)); // Check if there are () brackets for negative numbers
+			assertTrue((exercise.getOperand2() < 0 ? result.indexOf('(') > -1 : true)); // Check if there are () brackets for negative numbers
 		}
 	}
 }

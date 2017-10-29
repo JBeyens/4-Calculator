@@ -7,17 +7,10 @@ import org.junit.Test;
 
 import model.exercises.ExerciseSettings;
 import model.exercises.factory.Exercise;
-import model.exercises.factory.ExerciseAdd;
+import model.exercises.factory.ExerciseSub;
 import model.exercises.factory.Randomizer;
 
-
-/**
- * 	@Author Jef Beyens & Ben Vandevorst
-	@Datum 28/10/2017
-	@Project Calculator
-	@Doel Testen van de ExerciseAdd functies
- */
-public class ExerciseAddTest {
+public class ExerciseSubTest {
 	private ExerciseSettings settings;
 	private int boundDecimals;
 	private double boundRange;
@@ -41,14 +34,14 @@ public class ExerciseAddTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			Exercise exerciseAdd = new ExerciseAdd(settings, rndInt);
+			Exercise exerciseSub = new ExerciseSub(settings, rndInt);
 
-			assertTrue(exerciseAdd.getExerciseNumber() == rndInt); 
-			assertTrue(exerciseAdd.getOperand1() >= minRange); 
-			assertTrue(exerciseAdd.getOperand2() >= minRange); 
-			assertTrue(exerciseAdd.getOperand1() <= maxRange); 
-			assertTrue(exerciseAdd.getOperand2() <= maxRange); 
-			assertTrue(exerciseAdd.getOperation() == '+'); 			
+			assertTrue(exerciseSub.getExerciseNumber() == rndInt); 
+			assertTrue(exerciseSub.getOperand1() >= minRange); 
+			assertTrue(exerciseSub.getOperand2() >= minRange); 
+			assertTrue(exerciseSub.getOperand1() <= maxRange); 
+			assertTrue(exerciseSub.getOperand2() <= maxRange); 
+			assertTrue(exerciseSub.getOperation() == '+'); 			
 		}
 	}
 
@@ -63,10 +56,10 @@ public class ExerciseAddTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			Exercise exerciseAdd = new ExerciseAdd(settings, rndInt);
+			Exercise exerciseSub = new ExerciseSub(settings, rndInt);
 
-			double op1 = exerciseAdd.getOperand1() * Math.pow(10, rndInt);
-			double op2 = exerciseAdd.getOperand2() * Math.pow(10, rndInt);
+			double op1 = exerciseSub.getOperand1() * Math.pow(10, rndInt);
+			double op2 = exerciseSub.getOperand2() * Math.pow(10, rndInt);
 	
 			assertTrue(Math.round(op1) - op1 < 0.00001); 
 			assertTrue(Math.round(op2) - op2 < 0.00001); 
@@ -84,11 +77,11 @@ public class ExerciseAddTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			Exercise exerciseAdd = new ExerciseAdd(settings, rndInt);
+			Exercise exerciseSub = new ExerciseSub(settings, rndInt);
 
-			String result = exerciseAdd.toString();
-			int maxResultLength = Double.toString(exerciseAdd.getOperand1()).indexOf('.') 
-							      + Double.toString(exerciseAdd.getOperand2()).indexOf('.')
+			String result = exerciseSub.toString();
+			int maxResultLength = Double.toString(exerciseSub.getOperand1()).indexOf('.') 
+							      + Double.toString(exerciseSub.getOperand2()).indexOf('.')
 							      + 6 // 6 = 1x space between nr1 & operator + 1x for operator + 1x space + one the end ' = ' for 3x
 							      + 2 // 2 for decimal point in each double
 							      + 2 * settings.getNrDecimals(); 

@@ -20,13 +20,15 @@ public class ExerciseSub extends Exercise {
 
 	public void generateExercise() {
 		setOperation( '-' );
-		setOperand1( Randomizer.getRandomNumber(				 
-				2.0 * getSettings().getMinRange(), // this is the first step to ensure that the result will be within range
-				getSettings().getMaxRange(), 
-				getSettings().getNrDecimals()));
-		setOperand2( Randomizer.getRandomNumber(				 
-				getSettings().getMinRange(), 
-				getOperand1() - getSettings().getMinRange(), // this is the second step to ensure that the sum will be within range
-				getSettings().getNrDecimals()));
+		
+		double min = getSettings().getMinRange();
+		double max = getSettings().getMaxRange();
+		int nrDecs = getSettings().getNrDecimals();
+		double x = Randomizer.getRandomNumber( min, max, nrDecs);
+		double y = Randomizer.getRandomNumber( min, max, nrDecs);
+		
+		boolean allowNegativeResult = getSettings().getMinRange() < 0;
+		setOperand1(allowNegativeResult ? x : Math.max(x, y));
+		setOperand2(allowNegativeResult ? y : Math.min(x, y));
 	}
 }

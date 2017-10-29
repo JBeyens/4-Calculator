@@ -20,13 +20,11 @@ public class ExerciseAdd extends Exercise {
 
 	public void generateExercise() {
 		setOperation('+');
-		setOperand1( Randomizer.getRandomNumber(				
-				getSettings().getMinRange(), 
-				getSettings().getMaxRange(),
-				getSettings().getNrDecimals()));
-		setOperand2( Randomizer.getRandomNumber(			 
-				getSettings().getMinRange(), 
-				getSettings().getMaxRange(),
-				getSettings().getNrDecimals()));		
+		
+		double min = getSettings().getMinRange();
+		double max = getSettings().getMaxRange();
+		int nrDecs = getSettings().getNrDecimals();
+		setOperand1( Randomizer.getRandomNumber( min, max, nrDecs));
+		setOperand2( Randomizer.getRandomNumber( min, max, nrDecs));		
 	}
 }

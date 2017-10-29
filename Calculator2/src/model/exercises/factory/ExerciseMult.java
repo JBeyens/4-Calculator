@@ -20,14 +20,11 @@ public class ExerciseMult extends Exercise {
 
 	public void generateExercise() {
 		setOperation( '*' );
-		// TODO: For multiplication, the result is not guaranteed to be in range...
-		setOperand1( Randomizer.getRandomNumber(				 
-				getSettings().getMinRange(),
-				getSettings().getMaxRange(), 
-				getSettings().getNrDecimals()));
-		setOperand2( Randomizer.getRandomNumber(				 
-				getSettings().getMinRange(), 
-				getSettings().getMaxRange(), 
-				getSettings().getNrDecimals()));
+		
+		double min = getSettings().getMinRange();
+		double max = getSettings().getMaxRange();
+		int nrDecs = getSettings().getNrDecimals();
+		setOperand1( Randomizer.getRandomNumber( min, max, nrDecs));
+		setOperand2( Randomizer.getRandomNumber( min, max, nrDecs));
 	}
 }

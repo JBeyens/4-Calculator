@@ -18,8 +18,8 @@ public class ExerciseSettings {
 	//CONSTRUCTOR
 	public ExerciseSettings(double minRange, double maxRange, int nrDecimals, int nrExercises, String[] operators) {
 		super();
-		this.minRange = minRange;
-		this.maxRange = maxRange;
+		this.minRange = Math.min(minRange, maxRange);
+		this.maxRange = Math.max(minRange, maxRange);
 		this.nrDecimals = nrDecimals;
 		this.nrExercises = nrExercises;
 		this.operators = operators;

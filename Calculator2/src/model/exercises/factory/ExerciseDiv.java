@@ -20,15 +20,16 @@ public class ExerciseDiv extends Exercise {
 
 	public void generateExercise() {
 		setOperation( '/' );
-		// TODO: For multiplication, the result is not guaranteed to be in range...
-		setOperand1( Randomizer.getRandomNumber(				
-				getSettings().getMinRange(),
-				getSettings().getMaxRange(), 
-				getSettings().getNrDecimals()));
-		setOperand2( Randomizer.getRandomNumber(				 
-				getSettings().getMinRange(), 
-				getSettings().getMaxRange() / 2.0, 
-				getSettings().getNrDecimals()));
+
+		double min = getSettings().getMinRange();
+		double max = getSettings().getMaxRange();
+		int nrDecs = getSettings().getNrDecimals();
+		double x = Randomizer.getRandomNumber( min, max, nrDecs);
+		double y = Randomizer.getRandomNumber( min, max, nrDecs);
+	
+		boolean xAbsBiggerThanYAbs = Math.abs(x) > Math.abs(y); 
+		setOperand1(xAbsBiggerThanYAbs ? x : y);
+		setOperand2(xAbsBiggerThanYAbs ? y : x);
 		
 		modifyOperand1ToEnsureModulusIsZero(); // Modifies operand1 so that the modulus is zero
 	}

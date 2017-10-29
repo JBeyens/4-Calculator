@@ -1,4 +1,4 @@
-package model.exercises.factory;
+package model.exercisesFactory;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

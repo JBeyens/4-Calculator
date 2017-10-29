@@ -1,6 +1,6 @@
 package model.exercises;
 
-import model.exercises.factory.Exercise;
+import model.exercisesFactory.Exercise;
 
 /**
  * @Autor: Jef Beyens

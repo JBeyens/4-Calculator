@@ -1,4 +1,4 @@
-package model.exercises.factory.test;
+package model.exercisesFactory.test;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +10,7 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.exercises.factory.Randomizer;
+import model.exercisesFactory.Randomizer;
 
 
 /**

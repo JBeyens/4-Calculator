@@ -1,10 +1,7 @@
 package view;
 
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
@@ -13,15 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
-import java.awt.Color;
 
 
 /**
@@ -35,6 +27,8 @@ public class MainView extends JFrame {
 	/**
 	 * 
 	 */
+	
+	//JComponents
 	private static final long serialVersionUID = 1L;
 	private JLabel labelNrOfQuestions;
 	private JLabel labelMinNumber;
@@ -60,12 +54,16 @@ public class MainView extends JFrame {
 
 	private SpringLayout layout;
 	
+	
+	//Constructor
 	public MainView(){
 		setUp();
 		this.setTitle("Calculator Exercises");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	
+	//ActionListeners for buttons;
 	public void addExerciseActionListener(ActionListener listener){
 		checkAnswer.addActionListener(listener);
 	}
@@ -74,6 +72,8 @@ public class MainView extends JFrame {
 		startExercises.addActionListener(listener);
 	}
 	
+	
+	//Function for enabling/disabling buttons
 	public void setCheckAnswerButton(Boolean isEnabled){
 		this.checkAnswer.setEnabled(isEnabled);
 	}
@@ -82,6 +82,8 @@ public class MainView extends JFrame {
 		this.startExercises.setEnabled(isEnabled);
 	}
 		
+	
+	//Getters & Setters
 	public String getTfUserInput() {
 		return tfUserInput.getText();
 	}
@@ -168,6 +170,12 @@ public class MainView extends JFrame {
 		this.labelExercise.setText(string);		
 	}
 
+	
+	/*Initialization JComponents
+	 *ChangeListeners to SpinnerComponent
+	 *LayOut settings
+	 *Adding JComponents to contentPane 
+	 */
 	private void setUp(){
 		labelNrOfQuestions = new JLabel("Aantal vragen: ");
 		labelMinNumber = new JLabel("Minimum bereik: ");

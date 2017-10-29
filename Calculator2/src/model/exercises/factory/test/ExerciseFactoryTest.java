@@ -16,73 +16,49 @@ import model.exercises.factory.Randomizer;
 
 public class ExerciseFactoryTest {
 	private ExerciseSettings settings;
-	private int boundDecimals;
+	private int boundInteger;
 	private double boundRange;
 	private String[] operators;
 	private Exercise exercise;
 	
 	@Before
 	public void setUp(){
-		boundDecimals = 10;
+		boundInteger = 10;
 		boundRange = 1000;
 		operators = new String[] {"+","-","/"};
+		settings = new ExerciseSettings(-1* boundRange, boundRange,	boundInteger, boundInteger, operators);
 	}
 
 	@Test
-	public void test_GetExercise_Should_Return_An_Exercise_With_Correct_Operator() {
-		for (int i = 0; i < 100000; i++) {
-			int rndInt = Randomizer.getRandomNumber(0, boundDecimals);
-			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
-			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+	public void test_GetExercise_Should_Return_An_Exercise_With_Correct_Operator_And_Type() {
+		settings.setOperators(new String[] {"+"});
+		exercise = ExerciseFactory.getExercise(settings, boundInteger);
+		assertTrue(exercise.getOperation() == '+');
+		assertTrue(exercise instanceof ExerciseAdd);  
 			
-			settings = new ExerciseSettings(Math.min(minRange, maxRange), 
-										    Math.max(minRange, maxRange), 
-										    rndInt, rndInt, operators);
+		settings.setOperators(new String[] {"-"});
+		exercise = ExerciseFactory.getExercise(settings, boundInteger);
+		assertTrue(exercise.getOperation() == '-'); 
+		assertTrue(exercise instanceof ExerciseSub); 
 			
-			settings.setOperators(new String[] {"+"});
-			exercise = ExerciseFactory.getExercise(settings, rndInt);
-			assertTrue(exercise.getOperation() == '+'); 
+		settings.setOperators(new String[] {"*"});
+		exercise = ExerciseFactory.getExercise(settings, boundInteger);
+		assertTrue(exercise.getOperation() == '*'); 
+		assertTrue(exercise instanceof ExerciseMult);
 			
-			settings.setOperators(new String[] {"-"});
-			exercise = ExerciseFactory.getExercise(settings, rndInt);
-			assertTrue(exercise.getOperation() == '-'); 
-			
-			settings.setOperators(new String[] {"*"});
-			exercise = ExerciseFactory.getExercise(settings, rndInt);
-			assertTrue(exercise.getOperation() == '*'); 
-			
-			settings.setOperators(new String[] {"/"});
-			exercise = ExerciseFactory.getExercise(settings, rndInt);
-			assertTrue(exercise.getOperation() == '/'); 			
-		}
+		settings.setOperators(new String[] {"/"});
+		exercise = ExerciseFactory.getExercise(settings, boundInteger);
+		assertTrue(exercise.getOperation() == '/');
+		assertTrue(exercise instanceof ExerciseDiv);
 	}
 
 	@Test
-	public void test_GetExercise_Should_Return_An_Exercise_With_Correct_Type() {
+	public void test_GetExercise_Should_Return_An_Exercise_With_Inputted_Integer() {
 		for (int i = 0; i < 100000; i++) {
-			int rndInt = Randomizer.getRandomNumber(0, boundDecimals);
-			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
-			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			int rndInt = Randomizer.getRandomNumber(0, boundInteger);
 			
-			settings = new ExerciseSettings(Math.min(minRange, maxRange), 
-										    Math.max(minRange, maxRange), 
-										    rndInt, rndInt, operators);
-			
-			settings.setOperators(new String[] {"+"});
 			exercise = ExerciseFactory.getExercise(settings, rndInt);
-			assertTrue(exercise instanceof ExerciseAdd); 
-			
-			settings.setOperators(new String[] {"-"});
-			exercise = ExerciseFactory.getExercise(settings, rndInt);
-			assertTrue(exercise instanceof ExerciseSub); 
-			
-			settings.setOperators(new String[] {"*"});
-			exercise = ExerciseFactory.getExercise(settings, rndInt);
-			assertTrue(exercise instanceof ExerciseMult); 
-			
-			settings.setOperators(new String[] {"/"});
-			exercise = ExerciseFactory.getExercise(settings, rndInt);
-			assertTrue(exercise instanceof ExerciseDiv); 			
+			assertTrue(exercise.getExerciseNumber() == rndInt); 
 		}
 	}
 }

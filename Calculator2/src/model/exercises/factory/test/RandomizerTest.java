@@ -1,7 +1,9 @@
-package testing;
+package model.exercises.factory.test;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -12,12 +14,11 @@ import model.exercises.factory.Randomizer;
 
 
 /**
- * 	@Author Ben Vandevorst
+ * 	@Author Ben Vandevorst & Jef Beyens
 	@Datum 09/10/2017
 	@Project Calculator
 	@Doel Testen van de Randomizer functies
  */
-
 public class RandomizerTest {
 	private String[] stringArray1;
 	private String[] stringArray2;
@@ -105,14 +106,23 @@ public class RandomizerTest {
 		for (int i = 0; i < 1000000; i++) {
 			double minNumber = rnd.nextDouble()*(-10000d);
 			double maxNumber = rnd.nextDouble()*(10000d);
-			int nrOfDecimals = rnd.nextInt(6);
+			int nrOfDecimals = rnd.nextInt(10);
 			double result = Randomizer.getRandomNumber(minNumber, maxNumber, nrOfDecimals);
 			
 			assertTrue(minNumber <= result);
 			assertTrue(result <= maxNumber);
 			
-			double resultNoDecimals = result * Math.pow(10, nrOfDecimals);
-			assertTrue(Math.abs(resultNoDecimals - Math.round(resultNoDecimals)) < 0.000001);
+			double resultCleanDecimals = new BigDecimal(result).setScale(nrOfDecimals, RoundingMode.HALF_UP).doubleValue();	
+			assertTrue(Math.abs(result - resultCleanDecimals) < 0.000001);
+		}
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void test_Get_Random_Double_For_Negative_NrDecimals_Expected_IllegalArgumentException(){
+		for (int i = 0; i < 1000000; i++) {
+			Randomizer.getRandomNumber(0, 1, -1);
+			
+			assertTrue(false);
 		}
 	}
 }

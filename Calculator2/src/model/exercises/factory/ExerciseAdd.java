@@ -22,11 +22,11 @@ public class ExerciseAdd extends Exercise {
 		setOperation('+');
 		setOperand1( Randomizer.getRandomNumber(				
 				getSettings().getMinRange(), 
-				getSettings().getMaxRange() - getSettings().getMinRange(), // this is the first step to ensure that the result will be within range
+				getSettings().getMaxRange(),
 				getSettings().getNrDecimals()));
-		setOperand2( Randomizer.getRandomNumber(				 
+		setOperand2( Randomizer.getRandomNumber(			 
 				getSettings().getMinRange(), 
-				getSettings().getMaxRange() - getOperand1(), // this is the second step to ensure that the result will be within range
-				getSettings().getNrDecimals()));
+				getSettings().getMaxRange(),
+				getSettings().getNrDecimals()));		
 	}
 }

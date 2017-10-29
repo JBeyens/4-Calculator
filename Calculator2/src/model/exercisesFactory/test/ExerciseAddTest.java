@@ -1,4 +1,4 @@
-package model.exercises.factory.test;
+package model.exercisesFactory.test;
 
 import static org.junit.Assert.*;
 
@@ -6,9 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import model.exercises.ExerciseSettings;
-import model.exercises.factory.Exercise;
-import model.exercises.factory.ExerciseAdd;
-import model.exercises.factory.Randomizer;
+import model.exercisesFactory.Exercise;
+import model.exercisesFactory.ExerciseAdd;
+import model.exercisesFactory.Randomizer;
 
 
 /**

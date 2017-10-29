@@ -8,7 +8,7 @@ import java.util.Arrays;
 import model.exercises.Calculator;
 import model.exercises.ExerciseSession;
 import model.exercises.ExerciseSettings;
-import model.exercises.factory.Exercise;
+import model.exercisesFactory.Exercise;
 import model.properties.PropertyManager;
 import values.NegativeComment;
 import values.PositiveComment;

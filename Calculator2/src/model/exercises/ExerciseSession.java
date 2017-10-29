@@ -5,8 +5,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import model.exercises.factory.Exercise;
-import model.exercises.factory.ExerciseFactory;
+import model.exercisesFactory.Exercise;
+import model.exercisesFactory.ExerciseFactory;
 
 /**
  * @Autor: Jef Beyens & Ben Vandevorst

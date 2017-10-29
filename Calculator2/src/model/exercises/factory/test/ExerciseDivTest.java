@@ -90,4 +90,23 @@ public class ExerciseDivTest {
 			assertTrue(result.length() <= maxResultLength);  
 		}
 	}
+
+	@Test
+	public void test_GenerateExercises_Expect_Modulus_Equals_Zero() {
+		for (int i = 0; i < 100000; i++) {
+			int rndInt = Randomizer.getRandomNumber(0, boundDecimals);
+			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			
+			settings = new ExerciseSettings(Math.min(minRange, maxRange), 
+										    Math.max(minRange, maxRange), 
+										    rndInt, rndInt, operators);
+			
+			exercise = new ExerciseDiv(settings, rndInt);
+
+			double rest = exercise.getOperand1() % exercise.getOperand2();
+	
+			assertTrue(rest < 0.00001); 
+		}
+	}
 }

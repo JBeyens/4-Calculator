@@ -24,24 +24,18 @@ public class ExerciseDiv extends Exercise {
 		double min = getSettings().getMinRange();
 		double max = getSettings().getMaxRange();
 		int nrDecs = getSettings().getNrDecimals();
-		double x = Randomizer.getRandomNumber( min, max, nrDecs);
-		double y = Randomizer.getRandomNumber( min, max, nrDecs);
-	
+		double x = 0;
+		double y = 0;
+		while (x == 0 || y == 0 )
+		{
+			x = Randomizer.getRandomNumber( min, max, nrDecs);
+			y = Randomizer.getRandomNumber( min, max, nrDecs);
+		}
+			
 		boolean xAbsBiggerThanYAbs = Math.abs(x) > Math.abs(y); 
 		setOperand1(xAbsBiggerThanYAbs ? x : y);
 		setOperand2(xAbsBiggerThanYAbs ? y : x);
 		
-		modifyOperand1ToEnsureModulusIsZero(); // Modifies operand1 so that the modulus is zero
-	}
-	
-	/* Modifies operand1 to ensure the result of the division does not have more decimals than allowed */
-	private void modifyOperand1ToEnsureModulusIsZero()
-	{
-		double rest = getOperand1() % getOperand2();
-		
-		if (  getOperand1() + (getOperand2() - rest) > getSettings().getMaxRange()  )
-			setOperand1( getOperand1() - rest );
-		else
-			setOperand1( getOperand1() + getOperand2() - rest);
+		setOperand1(getOperand1() + (getOperand1() % getOperand2()));
 	}
 }

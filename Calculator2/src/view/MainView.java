@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import java.awt.Color;
@@ -169,10 +170,18 @@ public class MainView extends JFrame {
 		labelOperators = new JLabel("Bewerkingen: ");
 		labelStringExercise = new JLabel("Oefening");
 		labelExercise = new JLabel("");
-		labelExercise.setBackground(Color.PINK);
 		
-		SpinnerModel valueD = new SpinnerNumberModel(0,0,5,1);
+		SpinnerNumberModel valueD = new SpinnerNumberModel(0,0,5,1);
 		tfNrOfDecimals = new JSpinner(valueD);
+		tfNrOfDecimals.addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				if(valueD.getMaximum().compareTo(tfNrOfDecimals.getValue()) > 5){
+					setTfNrOfDecimals("5");
+				}		
+			}
+			
+		});
 		SpinnerModel valueQ = new SpinnerNumberModel(5, 5, 30, 1);
 		tfNrOfQuestions = new JSpinner(valueQ);
 		tfMaxNumber = new JFormattedTextField(NumberFormat.getIntegerInstance());
@@ -256,7 +265,5 @@ public class MainView extends JFrame {
 		getContentPane().add(checkAnswer);
 		getContentPane().add(tfUserInput);
 	}
-
-	
 	
 }

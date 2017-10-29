@@ -41,7 +41,7 @@ public class ExerciseSubTest {
 			assertTrue(exerciseSub.getOperand2() >= minRange); 
 			assertTrue(exerciseSub.getOperand1() <= maxRange); 
 			assertTrue(exerciseSub.getOperand2() <= maxRange); 
-			assertTrue(exerciseSub.getOperation() == '+'); 			
+			assertTrue(exerciseSub.getOperation() == '-'); 			
 		}
 	}
 

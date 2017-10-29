@@ -5,9 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import model.exercises.Calculator;
 import model.exercises.ExerciseSession;
 import model.exercises.ExerciseSettings;
@@ -27,17 +24,23 @@ import view.MainView;
  */
 
 public class CalculatorController {
+	//Fields
 	private MainView view;
 	private PropertyManager propertyManager;
 	private ExerciseSession exerciseSession;
 	private ExerciseSettings settings;
 	private Exercise currentExercise;
 	
+	
+	//Constructor
 	public CalculatorController(){
 		view = new MainView();
+		
+		//Calling properties
 		propertyManager = PropertyManager.CreationMethod();
 	}
 	
+	//Set up view
 	public void startController(){
 		initializeProperties();
 		view.setVisible(true);
@@ -46,6 +49,8 @@ public class CalculatorController {
 		view.addExerciseActionListener(new CheckExerciseListener());
 	}
 	
+	
+	//Load properties into TextField/Checkbox
 	private void initializeProperties(){
 		view.setTfMinNumber(propertyManager.getProperty("minimumNumber").toString());
 		view.setTfMaxNumber(propertyManager.getProperty("maximumNumber").toString());	
@@ -60,6 +65,14 @@ public class CalculatorController {
 		view.setRbDivision(Arrays.stream(operators).anyMatch("/"::equals));
 	}
 	
+	
+	/*
+	 * Listener for START button
+	 * Checking for setting input
+	 * Saving properties
+	 * Create ExerciseSettings/ExerciseSession
+	 * Start Session
+	 */
 	private class StartExerciseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			try {
@@ -109,12 +122,18 @@ public class CalculatorController {
 		}
 	}
 	
+	/*
+	 * Listener for CONTROLEER button
+	 * Parsing userInput
+	 * Extra logic for handling decimals => rounding accuracy
+	 * Prompt Negative/Positive feedback to user
+	 */
 	private class CheckExerciseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			try {
 				Double userInput = Double.parseDouble(view.getTfUserInput());
 				
-				if(userInput == Calculator.doCalculation(currentExercise)){
+				if( Math.abs(userInput - Calculator.doCalculation(currentExercise)) < 0.000001){
 					view.showMessage(PositiveComment.getRandom().getValue());
 					currentExercise.setCorrectReplied(true);
 				}
@@ -132,6 +151,10 @@ public class CalculatorController {
 	}
 
 	
+	/*
+	 * Logic for handling a new Exercise
+	 * Logic for handling end of Session
+	 */
 	private void showNewExercise(){
 		currentExercise = exerciseSession.getNextExercise();
 		if(currentExercise != null){

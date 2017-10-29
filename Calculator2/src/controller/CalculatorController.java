@@ -86,8 +86,6 @@ public class CalculatorController {
 				String[] operators = new String[tempOperators.size()];
 				operators = tempOperators.toArray(operators);
 				
-				settings.setOperators(operators);
-				
 				propertyManager.setProperty("maximumNumber", view.getTfMaxNumber());
 				propertyManager.setProperty("minimumNumber", view.getTfMinNumber());
 				propertyManager.setProperty("nrOfDecimals", view.getTfNrOfDecimals().toString());

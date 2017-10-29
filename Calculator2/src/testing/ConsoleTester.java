@@ -18,7 +18,9 @@ public class ConsoleTester {
 	            	//list.add(new Exercise() 						
 	            }
 	        }
-	    } 
+	    }
+		
+		// hieruit kan je x-aantal willekeurige exercies halen voor in sessionmanager
 
 	}
 

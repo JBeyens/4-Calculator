@@ -62,8 +62,8 @@ public class CalculatorController {
 			try {
 				int maxRange = Integer.parseInt(view.getTfMaxNumber());
 				int minRange = Integer.parseInt(view.getTfMinNumber());
-				int nrOfDecimals = Integer.parseInt(view.getTfNrOfDecimals());
-				int nrOfExercises = Integer.parseInt(view.getTfNrOfQuestions());
+				int nrOfDecimals = view.getTfNrOfDecimals();
+				int nrOfExercises = view.getTfNrOfQuestions();
 				
 				ArrayList<String> tempOperators = new ArrayList<String>();
 				
@@ -90,8 +90,8 @@ public class CalculatorController {
 				
 				propertyManager.setProperty("maximumNumber", view.getTfMaxNumber());
 				propertyManager.setProperty("minimumNumber", view.getTfMinNumber());
-				propertyManager.setProperty("nrOfDecimals", view.getTfNrOfDecimals());
-				propertyManager.setProperty("nrOfQuestions", view.getTfNrOfQuestions());
+				propertyManager.setProperty("nrOfDecimals", view.getTfNrOfDecimals().toString());
+				propertyManager.setProperty("nrOfQuestions", view.getTfNrOfQuestions().toString());
 				propertyManager.setProperty("operators", String.join(",", operators));
 				
 				settings = new ExerciseSettings(minRange, maxRange, nrOfDecimals, nrOfExercises, operators);

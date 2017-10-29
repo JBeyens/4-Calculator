@@ -9,8 +9,12 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
+import javax.swing.event.ChangeListener;
 
 import java.awt.Color;
 
@@ -35,10 +39,10 @@ public class MainView extends JFrame {
 	private JLabel labelStringExercise;
 	private JLabel labelExercise;
 	
-	private JFormattedTextField tfNrOfQuestions;
+	private JSpinner tfNrOfQuestions;
 	private JFormattedTextField tfMinNumber;
 	private JFormattedTextField tfMaxNumber;
-	private JFormattedTextField tfNrOfDecimals;
+	private JSpinner tfNrOfDecimals;
 	private JTextField tfUserInput;
 	
 	private JCheckBox rbAddition;
@@ -85,12 +89,12 @@ public class MainView extends JFrame {
 		this.labelStringExercise.setText(labelExercise);
 	}
 	
-	public String getTfNrOfQuestions() {
-		return tfNrOfQuestions.getText();
+	public Integer getTfNrOfQuestions() {
+		return (Integer) tfNrOfQuestions.getValue();
 	}
 
 	public void setTfNrOfQuestions(String tfNrOfQuestions) {
-		this.tfNrOfQuestions.setText(tfNrOfQuestions);;
+		this.tfNrOfQuestions.setValue(Integer.parseInt(tfNrOfQuestions));
 	}
 
 	public String getTfMinNumber() {
@@ -109,12 +113,12 @@ public class MainView extends JFrame {
 		this.tfMaxNumber.setText(string);
 	}
 
-	public String getTfNrOfDecimals() {
-		return tfNrOfDecimals.getText();
+	public Integer getTfNrOfDecimals() {
+		return (Integer) tfNrOfDecimals.getValue();
 	}
 
 	public void setTfNrOfDecimals(String tfNrOfDecimals) {
-		this.tfNrOfDecimals.setText(tfNrOfDecimals);;
+		this.tfNrOfDecimals.setValue(Integer.parseInt(tfNrOfDecimals));;
 	}
 
 	public boolean getRbAddition() {
@@ -167,10 +171,10 @@ public class MainView extends JFrame {
 		labelExercise = new JLabel("");
 		labelExercise.setBackground(Color.PINK);
 		
-		tfNrOfDecimals = new JFormattedTextField(NumberFormat.getIntegerInstance());
-		tfNrOfDecimals.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
-		tfNrOfQuestions = new JFormattedTextField(NumberFormat.getIntegerInstance());
-		tfNrOfQuestions.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
+		SpinnerModel valueD = new SpinnerNumberModel(0,0,5,1);
+		tfNrOfDecimals = new JSpinner(valueD);
+		SpinnerModel valueQ = new SpinnerNumberModel(5, 5, 30, 1);
+		tfNrOfQuestions = new JSpinner(valueQ);
 		tfMaxNumber = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		tfMaxNumber.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
 		tfMinNumber = new JFormattedTextField(NumberFormat.getIntegerInstance());

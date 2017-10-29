@@ -1,4 +1,4 @@
-package testing;
+package model.exercises.test;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -8,14 +8,14 @@ import model.exercises.Calculator;
 
 
 /**
- * 	@Author Ben Vandevorst
+ * 	@Author Ben Vandevorst & Jef Beyens
 	@Datum 09/10/2017
 	@Project Calculator
 	@Doel TestingUnit for CalculationClass
  */
 
 
-public class CalculationsTest {
+public class CalculatorTest {
 	private double testGetal;
 	private double accuracyResult;
 	

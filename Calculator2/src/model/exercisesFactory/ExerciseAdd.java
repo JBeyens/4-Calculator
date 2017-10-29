@@ -18,6 +18,10 @@ public class ExerciseAdd extends Exercise {
 		generateExercise();
 	}
 
+	/**
+	 * This method has to be defined (due to abstract method in base class) becasue the operands
+	 *  have to be set up differently for each type of exercise 
+	 */
 	public void generateExercise() {
 		setOperation('+');
 		

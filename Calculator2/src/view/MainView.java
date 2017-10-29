@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
 
 import javax.swing.JButton;
@@ -16,6 +18,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import java.awt.Color;
 
@@ -58,8 +62,10 @@ public class MainView extends JFrame {
 	
 	public MainView(){
 		setUp();
+		this.setTitle("Calculator Exercises");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 	public void addExerciseActionListener(ActionListener listener){
 		checkAnswer.addActionListener(listener);
 	}
@@ -209,6 +215,7 @@ public class MainView extends JFrame {
 		tfMaxNumber.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
 		tfMinNumber = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		tfMinNumber.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
+		
 		tfUserInput = new JTextField(3);
 		
 		rbAddition = new JCheckBox("+");

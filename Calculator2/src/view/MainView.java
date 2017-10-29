@@ -176,14 +176,35 @@ public class MainView extends JFrame {
 		tfNrOfDecimals.addChangeListener(new ChangeListener(){
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				if(valueD.getMaximum().compareTo(tfNrOfDecimals.getValue()) > 5){
-					setTfNrOfDecimals("5");
-				}		
+				int max = (int) valueD.getMaximum();
+				int min = (int) valueD.getMinimum();
+				int user = (int) tfNrOfDecimals.getValue();
+				
+				if(user > max)
+					setTfNrOfDecimals(Integer.toString(max));
+				
+				if(user < min)
+					setTfNrOfDecimals(Integer.toString(min));
 			}
 			
 		});
-		SpinnerModel valueQ = new SpinnerNumberModel(5, 5, 30, 1);
+		SpinnerNumberModel valueQ = new SpinnerNumberModel(5, 5, 30, 1);
 		tfNrOfQuestions = new JSpinner(valueQ);
+		tfNrOfQuestions.addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				int max = (int) valueQ.getMaximum();
+				int min = (int) valueQ.getMinimum();
+				int user = (int) tfNrOfQuestions.getValue();
+				
+				if(user > max)
+					setTfNrOfQuestions(Integer.toString(max));
+				
+				if(user < min)
+					setTfNrOfQuestions(Integer.toString(min));
+			}
+			
+		});
 		tfMaxNumber = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		tfMaxNumber.setFocusLostBehavior(JFormattedTextField.COMMIT_OR_REVERT);
 		tfMinNumber = new JFormattedTextField(NumberFormat.getIntegerInstance());

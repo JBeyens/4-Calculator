@@ -7,17 +7,10 @@ import org.junit.Test;
 
 import model.exercises.ExerciseSettings;
 import model.exercises.factory.Exercise;
-import model.exercises.factory.ExerciseAdd;
+import model.exercises.factory.ExerciseMult;
 import model.exercises.factory.Randomizer;
 
-
-/**
- * 	@Author Jef Beyens & Ben Vandevorst
-	@Datum 28/10/2017
-	@Project Calculator
-	@Doel Testen van de ExerciseAdd functies
- */
-public class ExerciseAddTest {
+public class ExerciseMultTest {
 	private ExerciseSettings settings;
 	private int boundDecimals;
 	private double boundRange;
@@ -42,7 +35,7 @@ public class ExerciseAddTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			exercise = new ExerciseAdd(settings, rndInt);
+			exercise = new ExerciseMult(settings, rndInt);
 
 			assertTrue(exercise.getExerciseNumber() == rndInt); 
 			assertTrue(exercise.getOperand1() >= minRange); 
@@ -64,7 +57,7 @@ public class ExerciseAddTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			exercise = new ExerciseAdd(settings, rndInt);
+			exercise = new ExerciseMult(settings, rndInt);
 
 			double op1 = exercise.getOperand1() * Math.pow(10, rndInt);
 			double op2 = exercise.getOperand2() * Math.pow(10, rndInt);
@@ -85,7 +78,7 @@ public class ExerciseAddTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			exercise = new ExerciseAdd(settings, rndInt);
+			exercise = new ExerciseMult(settings, rndInt);
 
 			String result = exercise.toString();
 			int maxResultLength = Double.toString(exercise.getOperand1()).indexOf('.') 

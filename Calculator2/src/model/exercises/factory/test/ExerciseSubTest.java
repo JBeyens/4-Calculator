@@ -15,6 +15,7 @@ public class ExerciseSubTest {
 	private int boundDecimals;
 	private double boundRange;
 	private String[] operators;
+	private Exercise exercise;
 	
 	@Before
 	public void setUp(){
@@ -34,14 +35,14 @@ public class ExerciseSubTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			Exercise exerciseSub = new ExerciseSub(settings, rndInt);
+			exercise = new ExerciseSub(settings, rndInt);
 
-			assertTrue(exerciseSub.getExerciseNumber() == rndInt); 
-			assertTrue(exerciseSub.getOperand1() >= minRange); 
-			assertTrue(exerciseSub.getOperand2() >= minRange); 
-			assertTrue(exerciseSub.getOperand1() <= maxRange); 
-			assertTrue(exerciseSub.getOperand2() <= maxRange); 
-			assertTrue(exerciseSub.getOperation() == '-'); 			
+			assertTrue(exercise.getExerciseNumber() == rndInt); 
+			assertTrue(exercise.getOperand1() >= minRange); 
+			assertTrue(exercise.getOperand2() >= minRange); 
+			assertTrue(exercise.getOperand1() <= maxRange); 
+			assertTrue(exercise.getOperand2() <= maxRange); 
+			assertTrue(exercise.getOperation() == '-'); 			
 		}
 	}
 
@@ -56,10 +57,10 @@ public class ExerciseSubTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			Exercise exerciseSub = new ExerciseSub(settings, rndInt);
+			exercise = new ExerciseSub(settings, rndInt);
 
-			double op1 = exerciseSub.getOperand1() * Math.pow(10, rndInt);
-			double op2 = exerciseSub.getOperand2() * Math.pow(10, rndInt);
+			double op1 = exercise.getOperand1() * Math.pow(10, rndInt);
+			double op2 = exercise.getOperand2() * Math.pow(10, rndInt);
 	
 			assertTrue(Math.round(op1) - op1 < 0.00001); 
 			assertTrue(Math.round(op2) - op2 < 0.00001); 
@@ -77,11 +78,11 @@ public class ExerciseSubTest {
 										    Math.max(minRange, maxRange), 
 										    rndInt, rndInt, operators);
 			
-			Exercise exerciseSub = new ExerciseSub(settings, rndInt);
+			exercise = new ExerciseSub(settings, rndInt);
 
-			String result = exerciseSub.toString();
-			int maxResultLength = Double.toString(exerciseSub.getOperand1()).indexOf('.') 
-							      + Double.toString(exerciseSub.getOperand2()).indexOf('.')
+			String result = exercise.toString();
+			int maxResultLength = Double.toString(exercise.getOperand1()).indexOf('.') 
+							      + Double.toString(exercise.getOperand2()).indexOf('.')
 							      + 6 // 6 = 1x space between nr1 & operator + 1x for operator + 1x space + one the end ' = ' for 3x
 							      + 2 // 2 for decimal point in each double
 							      + 2 * settings.getNrDecimals(); 

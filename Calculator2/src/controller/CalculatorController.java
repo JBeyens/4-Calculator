@@ -65,10 +65,6 @@ public class CalculatorController {
 				int nrOfDecimals = Integer.parseInt(view.getTfNrOfDecimals());
 				int nrOfExercises = Integer.parseInt(view.getTfNrOfQuestions());
 				
-				if(minRange >= Math.sqrt(maxRange)){
-					throw new Exception("Minimum bereik is te groot! <" + Math.sqrt(maxRange));
-				}
-				
 				ArrayList<String> tempOperators = new ArrayList<String>();
 				
 				if(view.getRbAddition())

@@ -19,22 +19,23 @@ import model.exercises.factory.Randomizer;
  */
 public class ExerciseAddTest {
 	private ExerciseSettings settings;
-	private int boundDecimals;
+	private int boundInteger;
 	private double boundRange;
 	private String[] operators;
 	private Exercise exercise;
 	
 	@Before
 	public void setUp(){
-		boundDecimals = 10;
+		boundInteger = 10;
 		boundRange = 1000;
 		operators = new String[] {"+","-","/"};
+		settings = new ExerciseSettings(-1 * boundRange, boundRange, boundInteger, boundInteger, operators);
 	}
 
 	@Test
 	public void test_GenerateExercises_For_Random_MinRange_And_MaxRange_Expect_Within_Range() {
 		for (int i = 0; i < 100000; i++) {
-			int rndInt = Randomizer.getRandomNumber(0, boundDecimals);
+			int rndInt = Randomizer.getRandomNumber(0, boundInteger);
 			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
 			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
 			
@@ -56,7 +57,7 @@ public class ExerciseAddTest {
 	@Test
 	public void test_GenerateExercises_For_Random_NrDecimals_Expect_Good_Decimals() {
 		for (int i = 0; i < 100000; i++) {
-			int rndInt = Randomizer.getRandomNumber(0, boundDecimals);
+			int rndInt = Randomizer.getRandomNumber(0, boundInteger);
 			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
 			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
 			
@@ -77,7 +78,7 @@ public class ExerciseAddTest {
 	@Test
 	public void test_ToString_For_Random_NrDecimals_Expect_String_Has_Certain_Length_And_Certain_Characters() {
 		for (int i = 0; i < 100000; i++) {
-			int rndInt = Randomizer.getRandomNumber(0, boundDecimals);
+			int rndInt = Randomizer.getRandomNumber(0, boundInteger);
 			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
 			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
 			

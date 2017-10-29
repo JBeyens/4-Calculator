@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import model.exercises.Calculator;
 import model.exercises.ExerciseSession;
 import model.exercises.ExerciseSettings;
@@ -44,8 +47,8 @@ public class CalculatorController {
 	}
 	
 	private void initializeProperties(){
-		view.setTfMaxNumber(propertyManager.getProperty("maximumNumber").toString());
 		view.setTfMinNumber(propertyManager.getProperty("minimumNumber").toString());
+		view.setTfMaxNumber(propertyManager.getProperty("maximumNumber").toString());	
 		view.setTfNrOfDecimals(propertyManager.getProperty("nrOfDecimals").toString());
 		view.setTfNrOfQuestions(propertyManager.getProperty("nrOfQuestions").toString());
 		
@@ -127,6 +130,7 @@ public class CalculatorController {
 			}
 		}
 	}
+
 	
 	private void showNewExercise(){
 		currentExercise = exerciseSession.getNextExercise();

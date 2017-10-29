@@ -42,7 +42,7 @@ public class ExerciseDivTest {
 			assertTrue(exercise.getOperand2() >= minRange); 
 			assertTrue(exercise.getOperand1() <= maxRange); 
 			assertTrue(exercise.getOperand2() <= maxRange); 
-			assertTrue(exercise.getOperation() == '-'); 			
+			assertTrue(exercise.getOperation() == '/'); 			
 		}
 	}
 

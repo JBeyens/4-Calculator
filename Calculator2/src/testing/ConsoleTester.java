@@ -10,11 +10,12 @@ public class ConsoleTester {
 	public static void main(String[] args) {
 		int minRange = 0;
 		int maxRange = 30;
-		ArrayList<Exercise> list;
+		int result = 21;
+		ArrayList<Exercise> list = new ArrayList<>();
 		
 		for(int i=1;i<maxRange;i++){
 	        for(int j=1;j<maxRange;j++){
-	            if(i+j < maxRange){
+	            if(i+j == result && list.size() != 5){
 	            	//list.add(new Exercise() 						
 	            }
 	        }

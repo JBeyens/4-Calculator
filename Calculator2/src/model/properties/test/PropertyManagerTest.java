@@ -1,4 +1,4 @@
-package testing;
+package model.properties.test;
 
 import static org.junit.Assert.*;
 

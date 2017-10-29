@@ -58,6 +58,7 @@ public class MainView extends JFrame {
 	
 	public MainView(){
 		setUp();
+		this.setTitle("Calculator Exercises");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public void addExerciseActionListener(ActionListener listener){

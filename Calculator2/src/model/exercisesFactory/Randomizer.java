@@ -46,7 +46,7 @@ public final class Randomizer {
 		if (nrDecimals < 0) throw new IllegalArgumentException();
 		double temp = minNumber;
 		minNumber = roundTowardZero(Math.min(minNumber, maxNumber), nrDecimals);
-		maxNumber = roundTowardZero(Math.min(temp, maxNumber), nrDecimals);
+		maxNumber = roundTowardZero(Math.max(temp, maxNumber), nrDecimals);
 		
 		double value = RANDOM.nextDouble()* (maxNumber - minNumber) + minNumber;		
 		return roundTowardZero(value, nrDecimals);

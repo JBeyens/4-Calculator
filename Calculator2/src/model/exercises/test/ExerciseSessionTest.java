@@ -1,11 +1,14 @@
 package model.exercises.test;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import model.exercises.Calculator;
+import model.exercises.ExerciseSession;
 import model.exercises.ExerciseSettings;
 import model.exercisesFactory.Exercise;
+import model.exercisesFactory.Randomizer;
 
 /**
  * @Autor: Jef Beyens & Ben Vandevorst
@@ -28,69 +31,54 @@ public class ExerciseSessionTest {
 		settings = new ExerciseSettings(-1 * boundRange, boundRange, boundInteger, boundInteger, operators);
 	}
 
-	/*
-	@Test(expected=IllegalArgumentException.class)
-	public void test_division_deler0_wordt_niet_aanvaard() throws Exception {
-		Calculator.doCalculation(testGetal, 0, Calculator.DIV);
-	}
 	
-	@Test(expected=IllegalArgumentException.class)
-	public void test_division_deler0_wordt_niet_aanvaard() throws Exception {
-		Calculator.doCalculation(testGetal, 0, Calculator.DIV);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void test_division_deler0_wordt_niet_aanvaard() throws Exception {
-		Calculator.doCalculation(testGetal, 0, Calculator.DIV);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void test_division_deler0_wordt_niet_aanvaard() throws Exception {
-		Calculator.doCalculation(testGetal, 0, Calculator.DIV);
-	}
-}
-public class ExerciseSession {
-	// PRIVATE MEMBERS
-	private ArrayList<Exercise> exerciseList;
-	private int exerciseCounter;
-	private boolean isRunning;
-	private LocalDateTime startTime;
-	private LocalDateTime endTime;
-    private DecimalFormat format2nrs = new DecimalFormat("00");
-	
-	public ExerciseSession(ExerciseSettings settings) {
-		exerciseList = new ArrayList<Exercise>();
-		generateExercises(settings);
-		isRunning = true;
-		startTime = LocalDateTime.now();
-		exerciseCounter = 0;
-	}
-
-	public Exercise getNextExercise() {
-		if (exerciseCounter >= exerciseList.size())
-			return null;
-		return exerciseList.get(exerciseCounter++);
-	} 
-	
-	public String getEndResult() {
-		// End exercise setting:
-		if (isRunning) {
-			isRunning = false;
-			endTime = LocalDateTime.now();
+	@Test
+	public void test_GetNextExcercise_Should_Give_Null_After_n_Calls() {
+		for (int i = 0; i < 1000; i++) {
+			int rndInt = Randomizer.getRandomNumber(0, boundInteger);
+			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			
+			settings = new ExerciseSettings(minRange, maxRange, rndInt, rndInt, operators);
+			
+			ExerciseSession session = new ExerciseSession(settings);
+			
+			for (int j = 0; j < rndInt +1; j++) {
+				if (j < settings.getNrOfExercises())
+					assertTrue(session.getNextExercise() instanceof Exercise);
+				else
+					assertTrue(session.getNextExercise() == null);
+			}
 		}
+	}
+	
+	@Test
+	public void test_GetEndResult_Should_Contain_IntegerCorrect_IntegerTotal_And_TimeSpent() {
+		for (int i = 0; i < 1000; i++) {
+			int rndInt = Randomizer.getRandomNumber(0, boundInteger);
+			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			
+			settings = new ExerciseSettings(minRange, maxRange, rndInt, rndInt, operators);
+			
+			ExerciseSession session = new ExerciseSession(settings);
+			
+			int amountCorrect = 0;
+			for (int j = 0; j < rndInt; j++) {
+				if (Randomizer.RANDOM.nextBoolean()) {
+					session.getNextExercise().setCorrectReplied(true);
+					amountCorrect++;
+				}
+				else {
+					session.getNextExercise();
+				}
+			}
 		
-		// Calculate score:
-		int correct = 0;
-		for (Exercise exercise : exerciseList) {
-			correct += exercise.isCorrectReplied() ? 1 : 0;
+			String endResult = session.getEndResult();
+			
+			assertTrue(endResult != null); // Should not be null
+			assertTrue(endResult.contains(Integer.toString(settings.getNrOfExercises()))); // Should contain number of exercises
+			assertTrue(endResult.contains(Integer.toString(amountCorrect))); // Should contain number of exercises set to 'Correct'	
 		}
-	    int nrOfExercises = exerciseList.size();
-	    
-	    // Calculate time spent:
-	    String timeSpentHHMMSS = getTimeDifference();
-					
-
-		return "Eindscore oefeningen: " + correct + "/" + nrOfExercises
-				+ "\nTijd gespendeerd: " + timeSpentHHMMSS;
-	} */
+	}
 }

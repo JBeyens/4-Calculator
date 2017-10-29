@@ -16,6 +16,14 @@ import javax.swing.event.DocumentListener;
 
 import java.awt.Color;
 
+
+/**
+ * 	@Author Ben Vandevorst & Jef Beyens
+	@Datum 09/10/2017
+	@Project Calculator
+	@Doel View to change settings and check answers
+ */
+
 public class MainView extends JFrame {
 	/**
 	 * 

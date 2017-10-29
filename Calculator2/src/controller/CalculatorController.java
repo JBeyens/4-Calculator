@@ -14,6 +14,15 @@ import values.NegativeComment;
 import values.PositiveComment;
 import view.MainView;
 
+
+/**
+ * 	@Author Ben Vandevorst & Jef Beyens
+	@Datum 09/10/2017
+	@Project Calculator
+	@Doel Handles properties and user setting changes
+		  Handles response from user
+ */
+
 public class CalculatorController {
 	private MainView view;
 	private PropertyManager propertyManager;

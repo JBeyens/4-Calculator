@@ -114,7 +114,7 @@ public class CalculatorController {
 			try {
 				Double userInput = Double.parseDouble(view.getTfUserInput());
 				
-				if(userInput == Calculator.doCalculation(currentExercise)){
+				if( Math.abs(userInput - Calculator.doCalculation(currentExercise)) < 0.000001){
 					view.showMessage(PositiveComment.getRandom().getValue());
 					currentExercise.setCorrectReplied(true);
 				}

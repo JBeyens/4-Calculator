@@ -1,5 +1,13 @@
 package values;
 
+
+/**
+ * 	@Author Ben Vandevorst & Jef Beyens
+	@Datum 09/10/2017
+	@Project Calculator
+	@Doel Comment to show user when making mistake
+ */
+
 public enum NegativeComment {
 	firstComment("Volgende keer meer succes!"),
 	secondComment("Beetje harder uw best doen!"),

@@ -26,10 +26,10 @@ public class LoadResultsFromFile {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public static String streamFileToString(File file) throws FileNotFoundException, IOException, ClassNotFoundException{
+	public static ArrayList<String> streamFileToString(File file) throws FileNotFoundException, IOException, ClassNotFoundException{
 		try(FileInputStream inputStream = new FileInputStream(file); ObjectInputStream objStream = new ObjectInputStream(inputStream)){						
 			@SuppressWarnings("unchecked")
-			String list = (String)objStream.readObject();
+			ArrayList<String> list = (ArrayList<String>) objStream.readObject();
 			return list;
 		}
 	}
@@ -41,10 +41,10 @@ public class LoadResultsFromFile {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public static String streamFileToString(String path) throws FileNotFoundException, IOException, ClassNotFoundException{
+	public static ArrayList<String> streamFileToString(String path) throws FileNotFoundException, IOException, ClassNotFoundException{
 		try(FileInputStream inputStream = new FileInputStream(path); ObjectInputStream objStream = new ObjectInputStream(inputStream)){						
 			@SuppressWarnings("unchecked")
-			String list = (String) objStream.readObject();
+			ArrayList<String> list = (ArrayList<String>) objStream.readObject();
 			return list;
 		}
 	}

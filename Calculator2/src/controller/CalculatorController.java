@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import fileIO.LoadResultsFromFile;
+import fileIO.ResultHandler;
 import fileIO.SaveResultsToFile;
 import model.exercises.Calculator;
 import model.exercises.ExerciseSession;
@@ -36,12 +37,13 @@ public class CalculatorController {
 	private ExerciseSession exerciseSession;
 	private ExerciseSettings settings;
 	private Exercise currentExercise;
+	private ResultHandler handler;
 	
 	
 	//Constructor
 	public CalculatorController(){
 		view = new MainView();
-		
+		handler = new ResultHandler();
 		//Calling properties
 		propertyManager = PropertyManager.CreationMethod();
 	}
@@ -166,14 +168,7 @@ public class CalculatorController {
 	private class ShowResultsListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			try {
-				String list = LoadResultsFromFile.streamFileToString(DefaultSettings.filePath.getValue());
-				
-				view.showMessage(list);
-			} catch (ClassNotFoundException | IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+
 			
 		}	
 	}
@@ -193,7 +188,6 @@ public class CalculatorController {
 			view.setStartExerciseButton(true);
 			view.setCheckAnswerButton(false);
 			view.showMessage(exerciseSession.getEndResult());
-			SaveResultsToFile.streamToFile(exerciseSession.getEndResult(), DefaultSettings.filePath.getValue());
 		}
 		
 	}

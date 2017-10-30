@@ -39,9 +39,9 @@ public class MainView extends JFrame {
 	private JLabel labelExercise;
 	
 	private JSpinner tfNrOfQuestions;
+	private JSpinner tfNrOfDecimals;
 	private JFormattedTextField tfMinNumber;
 	private JFormattedTextField tfMaxNumber;
-	private JSpinner tfNrOfDecimals;
 	private JTextField tfUserInput;
 	
 	private JCheckBox rbAddition;
@@ -51,6 +51,7 @@ public class MainView extends JFrame {
 	
 	private JButton startExercises;
 	private JButton checkAnswer;
+	private JButton showResults;
 
 	private SpringLayout layout;
 	
@@ -65,13 +66,16 @@ public class MainView extends JFrame {
 	
 	//ActionListeners for buttons;
 	public void addExerciseActionListener(ActionListener listener){
-		checkAnswer.addActionListener(listener);
+		this.checkAnswer.addActionListener(listener);
 	}
 	
 	public void addActionListener(ActionListener listener){
-		startExercises.addActionListener(listener);
+		this.startExercises.addActionListener(listener);
 	}
 	
+	public void addShowResultsActionListener(ActionListener listener){
+		this.showResults.addActionListener(listener);;
+	}
 	
 	//Function for enabling/disabling buttons
 	public void setCheckAnswerButton(Boolean isEnabled){
@@ -231,11 +235,14 @@ public class MainView extends JFrame {
 		rbMultiplication = new JCheckBox("*");
 		rbDivision = new JCheckBox("/");
 		
+		showResults = new JButton("Resultaten");
 		startExercises = new JButton("Start");
 		checkAnswer = new JButton("Controleer");
 		checkAnswer.setEnabled(false);
 
 		layout = new SpringLayout();
+		layout.putConstraint(SpringLayout.SOUTH, showResults, -10, SpringLayout.SOUTH, getContentPane());
+		layout.putConstraint(SpringLayout.EAST, showResults, 0, SpringLayout.EAST, labelMAxNumber);
 		layout.putConstraint(SpringLayout.WEST, tfNrOfDecimals, 6, SpringLayout.EAST, labelNrOfDecimals);
 		layout.putConstraint(SpringLayout.EAST, tfNrOfDecimals, 0, SpringLayout.EAST, tfMaxNumber);
 		layout.putConstraint(SpringLayout.EAST, tfMaxNumber, 0, SpringLayout.EAST, tfNrOfQuestions);
@@ -300,6 +307,7 @@ public class MainView extends JFrame {
 		getContentPane().add(labelStringExercise);
 		getContentPane().add(checkAnswer);
 		getContentPane().add(tfUserInput);
+		getContentPane().add(showResults);
 	}
 	
 }

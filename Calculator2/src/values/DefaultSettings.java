@@ -10,7 +10,7 @@ package values;
 
 public enum DefaultSettings {
 	stringPath("resources/config.properties"),
-	filePath("resource/results.txt"),
+	filePath("resources/results.txt"),
 	nrOfQuestions("10"),
 	minimumNumber("0"),
 	maximumNumber("20"),

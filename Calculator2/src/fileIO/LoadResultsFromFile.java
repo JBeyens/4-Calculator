@@ -26,10 +26,10 @@ public class LoadResultsFromFile {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public static ArrayList<ExerciseSession> streamFileToSerializedList(File file) throws FileNotFoundException, IOException, ClassNotFoundException{
+	public static String streamFileToString(File file) throws FileNotFoundException, IOException, ClassNotFoundException{
 		try(FileInputStream inputStream = new FileInputStream(file); ObjectInputStream objStream = new ObjectInputStream(inputStream)){						
 			@SuppressWarnings("unchecked")
-			ArrayList<ExerciseSession> list = (ArrayList<ExerciseSession>)objStream.readObject();
+			String list = (String)objStream.readObject();
 			return list;
 		}
 	}
@@ -41,10 +41,10 @@ public class LoadResultsFromFile {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public static ArrayList<ExerciseSession> streamFileToSerializedList(String path) throws FileNotFoundException, IOException, ClassNotFoundException{
+	public static String streamFileToString(String path) throws FileNotFoundException, IOException, ClassNotFoundException{
 		try(FileInputStream inputStream = new FileInputStream(path); ObjectInputStream objStream = new ObjectInputStream(inputStream)){						
 			@SuppressWarnings("unchecked")
-			ArrayList<ExerciseSession> list = (ArrayList<ExerciseSession>)objStream.readObject();
+			String list = (String) objStream.readObject();
 			return list;
 		}
 	}

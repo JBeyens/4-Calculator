@@ -26,11 +26,11 @@ public class SaveResultsToFile {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static void streamToFile(ExerciseSession object, File file) throws FileNotFoundException, IOException{
+	public static void streamToFile(String result, File file) throws FileNotFoundException, IOException{
 		File tempFile = file;
 		tempFile.createNewFile();
 		try(FileOutputStream outputStream = new FileOutputStream(file); ObjectOutputStream objStream = new ObjectOutputStream(outputStream);){
-			objStream.writeObject(object);
+			objStream.writeObject(result);
 		}
 	}
 	
@@ -40,12 +40,12 @@ public class SaveResultsToFile {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static void streamToFile(ExerciseSession object, String path) throws FileNotFoundException, IOException{
+	public static void streamToFile(String result, String path) throws FileNotFoundException, IOException{
 		File file = new File(path);
 		file.createNewFile();
 		
 		try(FileOutputStream outputStream = new FileOutputStream(path); ObjectOutputStream objStream = new ObjectOutputStream(outputStream);){
-			objStream.writeObject(object);
+			objStream.writeObject(result);
 		}
 	}
 }

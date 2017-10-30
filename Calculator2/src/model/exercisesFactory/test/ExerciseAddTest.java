@@ -44,7 +44,7 @@ public class ExerciseAddTest {
 			settings = new ExerciseSettings(minRange, maxRange, rndInt, rndInt, operators);			
 			exercise = new ExerciseAdd(settings, rndInt);
 
-			System.out.println("MinRange:\t" + minRange + "\t-- " + exercise.getOperand1() + "\t-- " + exercise.getOperand2() + " --\t" + maxRange + "MaxRange");
+			//System.out.println("MinRange:\t" + minRange + "\t-- " + exercise.getOperand1() + "\t-- " + exercise.getOperand2() + " --\t" + maxRange + "MaxRange");
 			assertTrue(exercise.getExerciseNumber() == rndInt); 
 			assertTrue(exercise.getOperand1() >= minRange); 
 			assertTrue(exercise.getOperand2() >= minRange); 
@@ -68,13 +68,20 @@ public class ExerciseAddTest {
 
 			String op1 = Double.toString(exercise.getOperand1());
 			String op2 = Double.toString(exercise.getOperand2());
-			/*
+			
+			// clean up trailing zero's:
+			//System.out.println("NrDecimals: " + rndInt + " " + op1 + "     " + op2);
 			boolean checkShouldContinue = true;
 			while (checkShouldContinue) {
-				if ()
-			}*/
-					
-			System.out.println("NrDecimals: " + rndInt + " " + op1 + "     " + op2);
+				if (  (op1.endsWith("0") && op1.contains("."))  || op1.endsWith("."))
+					op1 =  op1.substring(0, op1.length() - 2);
+				else if (  (op2.endsWith("0") && op2.contains("."))  || op2.endsWith("."))
+					op2 =  op2.substring(0, op2.length() - 2);
+				else
+					checkShouldContinue = false;
+			}
+			//System.out.println("NrDecimals: " + rndInt + " " + op1 + "     " + op2);
+
 			assertTrue(op1.indexOf('.') == -1 || op1.indexOf('.') >= (op1.length() - rndInt -1)); 
 			assertTrue(op2.indexOf('.') == -1 || op2.indexOf('.') >= (op2.length() - rndInt -1)); 
 		}

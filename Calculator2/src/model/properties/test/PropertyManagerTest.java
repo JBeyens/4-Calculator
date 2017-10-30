@@ -45,7 +45,7 @@ public class PropertyManagerTest {
 		Assert.assertArrayEquals(stringArray, operatorArray);
 	}
 	
-	//@Test
+	@Test
 	public void test_Reading_Properties_From_Config_File_Not_Found_Expect_Default_Settings(){
 		PropertyManager propMan = PropertyManager.CreationMethod("invalid path");
 		

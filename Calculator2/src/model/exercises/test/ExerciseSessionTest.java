@@ -3,7 +3,6 @@ package model.exercises.test;
 import static org.junit.Assert.assertTrue;
 
 import java.text.DecimalFormat;
-import java.util.Formatter;
 
 import org.junit.Before;
 import org.junit.Test;

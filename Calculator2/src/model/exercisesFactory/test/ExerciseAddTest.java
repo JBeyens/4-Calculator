@@ -36,15 +36,15 @@ public class ExerciseAddTest {
 	public void test_GenerateExercises_For_Random_MinRange_And_MaxRange_Expect_Within_Range() {
 		for (int i = 0; i < 100000; i++) {
 			int rndInt = Randomizer.getRandomNumber(0, boundInteger);
-			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
-			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			double x = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			double y = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			double minRange = Math.min(x, y);
+			double maxRange = Math.max(x, y);
 			
-			settings = new ExerciseSettings(Math.min(minRange, maxRange), 
-										    Math.max(minRange, maxRange), 
-										    rndInt, rndInt, operators);
-			
+			settings = new ExerciseSettings(minRange, maxRange, rndInt, rndInt, operators);			
 			exercise = new ExerciseAdd(settings, rndInt);
 
+			System.out.println("MinRange:\t" + minRange + "\t-- " + exercise.getOperand1() + "\t-- " + exercise.getOperand2() + " --\t" + maxRange + "MaxRange");
 			assertTrue(exercise.getExerciseNumber() == rndInt); 
 			assertTrue(exercise.getOperand1() >= minRange); 
 			assertTrue(exercise.getOperand2() >= minRange); 
@@ -58,20 +58,25 @@ public class ExerciseAddTest {
 	public void test_GenerateExercises_For_Random_NrDecimals_Expect_Good_Decimals() {
 		for (int i = 0; i < 100000; i++) {
 			int rndInt = Randomizer.getRandomNumber(0, boundInteger);
-			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
-			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			double x = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			double y = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
+			double minRange = Math.min(x, y);
+			double maxRange = Math.max(x, y);
 			
-			settings = new ExerciseSettings(Math.min(minRange, maxRange), 
-										    Math.max(minRange, maxRange), 
-										    rndInt, rndInt, operators);
-			
+			settings = new ExerciseSettings(minRange, maxRange, rndInt, rndInt, operators);			
 			exercise = new ExerciseAdd(settings, rndInt);
 
-			double op1 = exercise.getOperand1() * Math.pow(10, rndInt);
-			double op2 = exercise.getOperand2() * Math.pow(10, rndInt);
-	
-			assertTrue(Math.round(op1) - op1 < 0.00001); 
-			assertTrue(Math.round(op2) - op2 < 0.00001); 
+			String op1 = Double.toString(exercise.getOperand1());
+			String op2 = Double.toString(exercise.getOperand2());
+			/*
+			boolean checkShouldContinue = true;
+			while (checkShouldContinue) {
+				if ()
+			}*/
+					
+			System.out.println("NrDecimals: " + rndInt + " " + op1 + "     " + op2);
+			assertTrue(op1.indexOf('.') == -1 || op1.indexOf('.') >= (op1.length() - rndInt -1)); 
+			assertTrue(op2.indexOf('.') == -1 || op2.indexOf('.') >= (op2.length() - rndInt -1)); 
 		}
 	}
 

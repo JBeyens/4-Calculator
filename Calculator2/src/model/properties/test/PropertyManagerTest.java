@@ -19,7 +19,7 @@ public class PropertyManagerTest {
 	
 	@Before
 	public void setUp(){
-		configPath = "src/model.properties.test/test.config.properties";
+		configPath = "src/model/properties/test/test.config.properties";
 		stringArray = new String[4];
 		stringArray[0] = new String("+");
 		stringArray[1] = new String("-");

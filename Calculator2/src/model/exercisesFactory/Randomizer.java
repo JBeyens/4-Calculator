@@ -26,13 +26,15 @@ public final class Randomizer {
 		maxNumber = Math.max(temp, maxNumber);
 		
 		int randomNumber = RANDOM.nextInt(maxNumber + 1 - minNumber);
-		
 		return randomNumber + minNumber;
 	}
 	
-	private static double roundTowardZero(double input, int nrDecimals) {
-		return (new BigDecimal(input)).setScale(nrDecimals, RoundingMode.DOWN).doubleValue();
+	private static double roundNumber(double input, int nrDecimals, double minRange, double maxRange) {
+		double result = new BigDecimal(input).setScale(nrDecimals, RoundingMode.DOWN).doubleValue();
+		if (result < minRange || result > maxRange)
+			result = new BigDecimal(input).setScale(nrDecimals, RoundingMode.UP).doubleValue();
 		
+		return result;
 	}	
 	
 	/**
@@ -43,11 +45,11 @@ public final class Randomizer {
 	public static double getRandomNumber(double minNumber, double maxNumber, int nrDecimals){
 		if (nrDecimals < 0) throw new IllegalArgumentException();
 		double temp = minNumber;
-		minNumber = roundTowardZero(Math.min(minNumber, maxNumber), nrDecimals);
-		maxNumber = roundTowardZero(Math.max(temp, maxNumber), nrDecimals);
+		minNumber = Math.min(minNumber, maxNumber);
+		maxNumber = Math.max(temp, maxNumber);
 		
 		double value = RANDOM.nextDouble()* (maxNumber - minNumber) + minNumber;		
-		return roundTowardZero(value, nrDecimals);
+		return roundNumber(value, nrDecimals, minNumber, maxNumber);
 	}
 	
 	/**

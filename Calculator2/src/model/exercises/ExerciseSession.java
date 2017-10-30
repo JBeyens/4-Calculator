@@ -63,6 +63,10 @@ public class ExerciseSession implements Serializable {
 							  + ":" + format2nrs.format(time.getSeconds() % 60);
 	}
 	
+	/**
+	 * @return
+	 * Calculate percentage
+	 */
 	private String getScore(){
 		int correct = (int) exerciseList.stream().filter(x -> x.isCorrectReplied() == true).count();
 		double percentage = (correct/exerciseList.size()) * 100;

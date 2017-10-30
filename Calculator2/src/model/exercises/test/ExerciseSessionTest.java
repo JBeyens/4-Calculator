@@ -81,8 +81,8 @@ public class ExerciseSessionTest {
 			String endResult = session.getEndResult();
 			
 			assertTrue(endResult != null); // Should not be null
-			assertTrue(endResult.contains(Formatter.format((amountCorrect/settings.getNrOfExercises()) * 100))); // Should contain number of exercises set to 'Correct'
-			assertTrue(endResult.contains(Integer.toString(settings.getNrOfExercises()))); // Should contain number of exercises	
+			assertTrue(endResult.contains(Formatter.format((amountCorrect/settings.getNrOfExercises()) * 100))); 
+			// Should contain number of exercises set to 'Correct'
 		}
 	}
 }

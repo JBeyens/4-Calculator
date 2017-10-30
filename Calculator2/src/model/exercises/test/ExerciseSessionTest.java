@@ -2,6 +2,8 @@ package model.exercises.test;
 
 import static org.junit.Assert.assertTrue;
 
+import java.text.DecimalFormat;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,6 +24,7 @@ public class ExerciseSessionTest {
 	private int boundInteger;
 	private double boundRange;
 	private String[] operators;
+	private DecimalFormat Formatter = new DecimalFormat("#.00");
 	
 	@Before
 	public void setUp(){
@@ -55,7 +58,7 @@ public class ExerciseSessionTest {
 	@Test
 	public void test_GetEndResult_Should_Contain_IntegerCorrect_IntegerTotal_And_TimeSpent() {
 		for (int i = 0; i < 1000; i++) {
-			int rndInt = Randomizer.getRandomNumber(0, boundInteger);
+			int rndInt = Randomizer.getRandomNumber(1, boundInteger);
 			double minRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
 			double maxRange = Randomizer.getRandomNumber(-1*boundRange, boundRange, rndInt);
 			
@@ -77,8 +80,8 @@ public class ExerciseSessionTest {
 			String endResult = session.getEndResult();
 			
 			assertTrue(endResult != null); // Should not be null
-			//assertTrue(endResult[2].contains(Integer.toString(amountCorrect))); // Should contain number of exercises set to 'Correct'
-			assertTrue(endResult[3].contains(Integer.toString(settings.getNrOfExercises()))); // Should contain number of exercises	
+			assertTrue(endResult.contains(Formatter.format((amountCorrect/settings.getNrOfExercises()) * 100))); 
+			// Should contain number of exercises set to 'Correct'
 		}
 	}
 }

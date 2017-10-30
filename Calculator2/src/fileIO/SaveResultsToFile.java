@@ -38,12 +38,7 @@ public class SaveResultsToFile {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static void streamToFile(ExerciseSession object, String path) throws FileNotFoundException, IOException{
-		File file = new File(path);
-		
-		if(!file.exists())
-			file = new File(path);
-			
+	public static void streamToFile(ExerciseSession object, String path) throws FileNotFoundException, IOException{	
 		try(FileOutputStream outputStream = new FileOutputStream(path); ObjectOutputStream objStream = new ObjectOutputStream(outputStream);){
 			objStream.writeObject(object);
 		}

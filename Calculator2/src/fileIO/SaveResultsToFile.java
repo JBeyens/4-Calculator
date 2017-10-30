@@ -49,9 +49,4 @@ public class SaveResultsToFile {
 		}
 	}
 	
-	public static void addStringToStreamListToFile(String result, String path) throws FileNotFoundException, ClassNotFoundException, IOException{
-		ArrayList<String> existedList = LoadResultsFromFile.streamFileToString(path);
-		existedList.add(result);
-		streamListToFile(existedList, path);
-	}
 }

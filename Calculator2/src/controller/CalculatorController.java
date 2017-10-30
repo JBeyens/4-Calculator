@@ -181,7 +181,6 @@ public class CalculatorController {
 				
 			} catch (ClassNotFoundException | IOException e1) {
 				view.showMessage("Fout bij inlezen file");
-				e1.printStackTrace();
 			}
 			
 		}	
@@ -202,14 +201,16 @@ public class CalculatorController {
 			view.setStartExerciseButton(true);
 			view.setCheckAnswerButton(false);
 			view.showMessage(exerciseSession.getEndResult());
-			saveExerciseStatistics();
-		}
+			saveToPropertyFile();
+		}	
+	}
+
+	private void saveToPropertyFile() throws FileNotFoundException, ClassNotFoundException, IOException {
+		ArrayList<String> list  = new ArrayList<>();
+		list.addAll(LoadResultsFromFile.streamFileToString(DefaultSettings.filePath.getValue()));
+		list.add(exerciseSession.getEndResult());
+		
+		SaveResultsToFile.streamListToFile(list, DefaultSettings.filePath.getValue());
 		
 	}
-	
-	private void saveExerciseStatistics() throws FileNotFoundException, ClassNotFoundException, IOException{
-		SaveResultsToFile.addStringToStreamListToFile(exerciseSession.getEndResult(), DefaultSettings.filePath.getValue());
-	}
-	
-
 }

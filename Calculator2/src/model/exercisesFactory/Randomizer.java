@@ -21,11 +21,9 @@ public final class Randomizer {
 	 * @param int maxNumber: Integer gegeneerd door deze methode is kleiner of gelijk aan dit getal
 	 * @return int: Random int dat tussen de opgegeven grenzen ligt. */
 	public static int getRandomNumber( int minNumber, int maxNumber){
-		if (minNumber > maxNumber) {
-			int temp = minNumber;
-			minNumber = maxNumber;
-			maxNumber = temp;
-		}
+		int temp = minNumber;
+		minNumber = Math.min(minNumber, maxNumber);
+		maxNumber = Math.max(temp, maxNumber);
 		
 		int randomNumber = RANDOM.nextInt(maxNumber + 1 - minNumber);
 		

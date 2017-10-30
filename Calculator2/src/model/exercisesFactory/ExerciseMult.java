@@ -9,6 +9,8 @@ import model.exercises.ExerciseSettings;
  * @Purpose: Extention of base class Exercise to create a SUM
  */
 public class ExerciseMult extends Exercise {
+	/** Generated for Serializable implementation */
+	private static final long serialVersionUID = -7206937946302966262L;
 
 	/**
 	 * @param random object & settings are needed as input for the base class

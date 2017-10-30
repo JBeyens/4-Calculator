@@ -14,6 +14,8 @@ import model.exercises.ExerciseSettings;
 
 public abstract class Exercise implements Serializable{
 	// PRIVATE MEMBERS
+	/** Generated for Serializable implementation */
+	private static final long serialVersionUID = -335959616570107702L;
 	private ExerciseSettings settings;
 	private DecimalFormat formatter;
 	private double operand1;

@@ -26,9 +26,9 @@ public class SaveResultsToFile {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static void streamSerializedListToFile(ArrayList<ExerciseSession> serializedList, File file) throws FileNotFoundException, IOException{
+	public static void streamToFile(ExerciseSession object, File file) throws FileNotFoundException, IOException{
 		try(FileOutputStream outputStream = new FileOutputStream(file); ObjectOutputStream objStream = new ObjectOutputStream(outputStream);){
-			objStream.writeObject(serializedList);
+			objStream.writeObject(object);
 		}
 	}
 	
@@ -38,9 +38,9 @@ public class SaveResultsToFile {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static void streamSerializedListToFile(ArrayList<ExerciseSession> serializedList, String path) throws FileNotFoundException, IOException{
+	public static void streamToFile(ExerciseSession object, String path) throws FileNotFoundException, IOException{
 		try(FileOutputStream outputStream = new FileOutputStream(path); ObjectOutputStream objStream = new ObjectOutputStream(outputStream);){
-			objStream.writeObject(serializedList);
+			objStream.writeObject(object);
 		}
 	}
 }

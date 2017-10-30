@@ -2,14 +2,18 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import fileIO.SaveResultsToFile;
 import model.exercises.Calculator;
 import model.exercises.ExerciseSession;
 import model.exercises.ExerciseSettings;
 import model.exercisesFactory.Exercise;
 import model.properties.PropertyManager;
+import values.DefaultSettings;
 import values.NegativeComment;
 import values.PositiveComment;
 import view.MainView;
@@ -149,6 +153,10 @@ public class CalculatorController {
 				
 			} catch (NumberFormatException e2) {
 				view.showMessage("Gelieve een geldig getal als antwoord in te geven!");
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
 		}
 	}
@@ -165,7 +173,7 @@ public class CalculatorController {
 	 * Logic for handling a new Exercise
 	 * Logic for handling end of Session
 	 */
-	private void showNewExercise(){
+	private void showNewExercise() throws FileNotFoundException, IOException{
 		currentExercise = exerciseSession.getNextExercise();
 		if(currentExercise != null){
 			view.setLabelStringExercise("Oefening " + currentExercise.getExerciseNumber());
@@ -176,6 +184,7 @@ public class CalculatorController {
 			view.setStartExerciseButton(true);
 			view.setCheckAnswerButton(false);
 			view.showMessage(exerciseSession.getEndResult());
+			SaveResultsToFile.streamToFile(exerciseSession, DefaultSettings.filePath.getValue());
 		}
 		
 	}

@@ -36,7 +36,7 @@ public class ExerciseDivTest {
 			settings = new ExerciseSettings(minRange, maxRange, rndInt, rndInt, operators);			
 			exercise = new ExerciseDiv(settings, rndInt);
 
-			System.out.println("MinRange:\t" + minRange + "\t-- " + exercise.getOperand1() + "\t-- " + exercise.getOperand2() + " --\t" + maxRange + "MaxRange");
+			//System.out.println("MinRange:\t" + minRange + "\t-- " + exercise.getOperand1() + "\t-- " + exercise.getOperand2() + " --\t" + maxRange + "MaxRange");
 			assertTrue(exercise.getExerciseNumber() == rndInt); 
 			assertTrue(exercise.getOperand1() >= minRange); 
 			assertTrue(exercise.getOperand2() >= minRange); 
@@ -100,6 +100,7 @@ public class ExerciseDivTest {
 							      + 4 // 2*2 for '(' ')' around possible negative numbers
 							      + 2 * settings.getNrDecimals(); 
 			assertTrue(result.endsWith(" = "));  			// Check if it contains ' = ' at the end
+			//System.out.println("Result: " + result);
 			assertTrue(result.length() <= maxResultLength); // Check if the string length is not to long (would indicate bad formatting of doubles)
 			assertTrue((exercise.getOperand1() < 0 ? result.indexOf('(') > -1 : true)); // Check if there are () brackets for negative numbers
 			assertTrue((exercise.getOperand2() < 0 ? result.indexOf('(') > -1 : true)); // Check if there are () brackets for negative numbers
@@ -120,8 +121,18 @@ public class ExerciseDivTest {
 			exercise = new ExerciseDiv(settings, rndInt);
 
 			double rest = exercise.getOperand1() % exercise.getOperand2();
+			
+			boolean check1 = Math.abs(rest) < 0.00001;
+			boolean check2 = Math.abs(  Math.abs(exercise.getOperand2()) - Math.abs(rest)) < 0.00001;
+			if ( !(check1 || check2))	{
+				System.out.println("Min: " + settings.getMinRange());
+				System.out.println("Max: " + settings.getMaxRange());
+				System.out.println("Op1: " + exercise.getOperand1());
+				System.out.println("Op2: " + exercise.getOperand2());
+				System.out.println("Rest: " + rest);
+			}
 	
-			assertTrue(rest < 0.00001); 
+			assertTrue( check1 || check2 ); 
 		}
 	}
 }

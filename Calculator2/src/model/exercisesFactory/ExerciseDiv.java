@@ -1,5 +1,8 @@
 package model.exercisesFactory;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import model.exercises.ExerciseSettings;
 
 /**
@@ -43,6 +46,14 @@ public class ExerciseDiv extends Exercise {
 		setOperand1(xAbsBiggerThanYAbs ? x : y);
 		setOperand2(xAbsBiggerThanYAbs ? y : x);
 		
-		setOperand1(getOperand1() + (getOperand1() % getOperand2()));
+		double op1Test = getOperand1() - (getOperand1() % getOperand2());
+		if (op1Test < min)
+			op1Test = Math.signum(getOperand1()) * ( Math.abs(getOperand1()) - Math.abs(getOperand2()) + Math.abs( getOperand1() % getOperand2())  );
+		else if (op1Test > max)
+			op1Test = Math.signum(getOperand1()) * ( Math.abs(getOperand1()) - Math.abs( getOperand1() % getOperand2())  );
+
+		setOperand1( new BigDecimal(Double.toString(op1Test))
+				.setScale(getSettings().getNrDecimals(), RoundingMode.HALF_UP)
+				.doubleValue());
 	}
 }

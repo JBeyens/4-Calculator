@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-import model.exercises.ExerciseSession;
-
 
 /**
  * 	@Author Ben Vandevorst & Jef Beyens

@@ -1,6 +1,8 @@
 package model.exercisesFactory;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import model.exercises.ExerciseSettings;
 
@@ -35,7 +37,9 @@ public abstract class Exercise implements Serializable{
 	 * @param none:    input will be retrieved from the ExerciseSettings
 	 * @return String: a String where the trailing zeros and '.' has been cut off */
 	private String operandFormatter(double input) {
-		String operand = Double.toString(input);
+		String operand = new BigDecimal(Double.toString(input))
+								.setScale(settings.getNrDecimals(), RoundingMode.HALF_UP)
+								.toString();
 		boolean checkShouldContinue = true;
 		
 		while (checkShouldContinue) {

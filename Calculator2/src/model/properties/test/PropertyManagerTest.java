@@ -19,7 +19,7 @@ public class PropertyManagerTest {
 	
 	@Before
 	public void setUp(){
-		configPath = "resources/config.properties";
+		configPath = "src/model.properties.test/test.config.properties";
 		stringArray = new String[4];
 		stringArray[0] = new String("+");
 		stringArray[1] = new String("-");
@@ -29,7 +29,7 @@ public class PropertyManagerTest {
 	
 	@Test
 	public void test_Reading_Properties_From_Config_File_When_File_Found() {
-		PropertyManager propMan = PropertyManager.CreationMethod();
+		PropertyManager propMan = PropertyManager.CreationMethod(configPath);
 		
 		operatorArray = propMan.getProperty("operators").split(",");
 		
@@ -38,14 +38,14 @@ public class PropertyManagerTest {
 		numberOfQuestions = Integer.parseInt(propMan.getProperty("nrOfQuestions"));
 		numberOfDecimals = Integer.parseInt(propMan.getProperty("nrOfDecimals"));
 		
-		assertEquals(0, minimumNumber);
-		assertEquals(40, maximumNumber);
-		assertEquals(20, numberOfQuestions);
-		assertEquals(0, numberOfDecimals);
+		assertEquals(50, minimumNumber);
+		assertEquals(100, maximumNumber);
+		assertEquals(30, numberOfQuestions);
+		assertEquals(2, numberOfDecimals);
 		Assert.assertArrayEquals(stringArray, operatorArray);
 	}
 	
-	@Test
+	//@Test
 	public void test_Reading_Properties_From_Config_File_Not_Found_Expect_Default_Settings(){
 		PropertyManager propMan = PropertyManager.CreationMethod("invalid path");
 		

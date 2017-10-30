@@ -1,7 +1,6 @@
 package model.exercisesFactory;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
 
 import model.exercises.ExerciseSettings;
 
@@ -17,7 +16,6 @@ public abstract class Exercise implements Serializable{
 	/** Generated for Serializable implementation */
 	private static final long serialVersionUID = -335959616570107702L;
 	private ExerciseSettings settings;
-	private DecimalFormat formatter;
 	private double operand1;
 	private double operand2;
 	private char operation;
@@ -28,18 +26,27 @@ public abstract class Exercise implements Serializable{
 	// CONSTRUCTOR
 	public Exercise(ExerciseSettings settingsInput, int number) {
 		settings = settingsInput;
-		formatter = configureFormatter();
 		exerciseNumber = number;
 	}
 	
 	
 	// PRIVATE METHODS
 	/**
-	 * @param none:   		  input will be retrieved from the ExerciseSettings
-	 * @return DecimalFormat: a DecimalFormat object which can format double to the desired output */
-	private DecimalFormat configureFormatter() {
-		String pattern = getSettings().getNrDecimals() > 0 ? "#." + new String(new char[getSettings().getNrDecimals()]).replace("\0", "#") : "#";
-		return new DecimalFormat(pattern); 
+	 * @param none:    input will be retrieved from the ExerciseSettings
+	 * @return String: a String where the trailing zeros and '.' has been cut off */
+	private String operandFormatter(double input) {
+		String operand = Double.toString(input);
+		boolean checkShouldContinue = true;
+		
+		while (checkShouldContinue) {
+			if ( operand.endsWith("0") && operand.contains(".") )
+				operand =  operand.substring(0, operand.length() - 2);
+			else if (  operand.endsWith(".") )
+				operand =  operand.substring(0, operand.length() - 2);
+			else
+				checkShouldContinue = false;
+		}
+		return operand;
 	}
 	
 	
@@ -52,11 +59,12 @@ public abstract class Exercise implements Serializable{
 	/**
 	 * Generates the string to display the exercise */
 	@Override
-	public String toString() {							
-		return (getOperand1() < 0 ? "(" : "") + formatter.format(getOperand1()) + (getOperand1() < 0 ? ")" : " ") 
-				+ getOperation() + " " 
-				+ (getOperand2() < 0 ? "(" : "") + formatter.format(getOperand2()) + (getOperand1() < 0 ? ")" : "")
-				+ " = ";
+	public String toString() {	
+		String op1 = operandFormatter(getOperand1());
+		String op2 = operandFormatter(getOperand2());
+		op1 = getOperand1() < 0 ? "("+op1+")" : op1;
+		op2 = getOperand2() < 0 ? "("+op2+")" : op2;
+		return op1 + " " + getOperation() + " " + op2 + " = ";
 	}
 	
 

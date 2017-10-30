@@ -3,6 +3,7 @@ package model.exercises;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -62,6 +63,13 @@ public class ExerciseSession implements Serializable {
 							  + ":" + format2nrs.format(time.getSeconds() % 60);
 	}
 	
+	private String getScore(){
+		int correct = (int) exerciseList.stream().filter(x -> x.isCorrectReplied() == true).count();
+		double percentage = (correct/exerciseList.size()) * 100;
+		
+		return percentage + "%";
+	}
+	
 	// PUBLIC METHODS
 	/**
 	 * Returns the next exercise in the list and increases the exerciseCounter.
@@ -78,23 +86,14 @@ public class ExerciseSession implements Serializable {
 	 * Composes a string with statistics from the exercise session (Score, time, etc)
 	 * @return String    A description of the results
 	 **/
-	public String[] getEndResult() {
+	public String getEndResult() {
 		// End exercise setting:
 		if (isRunning) {
 			isRunning = false;
 			endTime = LocalDateTime.now();
 		}
-		
-		// Calculate score:
-		int correct = 0;
-		for (Exercise exercise : exerciseList) {
-			correct += exercise.isCorrectReplied() ? 1 : 0;
-		}
-	    int nrOfExercises = exerciseList.size();
 
-	    return new String[] {endTime.toLocalDate().toString(), 	// Date
-	    					 getTimeDifference(),				// Time spent
-	    					 Integer.toString(correct), 		// Amount of correct exercises
-	    					 Integer.toString(nrOfExercises) };	// Total amount of exercises
+	    return  LocalDate.now().toString() + " : Score: " + getScore() +
+	    		" Aantal vragen: " + exerciseList.size() + " Tijdsduur: " + getTimeDifference();
 	} 
 }

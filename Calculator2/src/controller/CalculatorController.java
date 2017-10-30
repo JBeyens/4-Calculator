@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import fileIO.LoadResultsFromFile;
-import fileIO.ResultHandler;
 import fileIO.SaveResultsToFile;
 import model.exercises.Calculator;
 import model.exercises.ExerciseSession;
@@ -37,13 +36,12 @@ public class CalculatorController {
 	private ExerciseSession exerciseSession;
 	private ExerciseSettings settings;
 	private Exercise currentExercise;
-	private ResultHandler handler;
 	
 	
 	//Constructor
 	public CalculatorController(){
 		view = new MainView();
-		handler = new ResultHandler();
+
 		//Calling properties
 		propertyManager = PropertyManager.CreationMethod();
 	}
@@ -161,6 +159,8 @@ public class CalculatorController {
 				e1.printStackTrace();
 			} catch (IOException e1) {
 				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				e1.printStackTrace();
 			}
 		}
 	}
@@ -168,7 +168,21 @@ public class CalculatorController {
 	private class ShowResultsListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			try {
+				ArrayList<String> list = LoadResultsFromFile.streamFileToString(DefaultSettings.filePath.getValue());
+				
+				String result = "";
+				
+				for (String string : list) {
+					result += "/n" + string; 
+				}
+				
+				view.showMessage(result);
+				
+			} catch (ClassNotFoundException | IOException e1) {
+				view.showMessage("Fout bij inlezen file");
+				e1.printStackTrace();
+			}
 			
 		}	
 	}
@@ -177,7 +191,7 @@ public class CalculatorController {
 	 * Logic for handling a new Exercise
 	 * Logic for handling end of Session
 	 */
-	private void showNewExercise() throws FileNotFoundException, IOException{
+	private void showNewExercise() throws FileNotFoundException, IOException, ClassNotFoundException{
 		currentExercise = exerciseSession.getNextExercise();
 		if(currentExercise != null){
 			view.setLabelStringExercise("Oefening " + currentExercise.getExerciseNumber());
@@ -188,7 +202,14 @@ public class CalculatorController {
 			view.setStartExerciseButton(true);
 			view.setCheckAnswerButton(false);
 			view.showMessage(exerciseSession.getEndResult());
+			saveExerciseStatistics();
 		}
 		
 	}
+	
+	private void saveExerciseStatistics() throws FileNotFoundException, ClassNotFoundException, IOException{
+		SaveResultsToFile.addStringToStreamListToFile(exerciseSession.getEndResult(), DefaultSettings.filePath.getValue());
+	}
+	
+
 }

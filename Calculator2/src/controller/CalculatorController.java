@@ -47,6 +47,7 @@ public class CalculatorController {
 		view.setSize(500, 350);
 		view.addActionListener(new StartExerciseListener());
 		view.addExerciseActionListener(new CheckExerciseListener());
+		view.addShowResultsActionListener(new ShowResultsListener());
 	}
 	
 	
@@ -74,6 +75,7 @@ public class CalculatorController {
 	 * Start Session
 	 */
 	private class StartExerciseListener implements ActionListener{
+		@Override
 		public void actionPerformed(ActionEvent e){
 			try {
 				int maxRange = Integer.parseInt(view.getTfMaxNumber());
@@ -129,6 +131,7 @@ public class CalculatorController {
 	 * Prompt Negative/Positive feedback to user
 	 */
 	private class CheckExerciseListener implements ActionListener{
+		@Override
 		public void actionPerformed(ActionEvent e){
 			try {
 				Double userInput = Double.parseDouble(view.getTfUserInput());
@@ -150,6 +153,13 @@ public class CalculatorController {
 		}
 	}
 
+	private class ShowResultsListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}	
+	}
 	
 	/*
 	 * Logic for handling a new Exercise

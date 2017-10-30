@@ -22,6 +22,7 @@ public class ExerciseSub extends Exercise {
 	 * This method has to be defined (due to abstract method in base class) becasue the operands
 	 *  have to be set up differently for each type of exercise 
 	 */
+	@Override
 	public void generateExercise() {
 		setOperation( '-' );
 		

@@ -74,11 +74,11 @@ public class ExerciseSessionTest {
 				}
 			}
 		
-			String endResult = session.getEndResult();
+			String[] endResult = session.getEndResult();
 			
 			assertTrue(endResult != null); // Should not be null
-			assertTrue(endResult.contains(Integer.toString(settings.getNrOfExercises()))); // Should contain number of exercises
-			assertTrue(endResult.contains(Integer.toString(amountCorrect))); // Should contain number of exercises set to 'Correct'	
+			assertTrue(endResult[2].contains(Integer.toString(amountCorrect))); // Should contain number of exercises set to 'Correct'
+			assertTrue(endResult[3].contains(Integer.toString(settings.getNrOfExercises()))); // Should contain number of exercises	
 		}
 	}
 }

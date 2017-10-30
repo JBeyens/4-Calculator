@@ -174,7 +174,7 @@ public class CalculatorController {
 				String result = "";
 				
 				for (String string : list) {
-					result += "/n" + string; 
+					result += "\n" + string; 
 				}
 				
 				view.showMessage(result);
@@ -207,7 +207,9 @@ public class CalculatorController {
 
 	private void saveToPropertyFile() throws FileNotFoundException, ClassNotFoundException, IOException {
 		ArrayList<String> list  = new ArrayList<>();
-		list.addAll(LoadResultsFromFile.streamFileToString(DefaultSettings.filePath.getValue()));
+		if(new File(DefaultSettings.filePath.getValue()).exists())
+			list.addAll(LoadResultsFromFile.streamFileToString(DefaultSettings.filePath.getValue()));
+		
 		list.add(exerciseSession.getEndResult());
 		
 		SaveResultsToFile.streamListToFile(list, DefaultSettings.filePath.getValue());

@@ -27,6 +27,7 @@ public class ExerciseSession implements Serializable {
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;
     private DecimalFormat format2nrs = new DecimalFormat("00");
+    private DecimalFormat format2dec = new DecimalFormat("#.00");
 	
 	
 	// CONSTRUCTOR
@@ -71,7 +72,7 @@ public class ExerciseSession implements Serializable {
 		int correct = (int) exerciseList.stream().filter(x -> x.isCorrectReplied() == true).count();
 		double percentage = (correct/exerciseList.size()) * 100;
 		
-		return percentage + "%";
+		return format2dec.format(percentage) + "%";
 	}
 	
 	// PUBLIC METHODS

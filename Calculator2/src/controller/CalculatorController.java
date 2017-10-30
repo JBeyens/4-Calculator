@@ -174,6 +174,7 @@ public class CalculatorController {
 				String result = "";
 				
 				for (String string : list) {
+<<<<<<< HEAD
 					result += "/n" + string; 
 				}
 				
@@ -182,6 +183,15 @@ public class CalculatorController {
 			} catch (ClassNotFoundException | IOException e1) {
 				view.showMessage("Fout bij inlezen file");
 				e1.printStackTrace();
+=======
+					result += "\n" + string; 
+				}
+				
+				view.showMessage(result);
+				
+			} catch (ClassNotFoundException | IOException e1) {
+				view.showMessage("Fout bij inlezen file");
+>>>>>>> branch 'dev' of https://github.com/JBeyens/4-Calculator.git
 			}
 			
 		}	
@@ -202,8 +212,26 @@ public class CalculatorController {
 			view.setStartExerciseButton(true);
 			view.setCheckAnswerButton(false);
 			view.showMessage(exerciseSession.getEndResult());
+<<<<<<< HEAD
 			saveExerciseStatistics();
 		}
+=======
+			saveToPropertyFile();
+		}	
+	}
+	
+/*
+ * Saving result to file
+ */
+	private void saveToPropertyFile() throws FileNotFoundException, ClassNotFoundException, IOException {
+		ArrayList<String> list  = new ArrayList<>();
+		if(new File(DefaultSettings.filePath.getValue()).exists())
+			list.addAll(LoadResultsFromFile.streamFileToString(DefaultSettings.filePath.getValue()));
+		
+		list.add(exerciseSession.getEndResult());
+		
+		SaveResultsToFile.streamListToFile(list, DefaultSettings.filePath.getValue());
+>>>>>>> branch 'dev' of https://github.com/JBeyens/4-Calculator.git
 		
 	}
 	

@@ -18,6 +18,8 @@ import model.exercisesFactory.ExerciseFactory;
  */
 public class ExerciseSession implements Serializable {
 	// PRIVATE MEMBERS
+	/** Generated serialVersionUID for Serializable implementation	 */
+	private static final long serialVersionUID = 8667035227886869084L;
 	private ArrayList<Exercise> exerciseList;
 	private int exerciseCounter;
 	private boolean isRunning;
@@ -76,7 +78,7 @@ public class ExerciseSession implements Serializable {
 	 * Composes a string with statistics from the exercise session (Score, time, etc)
 	 * @return String    A description of the results
 	 **/
-	public String getEndResult() {
+	public String[] getEndResult() {
 		// End exercise setting:
 		if (isRunning) {
 			isRunning = false;
@@ -89,12 +91,10 @@ public class ExerciseSession implements Serializable {
 			correct += exercise.isCorrectReplied() ? 1 : 0;
 		}
 	    int nrOfExercises = exerciseList.size();
-	    
-	    // Calculate time spent:
-	    String timeSpentHHMMSS = getTimeDifference();
-					
 
-		return "Eindscore oefeningen: " + correct + "/" + nrOfExercises
-				+ "\nTijd gespendeerd: " + timeSpentHHMMSS;
+	    return new String[] {endTime.toLocalDate().toString(), 	// Date
+	    					 getTimeDifference(),				// Time spent
+	    					 Integer.toString(correct), 		// Amount of correct exercises
+	    					 Integer.toString(nrOfExercises) };	// Total amount of exercises
 	} 
 }

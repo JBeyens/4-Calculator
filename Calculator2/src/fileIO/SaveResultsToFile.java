@@ -29,7 +29,8 @@ public class SaveResultsToFile {
 	public static void streamToFile(ArrayList<String> result, File file) throws FileNotFoundException, IOException{
 		File tempFile = file;
 		tempFile.createNewFile();
-		try(FileOutputStream outputStream = new FileOutputStream(file); ObjectOutputStream objStream = new ObjectOutputStream(outputStream);){
+		try(  FileOutputStream outputStream = new FileOutputStream(file); 
+			  ObjectOutputStream objStream = new ObjectOutputStream(outputStream); ) {
 			objStream.writeObject(result);
 		}
 	}

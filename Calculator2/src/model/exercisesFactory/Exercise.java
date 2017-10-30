@@ -1,5 +1,6 @@
 package model.exercisesFactory;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
 import model.exercises.ExerciseSettings;
@@ -11,7 +12,7 @@ import model.exercises.ExerciseSettings;
  * @Purpose: Base class for Exercises
  */
 
-public abstract class Exercise {
+public abstract class Exercise implements Serializable{
 	// PRIVATE MEMBERS
 	private ExerciseSettings settings;
 	private DecimalFormat formatter;

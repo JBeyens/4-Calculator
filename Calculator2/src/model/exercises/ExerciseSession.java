@@ -1,5 +1,6 @@
 package model.exercises;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -15,7 +16,7 @@ import model.exercisesFactory.ExerciseFactory;
  * @Purpose: manage exercises
  *  --> The purpose of this class is to manage exercises. 
  */
-public class ExerciseSession {
+public class ExerciseSession implements Serializable {
 	// PRIVATE MEMBERS
 	private ArrayList<Exercise> exerciseList;
 	private int exerciseCounter;

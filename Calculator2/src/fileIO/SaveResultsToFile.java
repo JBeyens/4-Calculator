@@ -26,7 +26,7 @@ public class SaveResultsToFile {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static void streamToFile(ArrayList<String> result, File file) throws FileNotFoundException, IOException{
+	public static void streamListToFile(ArrayList<String> result, File file) throws FileNotFoundException, IOException{
 		File tempFile = file;
 		tempFile.createNewFile();
 		try(FileOutputStream outputStream = new FileOutputStream(file); ObjectOutputStream objStream = new ObjectOutputStream(outputStream);){
@@ -40,12 +40,18 @@ public class SaveResultsToFile {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static void streamToFile(ArrayList<String> result, String path) throws FileNotFoundException, IOException{
+	public static void streamListToFile(ArrayList<String> result, String path) throws FileNotFoundException, IOException{
 		File file = new File(path);
 		file.createNewFile();
 		
 		try(FileOutputStream outputStream = new FileOutputStream(path); ObjectOutputStream objStream = new ObjectOutputStream(outputStream);){
 			objStream.writeObject(result);
 		}
+	}
+	
+	public static void addStringToStreamListToFile(String result, String path) throws FileNotFoundException, ClassNotFoundException, IOException{
+		ArrayList<String> existedList = LoadResultsFromFile.streamFileToString(path);
+		existedList.add(result);
+		streamListToFile(existedList, path);
 	}
 }

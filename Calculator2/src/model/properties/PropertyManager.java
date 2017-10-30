@@ -13,7 +13,7 @@ import java.util.Properties;
 public class PropertyManager {
 	// DATA MEMBERS
 	/* Static Property Reference */
-	private static Properties programProperties;
+	private static Properties programProperties = new Properties(PropertyDefaultReader.getDefaultProperties());
 	/* Static Class Reference to an object of itself */
 	private static PropertyManager propertyManager;
 
@@ -23,7 +23,7 @@ public class PropertyManager {
     /*Private Constructor will prevent the instantiation of this class directly.
      * This is to ensure this class is a singleton. */
 	private PropertyManager() { 
-		programProperties  = PropertyDefaultReader.getDefaultProperties();
+		programProperties  = new Properties(PropertyDefaultReader.getDefaultProperties());
 	}
 	
 	

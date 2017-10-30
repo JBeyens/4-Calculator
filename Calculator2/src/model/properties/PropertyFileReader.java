@@ -53,7 +53,8 @@ public final class PropertyFileReader {
 			
 			if (!file.exists()) {
 				// Create new file based on absolute path
-				file.getParentFile().mkdirs(); // Will create missing folders if necessary
+				if (file.getParentFile() != null)
+					file.getParentFile().mkdirs(); // Will create missing folders if necessary
 				file.createNewFile();
 			}
 

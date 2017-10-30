@@ -1,5 +1,6 @@
 package model.properties;
 
+import java.io.File;
 import java.util.Properties;
 
 
@@ -39,6 +40,7 @@ public class PropertyManager {
 		if( propertyManager == null ) {
 			propertyManager = new PropertyManager();
 		}
+		
 		readProperties(path);	// Update programProperties with what you can read from file
 		saveProperties(path);	// ProgramProperties can now contain more than was indicated in the file, so save all to file
 		return propertyManager;

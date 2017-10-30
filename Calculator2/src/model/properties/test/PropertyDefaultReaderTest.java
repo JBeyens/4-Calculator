@@ -38,7 +38,7 @@ public class PropertyDefaultReaderTest {
 	}
 	
 	@Test
-	public void testt_Get_Default_Values_From_Enum_To_Properties_Expect_Defaults() {
+	public void test_Get_Default_Values_From_Enum_To_Properties_Expect_Defaults() {
 		properties = PropertyDefaultReader.getDefaultProperties();
 		
 		operatorArray = properties.getProperty("operators").split(",");

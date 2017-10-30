@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import fileIO.LoadResultsFromFile;
-import fileIO.SaveResultsToFile;
 import model.exercises.Calculator;
 import model.exercises.ExerciseSession;
 import model.exercises.ExerciseSettings;
 import model.exercisesFactory.Exercise;
 import model.properties.PropertyManager;
+import model.resultFileIO.LoadResultsFromFile;
+import model.resultFileIO.SaveResultsToFile;
 import values.DefaultSettings;
 import values.NegativeComment;
 import values.PositiveComment;

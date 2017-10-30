@@ -1,4 +1,4 @@
-package fileIO;
+package model.resultFileIO;
 
 import java.io.File;
 import java.io.FileInputStream;

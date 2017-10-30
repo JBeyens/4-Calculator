@@ -18,7 +18,7 @@ import java.util.Properties;
 
 public final class PropertyFileReader {
 	/* Private constructor --> class not meant to be initialized */
-	private PropertyFileReader() {	}
+	private PropertyFileReader() {}
 
 	/* Method to store specified properties to a specified path. */
 	public static boolean saveProperties(String path, Properties properties) {

@@ -44,7 +44,7 @@ public class PropertyManager {
 		return propertyManager;
 	}
 	
-	/* To get a certain property from the Properties field */
+	/* Getter property with key parameter */
 	public String getProperty(String key) {
 		return programProperties.getProperty(key);
 	}

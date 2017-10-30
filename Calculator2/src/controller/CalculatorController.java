@@ -204,7 +204,10 @@ public class CalculatorController {
 			saveToPropertyFile();
 		}	
 	}
-
+	
+/*
+ * Saving result to file
+ */
 	private void saveToPropertyFile() throws FileNotFoundException, ClassNotFoundException, IOException {
 		ArrayList<String> list  = new ArrayList<>();
 		if(new File(DefaultSettings.filePath.getValue()).exists())

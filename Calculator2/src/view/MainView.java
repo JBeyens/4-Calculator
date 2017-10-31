@@ -92,7 +92,7 @@ public class MainView extends JFrame {
 		return tfUserInput.getText();
 	}
 	public void setTfUserInput(String tfUserInput) {
-		this.tfUserInput.setText(tfUserInput);;
+		this.tfUserInput.setText(tfUserInput);
 	}
 	
 	public String getLabelStringExercise() {
@@ -131,7 +131,7 @@ public class MainView extends JFrame {
 	}
 
 	public void setTfNrOfDecimals(String tfNrOfDecimals) {
-		this.tfNrOfDecimals.setValue(Integer.parseInt(tfNrOfDecimals));;
+		this.tfNrOfDecimals.setValue(Integer.parseInt(tfNrOfDecimals));
 	}
 
 	public boolean getRbAddition() {
@@ -206,7 +206,7 @@ public class MainView extends JFrame {
 			}
 			
 		});
-		SpinnerNumberModel valueQ = new SpinnerNumberModel(5, 5, 30, 1);
+		SpinnerNumberModel valueQ = new SpinnerNumberModel(5, 1, 30, 1);
 		tfNrOfQuestions = new JSpinner(valueQ);
 		tfNrOfQuestions.addChangeListener(new ChangeListener(){
 			@Override

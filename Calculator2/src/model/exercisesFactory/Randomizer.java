@@ -17,8 +17,8 @@ public final class Randomizer {
 	public final static Random RANDOM = new Random();
 	
 	/**
-	 * @param int minNumber: Integer gegeneerd door deze methode is groter of gelijk aan dit getal
-	 * @param int maxNumber: Integer gegeneerd door deze methode is kleiner of gelijk aan dit getal
+	 * @param int minNumber: Integer gegenereerd door deze methode is groter of gelijk aan dit getal
+	 * @param int maxNumber: Integer gegenereerd door deze methode is kleiner of gelijk aan dit getal
 	 * @return int: Random int dat tussen de opgegeven grenzen ligt. */
 	public static int getRandomNumber( int minNumber, int maxNumber){
 		int temp = minNumber;
@@ -38,9 +38,9 @@ public final class Randomizer {
 	}	
 	
 	/**
-	 * @param double minNumber: double gegeneerd door deze methode is groter of gelijk aan dit getal
-	 * @param double maxNumber: double gegeneerd door deze methode is kleiner of gelijk aan dit getal
-	 * @param int nrDecimals:   double gegeneerd door deze methode mag hoogstens dit aantal decimals hebben.
+	 * @param double minNumber: double gegenereerd door deze methode is groter of gelijk aan dit getal
+	 * @param double maxNumber: double gegenereerd door deze methode is kleiner of gelijk aan dit getal
+	 * @param int nrDecimals:   double gegenereerd door deze methode mag hoogstens dit aantal decimals hebben.
 	 * @return double: Random double dat tussen de opgegeven grenzen ligt, met hoogstens het opgegeven aantal decimalen. */
 	public static double getRandomNumber(double minNumber, double maxNumber, int nrDecimals){
 		if (nrDecimals < 0) throw new IllegalArgumentException();

@@ -1,6 +1,5 @@
 package model.properties;
 
-import java.io.File;
 import java.util.Properties;
 
 

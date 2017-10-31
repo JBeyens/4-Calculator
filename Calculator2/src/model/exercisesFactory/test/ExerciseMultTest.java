@@ -10,6 +10,12 @@ import model.exercisesFactory.Exercise;
 import model.exercisesFactory.ExerciseMult;
 import model.exercisesFactory.Randomizer;
 
+/**
+ * 	@Author Jef Beyens & Ben Vandevorst
+	@Datum 28/10/2017
+	@Project Calculator
+	@Doel Testen van de ExerciseMult functies
+ */
 public class ExerciseMultTest {
 	private ExerciseSettings settings;
 	private int boundInteger;

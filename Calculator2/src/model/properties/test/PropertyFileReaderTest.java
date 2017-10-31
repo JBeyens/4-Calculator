@@ -40,6 +40,9 @@ public class PropertyFileReaderTest {
 		assertTrue(propertiesAfter.containsKey("Happy times"));
 		assertEquals(propertiesAfter.get("Happy times"), "I hear you!");
 		assertTrue(propertiesAfter.containsKey("1 Johny + 1 Johny"));
-		assertEquals(propertiesAfter.get("1 Johny + 1 Johny"), "2 Johnies");		
+		assertEquals(propertiesAfter.get("1 Johny + 1 Johny"), "2 Johnies");	
+		
+		// Clean up file
+		file.delete();
 	}
 }

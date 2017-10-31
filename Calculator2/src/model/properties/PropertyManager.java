@@ -23,7 +23,7 @@ public class PropertyManager {
     /*Private Constructor will prevent the instantiation of this class directly.
      * This is to ensure this class is a singleton. */
 	private PropertyManager() { 
-		programProperties  = new Properties(PropertyDefaultReader.getDefaultProperties());
+		programProperties = PropertyDefaultReader.getDefaultProperties();
 	}
 	
 	
@@ -66,5 +66,11 @@ public class PropertyManager {
 	/* To save all properties in 'programProperties' to file */
 	public static boolean saveProperties(String path) {
 		return PropertyFileReader.saveProperties(path, programProperties);
+	}
+	
+	/* For testing purposes - resets the singleton class */
+	public static void reset() {
+		propertyManager = null;
+		programProperties = null;
 	}
 }

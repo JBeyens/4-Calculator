@@ -15,7 +15,6 @@ import model.properties.PropertyManager;
 import values.DefaultSettings;
 
 public class PropertyManagerTest {
-	private String configPath;
 	private int minimumNumber;
 	private int maximumNumber;
 	private int numberOfQuestions;
@@ -25,7 +24,6 @@ public class PropertyManagerTest {
 	
 	@Before
 	public void setUp(){
-		configPath = "src/model/properties/test/test.config.properties";
 		stringArray = new String[4];
 		stringArray[0] = new String("+");
 		stringArray[1] = new String("-");
@@ -35,7 +33,32 @@ public class PropertyManagerTest {
 	
 	@Test
 	public void test_Reading_Properties_From_Config_File_When_File_Found() {
-		PropertyManager propMan = PropertyManager.CreationMethod(configPath);
+		// Ensure file does not exist:
+		String path = "Random path";
+		File file = new File(path);
+		while (file.exists()) {
+			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
+			file = new File(path);
+		}			
+		
+		// Write some stuff to the file
+		try {
+			file.createNewFile();
+			FileWriter writer = new FileWriter(file);
+			writer.write("#Tue Oct 31 00:37:02 CET 2017\r\n" +
+						"operators=+,-,*,/\r\n" +
+						"stringPath=resources/config.properties\r\n" +
+						"nrOfDecimals=2\r\n" +
+						"filePath=resource/results.txt\r\n" +
+						"maximumNumber=100\r\n" +
+						"minimumNumber=50\r\n" +
+						"nrOfQuestions=30");
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		PropertyManager propMan = PropertyManager.CreationMethod(path);
 		
 		operatorArray = propMan.getProperty("operators").split(",");
 		
@@ -49,6 +72,9 @@ public class PropertyManagerTest {
 		assertEquals(30, numberOfQuestions);
 		assertEquals(2, numberOfDecimals);
 		Assert.assertArrayEquals(stringArray, operatorArray);
+		
+		// Clean up file
+		file.delete();
 	}
 	
 	@Test

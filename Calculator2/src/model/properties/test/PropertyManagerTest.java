@@ -18,11 +18,11 @@ import values.DefaultSettings;
 
 public class PropertyManagerTest {
 	private File file;
+	private String path = "Random path";
 	
 	@Test
 	public void test_Reading_Properties_From_Config_File_When_File_Found() {
 		// Ensure file does not exist:
-		String path = "Random path";
 		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
@@ -59,7 +59,6 @@ public class PropertyManagerTest {
 	@Test
 	public void test_Reading_Properties_From_Config_File_Not_Found_Expect_Default_Settings(){
 		// Ensure file does not exist:
-		String path = "Random path";
 		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
@@ -81,7 +80,6 @@ public class PropertyManagerTest {
 	@Test
 	public void test_Reading_Properties_From_Config_File_With_Missing_Value_Expect_Default_Settings(){
 		// Ensure file does not exist:
-		String path = "Random path";
 		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
@@ -114,7 +112,6 @@ public class PropertyManagerTest {
 	@Test
 	public void test_Reading_Properties_From_Config_File_With_Missing_Values_Added_To_File(){
 		// Ensure file does not exist:
-		String path = "Random path";
 		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
@@ -151,7 +148,6 @@ public class PropertyManagerTest {
 	@Test
 	public void test_SetProperty_Changes_Both_Result_GetProperty_And_File(){
 		// Ensure file does not exist:
-		String path = "Random path";
 		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";

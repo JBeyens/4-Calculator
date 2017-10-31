@@ -33,7 +33,7 @@ public class PropertyManagerTest {
 	}	
 	
 	@Test
-	public void test_Reading_Properties_From_Config_File_When_File_Found() {
+	public void test_Reading_Properties_From_Config_File_When_File_Filled() {
 		// Write some stuff to the file
 		try {
 			file.createNewFile();
@@ -74,7 +74,7 @@ public class PropertyManagerTest {
 	
 	
 	@Test
-	public void test_Reading_Properties_From_Config_File_With_Missing_Value_Expect_Default_Settings(){
+	public void test_Reading_Properties_From_File_With_Missing_Value_Expect_Default_Settings(){
 		// Write some stuff to the file
 		try {
 			file.createNewFile();

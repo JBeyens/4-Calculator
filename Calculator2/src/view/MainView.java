@@ -24,10 +24,7 @@ import javax.swing.event.ChangeListener;
  */
 
 public class MainView extends JFrame {
-	/**
-	 * 
-	 */
-	
+	/***/
 	//JComponents
 	private static final long serialVersionUID = 1L;
 	private JLabel labelNrOfQuestions;

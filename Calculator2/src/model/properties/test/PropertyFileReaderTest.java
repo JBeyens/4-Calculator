@@ -13,6 +13,12 @@ import org.junit.Test;
 import model.exercisesFactory.Randomizer;
 import model.properties.PropertyFileReader;
 
+/**
+ * 	@Author Jef Beyens & Ben Vandevorst
+	@Datum 28/10/2017
+	@Project Calculator
+	@Doel Testen van de PropertyFileReader
+ */
 public class PropertyFileReaderTest {
 	private File file;
 	private String path = "Random path";

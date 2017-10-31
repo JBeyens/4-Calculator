@@ -17,6 +17,12 @@ import model.properties.PropertyFileReader;
 import model.properties.PropertyManager;
 import values.DefaultSettings;
 
+/**
+ * 	@Author Jef Beyens & Ben Vandevorst
+	@Datum 28/10/2017
+	@Project Calculator
+	@Doel Testen van de PropertyManager
+ */
 public class PropertyManagerTest {
 	private File file;
 	private String path = "Random path";

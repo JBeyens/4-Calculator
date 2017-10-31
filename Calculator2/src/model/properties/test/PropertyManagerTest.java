@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,15 +18,13 @@ import model.properties.PropertyManager;
 import values.DefaultSettings;
 
 public class PropertyManagerTest {
-	
-	@Before
-	public void setUp(){ }
+	private File file;
 	
 	@Test
 	public void test_Reading_Properties_From_Config_File_When_File_Found() {
 		// Ensure file does not exist:
 		String path = "Random path";
-		File file = new File(path);
+		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
 			file = new File(path);
@@ -56,15 +55,13 @@ public class PropertyManagerTest {
 		assertEquals("2", propMan.getProperty("nrOfDecimals"));
 		Assert.assertArrayEquals(new String[] {"+","-","*","/"}, propMan.getProperty("operators").split(","));
 		
-		// Clean up file
-		file.delete();
 	}
 	
 	@Test
 	public void test_Reading_Properties_From_Config_File_Not_Found_Expect_Default_Settings(){
 		// Ensure file does not exist:
 		String path = "Random path";
-		File file = new File(path);
+		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
 			file = new File(path);
@@ -78,9 +75,7 @@ public class PropertyManagerTest {
 		assertEquals(DefaultSettings.maximumNumber.getValue(), propMan.getProperty("maximumNumber"));
 		assertEquals(DefaultSettings.nrOfQuestions.getValue(), propMan.getProperty("nrOfQuestions"));
 		assertEquals(DefaultSettings.nrOfDecimals.getValue(), propMan.getProperty("nrOfDecimals"));
-		
-		// Clean up file
-		file.delete();
+
 	}
 	
 	
@@ -88,7 +83,7 @@ public class PropertyManagerTest {
 	public void test_Reading_Properties_From_Config_File_With_Missing_Value_Expect_Default_Settings(){
 		// Ensure file does not exist:
 		String path = "Random path";
-		File file = new File(path);
+		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
 			file = new File(path);
@@ -114,8 +109,6 @@ public class PropertyManagerTest {
 		assertEquals(DefaultSettings.nrOfQuestions.getValue(), propMan.getProperty("nrOfQuestions"));
 		assertEquals(DefaultSettings.nrOfDecimals.getValue(), propMan.getProperty("nrOfDecimals"));
 		
-		// Clean up file
-		file.delete();
 	}
 	
 	
@@ -123,7 +116,7 @@ public class PropertyManagerTest {
 	public void test_Reading_Properties_From_Config_File_With_Missing_Values_Added_To_File(){
 		// Ensure file does not exist:
 		String path = "Random path";
-		File file = new File(path);
+		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
 			file = new File(path);
@@ -153,8 +146,6 @@ public class PropertyManagerTest {
 		assertEquals(DefaultSettings.nrOfDecimals.getValue(), filePropertiesOnly.getProperty("nrOfDecimals"));
 		assertEquals(path, filePropertiesOnly.getProperty("stringPath"));
 		
-		// Clean up file
-		file.delete();
 	}
 	
 	
@@ -162,7 +153,7 @@ public class PropertyManagerTest {
 	public void test_SetProperty_Changes_Both_Result_GetProperty_And_File(){
 		// Ensure file does not exist:
 		String path = "Random path";
-		File file = new File(path);
+		file = new File(path);
 		while (file.exists()) {
 			path = Long.toString(Randomizer.RANDOM.nextLong()) + ".txt";
 			file = new File(path);
@@ -191,8 +182,13 @@ public class PropertyManagerTest {
 		// Also check if the file contains the correct string
 		Properties filePropertiesOnly = PropertyFileReader.loadProperties(path, new Properties());
 		assertEquals("123", filePropertiesOnly.getProperty("minimumNumber"));
-		
-		// Clean up file
+			
+	}
+	
+	//Clean up file
+	@After
+	public void tearDown(){
 		file.delete();
 	}
+	
 }

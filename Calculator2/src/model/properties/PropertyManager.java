@@ -41,8 +41,8 @@ public class PropertyManager {
 		}
 		
 		programProperties.setProperty("stringPath", path);
-		readProperties(path);	// Update programProperties with what you can read from file
-		saveProperties(path);	// ProgramProperties can now contain more than was indicated in the file, so save all to file
+		propertyManager.readProperties(path);	// Update programProperties with what you can read from file
+		propertyManager.saveProperties(path);	// ProgramProperties can now contain more than was indicated in the file, so save all to file
 		return propertyManager;
 	}
 	
@@ -59,18 +59,18 @@ public class PropertyManager {
 	}
 	
 	/* To get all properties from file updated in 'programProperties' */
-	public static Properties readProperties(String path) {
+	public Properties readProperties(String path) {
 		return PropertyFileReader.loadProperties(path, programProperties);
 	}
 	
 	/* To save all properties in 'programProperties' to file */
-	public static boolean saveProperties(String path) {
+	public boolean saveProperties(String path) {
 		return PropertyFileReader.saveProperties(path, programProperties);
 	}
 	
-	/* For testing purposes - resets the singleton class */
-	public static void reset() {
-		propertyManager = null;
-		programProperties = null;
-	}
+	/** For testing purposes - resets the singleton class 
+	 * @return PropertyManager: returns a new instance of the PropertyManager which will be used from now on when accessing this class */	
+	public static void resetToDefault() {
+		programProperties = PropertyDefaultReader.getDefaultProperties();
+	}	
 }

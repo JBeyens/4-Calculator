@@ -44,10 +44,10 @@ public class MainView extends JFrame {
 	private JFormattedTextField tfMaxNumber;
 	private JTextField tfUserInput;
 	
-	private JCheckBox rbAddition;
-	private JCheckBox rbSubstraction;
-	private JCheckBox rbMultiplication;
-	private JCheckBox rbDivision;
+	private JCheckBox cbAddition;
+	private JCheckBox cbSubstraction;
+	private JCheckBox cbMultiplication;
+	private JCheckBox cbDivision;
 	
 	private JButton startExercises;
 	private JButton checkAnswer;
@@ -135,35 +135,35 @@ public class MainView extends JFrame {
 	}
 
 	public boolean getRbAddition() {
-		return rbAddition.isSelected();
+		return cbAddition.isSelected();
 	}
 
 	public void setRbAddition(boolean isSelected) {
-		this.rbAddition.setSelected(isSelected);
+		this.cbAddition.setSelected(isSelected);
 	}
 
 	public boolean getRbSubstraction() {
-		return rbSubstraction.isSelected();
+		return cbSubstraction.isSelected();
 	}
 
 	public void setRbSubstraction(boolean isSelected) {
-		this.rbSubstraction.setSelected(isSelected);
+		this.cbSubstraction.setSelected(isSelected);
 	}
 
 	public boolean getRbMultiplication() {
-		return rbMultiplication.isSelected();
+		return cbMultiplication.isSelected();
 	}
 
 	public void setRbMultiplication(boolean isSelected) {
-		this.rbMultiplication.setSelected(isSelected);
+		this.cbMultiplication.setSelected(isSelected);
 	}
 
 	public boolean getRbDivision() {
-		return rbDivision.isSelected();
+		return cbDivision.isSelected();
 	}
 	
 	public void setRbDivision(boolean isSelected) {
-		this.rbDivision.setSelected(isSelected);
+		this.cbDivision.setSelected(isSelected);
 	}
 	
 	public void showMessage(String s){
@@ -230,10 +230,10 @@ public class MainView extends JFrame {
 		
 		tfUserInput = new JTextField(3);
 		
-		rbAddition = new JCheckBox("+");
-		rbSubstraction = new JCheckBox("-");
-		rbMultiplication = new JCheckBox("*");
-		rbDivision = new JCheckBox("/");
+		cbAddition = new JCheckBox("+");
+		cbSubstraction = new JCheckBox("-");
+		cbMultiplication = new JCheckBox("*");
+		cbDivision = new JCheckBox("/");
 		
 		showResults = new JButton("Resultaten");
 		startExercises = new JButton("Start");
@@ -257,22 +257,22 @@ public class MainView extends JFrame {
 		layout.putConstraint(SpringLayout.NORTH, tfUserInput, 1, SpringLayout.NORTH, labelExercise);
 		layout.putConstraint(SpringLayout.SOUTH, tfUserInput, -2, SpringLayout.SOUTH, labelExercise);
 		layout.putConstraint(SpringLayout.EAST, tfUserInput, 0, SpringLayout.EAST, labelOperators);
-		layout.putConstraint(SpringLayout.NORTH, rbDivision, -4, SpringLayout.NORTH, labelMinNumber);
-		layout.putConstraint(SpringLayout.WEST, rbDivision, 0, SpringLayout.WEST, rbMultiplication);
-		layout.putConstraint(SpringLayout.EAST, rbAddition, -144, SpringLayout.EAST, getContentPane());
-		layout.putConstraint(SpringLayout.NORTH, rbMultiplication, -4, SpringLayout.NORTH, labelNrOfQuestions);
-		layout.putConstraint(SpringLayout.WEST, rbMultiplication, 6, SpringLayout.EAST, rbAddition);
-		layout.putConstraint(SpringLayout.NORTH, rbSubstraction, -4, SpringLayout.NORTH, labelMinNumber);
-		layout.putConstraint(SpringLayout.WEST, rbSubstraction, 0, SpringLayout.WEST, rbAddition);
+		layout.putConstraint(SpringLayout.NORTH, cbDivision, -4, SpringLayout.NORTH, labelMinNumber);
+		layout.putConstraint(SpringLayout.WEST, cbDivision, 0, SpringLayout.WEST, cbMultiplication);
+		layout.putConstraint(SpringLayout.EAST, cbAddition, -144, SpringLayout.EAST, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, cbMultiplication, -4, SpringLayout.NORTH, labelNrOfQuestions);
+		layout.putConstraint(SpringLayout.WEST, cbMultiplication, 6, SpringLayout.EAST, cbAddition);
+		layout.putConstraint(SpringLayout.NORTH, cbSubstraction, -4, SpringLayout.NORTH, labelMinNumber);
+		layout.putConstraint(SpringLayout.WEST, cbSubstraction, 0, SpringLayout.WEST, cbAddition);
 		layout.putConstraint(SpringLayout.NORTH, tfMinNumber, -3, SpringLayout.NORTH, labelMinNumber);
 		layout.putConstraint(SpringLayout.NORTH, tfNrOfQuestions, -3, SpringLayout.NORTH, labelNrOfQuestions);
 		layout.putConstraint(SpringLayout.NORTH, tfMaxNumber, -3, SpringLayout.NORTH, labelMAxNumber);
 		layout.putConstraint(SpringLayout.NORTH, tfNrOfDecimals, -3, SpringLayout.NORTH, labelNrOfDecimals);
 		layout.putConstraint(SpringLayout.NORTH, labelNrOfQuestions, 0, SpringLayout.NORTH, labelOperators);
 		layout.putConstraint(SpringLayout.WEST, labelNrOfQuestions, 0, SpringLayout.WEST, labelMAxNumber);
-		layout.putConstraint(SpringLayout.NORTH, rbAddition, 6, SpringLayout.NORTH, getContentPane());
-		layout.putConstraint(SpringLayout.NORTH, labelOperators, 4, SpringLayout.NORTH, rbAddition);
-		layout.putConstraint(SpringLayout.EAST, labelOperators, -6, SpringLayout.WEST, rbAddition);
+		layout.putConstraint(SpringLayout.NORTH, cbAddition, 6, SpringLayout.NORTH, getContentPane());
+		layout.putConstraint(SpringLayout.NORTH, labelOperators, 4, SpringLayout.NORTH, cbAddition);
+		layout.putConstraint(SpringLayout.EAST, labelOperators, -6, SpringLayout.WEST, cbAddition);
 		layout.putConstraint(SpringLayout.EAST, startExercises, -195, SpringLayout.EAST, getContentPane());
 		layout.putConstraint(SpringLayout.WEST, labelExercise, 10, SpringLayout.WEST, getContentPane());
 		layout.putConstraint(SpringLayout.EAST, labelExercise, -305, SpringLayout.EAST, getContentPane());
@@ -299,10 +299,10 @@ public class MainView extends JFrame {
 		getContentPane().add(tfNrOfDecimals);
 		getContentPane().add(tfMinNumber);
 		getContentPane().add(startExercises);
-		getContentPane().add(rbAddition);
-		getContentPane().add(rbDivision);
-		getContentPane().add(rbMultiplication);
-		getContentPane().add(rbSubstraction);
+		getContentPane().add(cbAddition);
+		getContentPane().add(cbDivision);
+		getContentPane().add(cbMultiplication);
+		getContentPane().add(cbSubstraction);
 		getContentPane().add(labelExercise);
 		getContentPane().add(labelStringExercise);
 		getContentPane().add(checkAnswer);

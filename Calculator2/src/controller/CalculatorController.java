@@ -120,6 +120,7 @@ public class CalculatorController {
 				exerciseSession = new ExerciseSession(settings);
 				
 				showNewExercise();
+				
 				view.setStartExerciseButton(false);
 				view.setCheckAnswerButton(true);
 			} catch (NumberFormatException e1) {
@@ -150,8 +151,7 @@ public class CalculatorController {
 					view.showMessage(NegativeComment.getRandom().getValue());
 				}
 				
-				showNewExercise();
-				
+				showNewExercise();			
 				
 			} catch (NumberFormatException e2) {
 				view.showMessage("Gelieve een geldig getal als antwoord in te geven!");

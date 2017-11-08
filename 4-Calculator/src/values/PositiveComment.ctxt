@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=PositiveComment
+comment0.text=\r\n\ \t@Author\ Ben\ Vandevorst\ &\ Jef\ Beyens\r\n\t@Datum\ 24/10/2017\r\n\t@Project\ Calculator\r\n\t@Doel\ Comment\ to\ show\ user\ when\ answering\ correct\r\n
+comment1.params=name
+comment1.target=PositiveComment(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getValue()
+comment3.params=
+comment3.target=PositiveComment\ getRandom()
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5

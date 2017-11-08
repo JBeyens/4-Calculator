@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=DefaultSettings
+comment0.text=\r\n\ \t@Author\ Ben\ Vandevorst\ &\ Jef\ Beyens\r\n\t@Datum\ 09/10/2017\r\n\t@Project\ Calculator\r\n\t@Doel\ Holding\ default\ values\r\n
+comment1.params=name
+comment1.target=DefaultSettings(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getValue()
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4

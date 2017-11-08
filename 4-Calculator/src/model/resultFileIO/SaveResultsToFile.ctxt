@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=SaveResultsToFile
+comment0.text=\r\n\ \t@Author\ Ben\ Vandevorst\ &\ Jef\ Beyens\r\n\t@Datum\ 09/10/2017\r\n\t@Project\ Calculator\r\n\t@Doel\ Save\ result\ of\ a\ session\ to\ file\r\n
+comment1.params=result\ file
+comment1.target=void\ streamListToFile(java.util.ArrayList,\ java.io.File)
+comment1.text=\r\n\ @param\ serializedList\r\n\ @param\ file\r\n\ @throws\ FileNotFoundException\r\n\ @throws\ IOException\r\n
+comment2.params=result\ path
+comment2.target=void\ streamListToFile(java.util.ArrayList,\ java.lang.String)
+comment2.text=\r\n\ @param\ serializedList\r\n\ @param\ path\r\n\ @throws\ FileNotFoundException\r\n\ @throws\ IOException\r\n
+numComments=3

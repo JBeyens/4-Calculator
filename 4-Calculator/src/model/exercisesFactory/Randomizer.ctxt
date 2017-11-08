@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Randomizer
+comment0.text=\r\n\ \t@Author\ Ben\ Vandevorst\ &\ Jef\ Beyens\r\n\t@Datum\ 09/10/2017\r\n\t@Project\ Calculator\r\n\t@Doel\ Methodes\ en\ Random\ object\ voorzien\ om\ een\ object\ van\ de\ Random\ klasse\ of\ een\ random\ getallen\ binnen\ een\ range,\ \r\n\tof\ een\ random\ element\ uit\ array\ terug\ te\ geven.\r\n
+comment1.params=minNumber\ maxNumber
+comment1.target=int\ getRandomNumber(int,\ int)
+comment1.text=\r\n\ @param\ int\ minNumber\:\ Integer\ gegenereerd\ door\ deze\ methode\ is\ groter\ of\ gelijk\ aan\ dit\ getal\r\n\ @param\ int\ maxNumber\:\ Integer\ gegenereerd\ door\ deze\ methode\ is\ kleiner\ of\ gelijk\ aan\ dit\ getal\r\n@return\ int\:\ Random\ int\ dat\ tussen\ de\ opgegeven\ grenzen\ ligt.
+comment2.params=input\ nrDecimals\ minRange\ maxRange
+comment2.target=double\ roundNumber(double,\ int,\ double,\ double)
+comment3.params=minNumber\ maxNumber\ nrDecimals
+comment3.target=double\ getRandomNumber(double,\ double,\ int)
+comment3.text=\r\n\ @param\ double\ minNumber\:\ double\ gegenereerd\ door\ deze\ methode\ is\ groter\ of\ gelijk\ aan\ dit\ getal\r\n\ @param\ double\ maxNumber\:\ double\ gegenereerd\ door\ deze\ methode\ is\ kleiner\ of\ gelijk\ aan\ dit\ getal\r\n\ @param\ int\ nrDecimals\:\ \ \ double\ gegenereerd\ door\ deze\ methode\ mag\ hoogstens\ dit\ aantal\ decimals\ hebben.\r\n@return\ double\:\ Random\ double\ dat\ tussen\ de\ opgegeven\ grenzen\ ligt,\ met\ hoogstens\ het\ opgegeven\ aantal\ decimalen.
+comment4.params=operatorArray
+comment4.target=char\ getRandomChar(java.lang.String[])
+comment4.text=\r\n\ @param\ String[]\ operatorArray\:\ Een\ array\ van\ Strings\r\n@return\ char\:\ eerste\ karakter\ van\ een\ willekeurige\ string\ uit\ de\ operatorArray
+comment5.params=commentArray
+comment5.target=java.lang.String\ getRandomString(java.lang.String[])
+comment5.text=\r\n\ @param\ String[]\ operatorArray\:\ Een\ array\ van\ Strings\r\n@return\ String\:\ Willekeurige\ string\ uit\ de\ operatorArray
+numComments=6

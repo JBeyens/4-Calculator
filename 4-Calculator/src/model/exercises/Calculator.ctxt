@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Calculator
+comment0.text=\r\n\ @Autor\:\ Jef\ Beyens\ &\ Ben\ VandeVorst\r\n\ @Date\:\ 16/10/2016\r\n\ @Project\:\ Calculator\r\n\ @Purpose\:\ BusinessComponent\ class\ to\ calculate\ results\r\n
+comment1.params=input1\ input2\ operation
+comment1.target=double\ doCalculation(double,\ double,\ char)
+comment1.text=\ \r\n\ Performs\ calculation\ and\ will\ return\ the\ result.\r\n\ @param\ input1,\ input2,\ operation\:\ input1\ \=\ number\ left\ of\ the\ operation,\ input2\ \=\ number\ right\ of\ operation\r\n\ @return\ input1\ ADDED\ TO\ /\ SUBSTRACTRED\ FROM\ /\ MULTIPLIED\ WITH\ /\ DIVIDED\ BY\ input2\r\n\ @exception\ IllegalArgumentException\:\ if\ input2\ is\ zero\ in\ case\ of\ division\r\n
+comment2.params=exercise
+comment2.target=double\ doCalculation(model.exercisesFactory.Exercise)
+numComments=3

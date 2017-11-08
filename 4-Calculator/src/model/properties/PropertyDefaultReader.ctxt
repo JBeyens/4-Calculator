@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=PropertyDefaultReader
+comment0.text=\r\n\ @Author\ Ben\ Vandevorst\ &\ Jef\ Beyens\r\n\ @Datum\ 09/10/2017\r\n\ @Project\ Calculator\r\n\ @Doel\ Read\ default\ settings\r\n
+comment1.params=
+comment1.target=java.util.Properties\ getDefaultProperties()
+comment1.text=Method\ to\ load\ in\ the\ default\ settings\ into\ a\ Property\ object
+comment2.params=
+comment2.target=java.lang.String\ getDefaultPath()
+comment2.text=Method\ to\ retrieve\ the\ default\ file\ path
+numComments=3

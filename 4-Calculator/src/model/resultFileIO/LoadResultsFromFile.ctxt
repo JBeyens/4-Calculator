@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=LoadResultsFromFile
+comment0.text=\r\n\ \t@Author\ Ben\ Vandevorst\ &\ Jef\ Beyens\r\n\t@Datum\ 09/10/2017\r\n\t@Project\ Calculator\r\n\t@Doel\ Load\ previous\ results\ from\ file\r\n
+comment1.params=file
+comment1.target=java.util.ArrayList\ streamFileToString(java.io.File)
+comment1.text=\r\n\ @param\ file\r\n\ @return\r\n\ @throws\ FileNotFoundException\r\n\ @throws\ IOException\r\n\ @throws\ ClassNotFoundException\r\n
+comment2.params=path
+comment2.target=java.util.ArrayList\ streamFileToString(java.lang.String)
+comment2.text=\r\n\ @param\ file\r\n\ @return\r\n\ @throws\ FileNotFoundException\r\n\ @throws\ IOException\r\n\ @throws\ ClassNotFoundException\r\n
+numComments=3

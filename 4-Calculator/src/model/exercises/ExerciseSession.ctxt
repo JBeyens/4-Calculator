@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=ExerciseSession
+comment0.text=\r\n\ @Autor\:\ Jef\ Beyens\ &\ Ben\ Vandevorst\r\n\ @Date\:\ 16/10/2016\r\n\ @Project\:\ Calculator\r\n\ @Purpose\:\ manage\ exercises\r\n\ \ -->\ The\ purpose\ of\ this\ class\ is\ to\ manage\ exercises.\ \r\n
+comment1.params=settings
+comment1.target=ExerciseSession(ExerciseSettings)
+comment1.text=\ Initializes\ an\ exercise\ session\r\n\ @param\ random\ \ \ \ An\ instance\ of\ the\ Random\ class.\r\n\ @param\ settings\ \ exerciseSettings\ that\ must\ be\ respected\ in\ the\ session.\r\n
+comment2.params=settings
+comment2.target=void\ generateExercises(ExerciseSettings)
+comment3.params=
+comment3.target=java.lang.String\ getTimeDifference()
+comment3.text=\r\n\ @param\ none\t\tThe\ exercises\ are\ already\ generated\ based\ on\ the\ ExerciseSettings\r\n\ @return\ String\ \ \ Difference\ between\ start\ and\ end\ in\ HH\:MM\:SS\ format\ (H\=\ Hour,\ M\=\ Minute,\ S\=\ Second)\r\n
+comment4.params=
+comment4.target=java.lang.String\ getScore()
+comment4.text=\r\n\ @return\r\n\ Calculate\ percentage\r\n
+comment5.params=
+comment5.target=model.exercisesFactory.Exercise\ getNextExercise()
+comment5.text=\r\n\ Returns\ the\ next\ exercise\ in\ the\ list\ and\ increases\ the\ exerciseCounter.\r\n\ @param\ none\t\t\ The\ exercises\ are\ already\ generated\ based\ on\ the\ ExerciseSettings\r\n\ @return\ Exercise\ \ The\ next\ exercise\ in\ the\ list.\ Returns\ null\ if\ there\ are\ no\ exercises,\ or\ if\ there\ are\ no\ more\ exercises\r\n
+comment6.params=
+comment6.target=java.lang.String\ getEndResult()
+comment6.text=\r\n\ Composes\ a\ string\ with\ statistics\ from\ the\ exercise\ session\ (Score,\ time,\ etc)\r\n\ @return\ String\ \ \ \ A\ description\ of\ the\ results\r\n
+numComments=7

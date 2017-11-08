@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=CalculatorController
+comment0.text=\r\n\ \t@Author\ Ben\ Vandevorst\ &\ Jef\ Beyens\r\n\t@Datum\ 09/10/2017\r\n\t@Project\ Calculator\r\n\t@Doel\ Handles\ properties\ and\ user\ setting\ changes\r\n\t\t\ \ Handles\ response\ from\ user\r\n
+comment1.params=
+comment1.target=CalculatorController()
+comment2.params=
+comment2.target=void\ startController()
+comment3.params=
+comment3.target=void\ initializeProperties()
+comment4.params=
+comment4.target=void\ showNewExercise()
+comment4.text=\r\n\ Logic\ for\ handling\ a\ new\ Exercise\r\n\ Logic\ for\ handling\ end\ of\ Session\r\n
+comment5.params=
+comment5.target=void\ saveToPropertyFile()
+comment5.text=\r\n\ Saving\ result\ to\ file\r\n
+numComments=6

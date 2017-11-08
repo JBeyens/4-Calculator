@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=ExerciseAdd
+comment0.text=\r\n\ @Autor\:\ Jef\ Beyens\ &\ Ben\ Vandevorst\r\n\ @Date\:\ 26/10/2016\r\n\ @Project\:\ Calculator\r\n\ @Purpose\:\ Extention\ of\ base\ class\ Exercise\ to\ create\ a\ SUM\r\n
+comment1.params=settings\ number
+comment1.target=ExerciseAdd(model.exercises.ExerciseSettings,\ int)
+comment1.text=\r\n\ @param\ random\ object\ &\ settings\ are\ needed\ as\ input\ for\ the\ base\ class\r\n
+comment2.params=
+comment2.target=void\ generateExercise()
+comment2.text=\r\n\ This\ method\ has\ to\ be\ defined\ (due\ to\ abstract\ method\ in\ base\ class)\ becasue\ the\ operands\r\n\ \ have\ to\ be\ set\ up\ differently\ for\ each\ type\ of\ exercise\ \r\n
+numComments=3

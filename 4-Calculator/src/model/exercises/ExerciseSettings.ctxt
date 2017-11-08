@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=ExerciseSettings
+comment0.text=\r\n\ @Autor\:\ Jef\ Beyens\r\n\ @Date\:\ 16/10/2016\r\n\ @Project\:\ Calculator\r\n\ @Purpose\:\ Model\ data\ klasse\r\n\ This\ class\ is\ a\ container\ for\ the\ settings\ for\ the\ exercise\ generator\r\n
+comment1.params=minRange\ maxRange\ nrDecimals\ nrExercises\ operators
+comment1.target=ExerciseSettings(double,\ double,\ int,\ int,\ java.lang.String[])
+comment10.params=
+comment10.target=int\ getNrOfExercises()
+comment11.params=nrExercises
+comment11.target=void\ setNrOfExercises(int)
+comment2.params=
+comment2.target=double\ getMinRange()
+comment3.params=minRange
+comment3.target=void\ setMinRange(double)
+comment4.params=
+comment4.target=double\ getMaxRange()
+comment5.params=maxRange
+comment5.target=void\ setMaxRange(double)
+comment6.params=
+comment6.target=int\ getNrDecimals()
+comment7.params=nrDecimals
+comment7.target=void\ setNrDecimals(int)
+comment8.params=
+comment8.target=java.lang.String[]\ getOperators()
+comment9.params=operators
+comment9.target=void\ setOperators(java.lang.String[])
+numComments=12

@@ -1,4 +1,4 @@
-package model.properties;
+package model.properties; 
 
 import java.util.Properties;
 
